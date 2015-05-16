@@ -1,0 +1,152 @@
+*{ margin:0; padding:0; border:0; outline:0; font-size: 14px; line-height: 16px; word-wrap:break-word; }
+.clearfix{ clear: both; }
+body{ margin:0; padding: 0; background-color: #f5f5f5; }
+header{ margin:0; padding:0; width:100%; height:60px; background-color: #399bff; }
+header .center{ margin:0 auto; padding:0; width:1200px; height:60px; }
+header .center .logo{ margin:0; padding:0; width:98px; height:60px; float: left; border-right:solid 2px #3085db; }
+header .center .logo:hover{ height:58px; border-top: solid 2px #ffffff; }
+header .center .logo a{ margin:0; padding:0; border:0; outline: 0; width:100px; line-height:60px; display:block; text-decoration: none; font-family: 'roboto'; color: #ffffff; text-align: left; }
+header .center .logo a img{ margin:0; padding:0; border:0; outline: 0; width:100px; height:60px; }
+header .center nav{ margin:0; padding:0; border:0; width:1100px; height:60px; float:left; }
+header .center nav ul{ margin:0; padding:0; border:0; height:60px; list-style-type: none; float: right; }
+header .center nav ul li{ margin:0; padding:0; border:0; height:60px; float:left; position: relative; }
+header .center nav ul li a{font-family:'roboto'; margin:0; padding:0 30px; border:0; line-height:60px; display: block; font-size: 18px; text-decoration: none; color: #ffffff; }
+header .center nav ul li:hover{ background-color: #3085db; }
+header .center nav ul li ul{ margin: 0; padding: 0 10px; height: auto; list-style-type: none; position: absolute; top:60px; background-color: #3085db; width: 220px; display: none; z-index: 1000;
+  -webkit-box-shadow: 0 4px 16px rgba(0,0,0,.2);
+  -moz-box-shadow: 0 4px 16px rgba(0,0,0,.2);
+  box-shadow: 0 4px 16px rgba(0,0,0,.2);
+  background-clip: padding-box;
+  border: 1px solid #acacac;
+  border: 1px solid rgba(0,0,0,.333);
+  border-top: none;
+}
+header .center nav ul li ul li{ margin:0; padding:0; border:0; width: 100%; height: auto; line-height:45px; float:left; border-bottom: solid 1px #ffffff; float: left; clear: both;}
+header .center nav ul li ul li a{ margin:0; padding:0; border:0; outline: 0; height: auto; line-height:45px; display:block; text-decoration: none; }
+header .center nav ul li ul li:last-child{ border-bottom: none;  }
+header .center nav ul li:hover ul{ display: block; }
+header .center nav ul li ul li a:hover{ text-decoration: underline; }
+main{ margin:0; padding:0; width: 100%; }
+main .center{ margin: 20px auto; padding: 0; width: 1200px; }
+main .center .content{ margin: 0; padding:20px; background-color: #ffffff; border: solid 1px #dddddd; font-family: 'roboto' }
+main .center .content .my-form{ margin: 0 auto; padding:0; width:450px; }
+main .center .content .my-form .from-header{ margin: 0; padding: 0; width: 100%; line-height:45px; color: #399bff; font-family:'roboto'; border-bottom: solid 1px #bdc4c9; }
+main .center .content .my-form label{ margin: 0; padding: 0; width: 100%; line-height:45px; color: #666666; font-family:'roboto'; }
+main .center .content .my-form input[type="text"]{ margin: 0; padding: 0 10px; width:calc(100% - 22px); height:40px; font-family:'roboto'; border: solid 1px #bdc4c9; }
+main .center .content .my-form select{ margin: 0; padding: 0 10px; width:calc(100% - 22px); height:40px; font-family:'roboto'; border: solid 1px #bdc4c9; }
+main .center .content .my-form textarea{ margin: 0; padding: 10px; width:calc(100% - 22px); height:120px; font-family:'roboto'; border: solid 1px #bdc4c9; }
+main .center .content .my-form input[type="password"]{ margin: 0; padding: 0 10px; width:calc(100% - 22px); height:40px; font-family:'roboto'; border: solid 1px #bdc4c9; }
+main .center .content .my-form input[type="submit"]{ margin: 20px 0 0 0; padding: 0; width:100%; height:40px; line-height: 40px; font-family:'roboto'; background-color: #ef4836; text-align: center; color: #ffffff; cursor: pointer; }
+main .center .content .my-form input[type="submit"]:hover{ background-color: #f6695a; }
+main .center .content .my-form button[id="cancel"]{ margin: 10px 0 0 0; padding: 0; width:100%; height:40px; line-height: 40px; font-family:'roboto'; background-color: #f1c40f; text-align: center; color: #ffffff; cursor: pointer; }
+main .center .content .my-form button[id="cancel"]:hover{ background-color: #f1c95f }
+main .center .content .my-form .captcha{ margin: 20px 0 0 0; padding: 0; width:100px; height:40px;  }
+main .center .content .my-form .captcha img{ margin: 0; padding: 0; width:100px; height:40px;  }
+main .center .content .my-form .messagex{ margin: 0; padding: 10px 0 0 0; width:100%; line-height:20px; font-family: 'roboto'; color:#ef4836; }
+main .center .content .my-form .frURL{ margin:0; padding:0 10px 0 0; line-height: 40px; color: #555555; text-align: left; float: left; }
+main .center .content .my-form .frURLInput{ width:350px !important; float: left; }
+main .center .content #table { display: table; width: 100%; background: #fff; margin: 0; box-sizing: border-box; }
+main .center .content .header-row { background-color: #3085db; color: #fff; }
+main .center .content .row { display: table-row; }
+main .center .content .cell { display: table-cell; padding: 10px; border-bottom: 1px solid #e5e5e5; text-align: left; }
+main .center .content .cell .slugs{ font-size: 12px; }
+main .center .content .primary { text-align: left; }
+main .center .content .button{ margin: 0 0 20px 0; line-height: 35px; background-color: #ef4836; color: #ffffff; font-family: 'roboto'; cursor: pointer; text-align: center; float: left; }
+main .center .content .button a{padding: 0 20px; color: #ffffff; text-decoration: none; font-family: 'roboto'; display: block; }
+main .center .content .button span{ margin: 0 5px 0 5px; }
+main .center .content .button:hover{ background-color: #f6695a; }
+main .center .content .search { width: 100%; position: relative; }
+main .center .content .searchTerm { float: left; width: 100%; border: 3px solid #ef4836; padding: 5px; height: 20px; border-radius: 5px; outline: none; color: #9DBFAF; }
+main .center .content .searchTerm:focus{ color: #ef4836; }
+main .center .content .searchButton { position: absolute; right: -50px; width: 40px; height: 36px; opacity: 0; cursor: pointer; }
+main .center .content .search:before { position: absolute; right: -50px; width: 40px; height: 36px; line-height: 36px; background: #ef4836; text-align: center; color: #fff; border-radius: 5px; font-family: 'FontAwesome'; content: '\f002'; }
+main .center .content .wrap{ margin-right: 50px; width: 250px; float: right; font-family: 'roboto' }
+main .center .content .cell a{ color: #717171; padding: 0 2px; text-align: center; text-decoration: none; }
+main .center .content .cell a:hover{ color: #ef4836; }
+main .center .content .pagination {font: 14px/24px sans-serif; padding: 20px 0; } 
+main .center .content .page { display: inline-block; padding: 0px 9px; margin-right: 4px; border-radius: 3px; border: solid 1px #c0c0c0; background: #f5f5f5; font-size: .875em; font-weight: bold; text-decoration: none;color: #717171;}
+main .center .content .page:hover, .page.gradient:hover { background: #fefefe; background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FEFEFE), to(#f0f0f0)); background: -moz-linear-gradient(0% 0% 270deg,#FEFEFE, #f0f0f0); }
+main .center .content .page.active { background: #ef4836; color: #f0f0f0; }
+main .center .content .shortTable{margin:20px 0 0 15px; width:375px; float:left; }
+main .center .content .noneMargin{margin-left:0 !important; }
+main .center .content .hundredPorsent{ width: 100%; }
+main .center .content .message h2{ font-size: 18px; }
+main .center .content .message p{ padding: 20px 0 0 0; font-size: 16px; }
+main .center .content .message { font-family: 'roboto'; position: relative; padding: 10px; padding-left: 35px; margin: 20px 0; box-shadow:0 2px 5px rgba(0,0,0,.3); background: #BBB; color: #FFF; -webkit-transition: all .5s ease; -moz-transition: all .5s ease; -ms-transition: all .5s ease; -o-transition: all .5s ease; transition: all .5s ease; }
+main .center .content .message:before{ content: ''; font-family: FontAwesome; position: absolute; display: block; top: -21px; left: 50%; margin:0 -21px; font-size: 20px; line-height: 24px; text-align: center; width: 24px; padding:10px; background: inherit; box-shadow:0 5px 10px rgba(0,0,0,.25); color: rgba(255,255,255,.75); border-radius:50%; border: 2px solid transparent; z-index: 2; }
+main .center .content .message.success:before{content:'\f00c';}
+main .center .content .message.error:before{content:'\f00d';}
+main .center .content .message.success{background: #5A6;}
+main .center .content .message.error{background: #C43;}
+main .center .content .label{ margin: 0; padding: 10px 0 0 0; width: 100%; }
+main .center .content .label a{ margin: 0; padding: 0; text-align: left; text-decoration: none; color: #ef4836; }
+/*drop down selector*/
+main .center .dropdown { margin: 0 0 20px 0; display: inline-block; position: relative; overflow: hidden; height: 35px; width: 250px; background: #399bff; border: 1px solid; border-color: white #f7f7f7 whitesmoke; border-radius: 3px; background-image: -webkit-linear-gradient(top, transparent, rgba(0, 0, 0, 0.06)); background-image: -moz-linear-gradient(top, transparent, rgba(0, 0, 0, 0.06)); background-image: -o-linear-gradient(top, transparent, rgba(0, 0, 0, 0.06)); background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.06)); -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08); box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08); font-family: 'roboto'; float: left; }
+main .center .dropdown:before, .dropdown:after { content: ''; position: absolute; z-index: 2; top: 12px; right: 10px; width: 0; height: 0; border: 4px dashed; border-color: #ffffff transparent; pointer-events: none; }
+main .center .dropdown:before { border-bottom-style: solid; border-top: none; }
+main .center .dropdown:after { margin-top: 7px; border-top-style: solid; border-bottom: none; }
+main .center .dropdown-select { position: relative; width: 130%; margin: 0; padding: 0 10px; height: 35px; line-height: 30px; font-size: 12px; color: #ffffff; font-family: 'roboto'; font-size: 16px; background: #399bff; background: rgba(0, 0, 0, 0) !important; border: 0; border-radius: 0; -webkit-appearance: none; }
+main .center .dropdown-select:focus { z-index: 3; width: 100%; color: #ffffff; outline: 2px solid #49aff2; outline: 2px solid -webkit-focus-ring-color; outline-offset: -2px; }
+main .center .dropdown-select > option { margin: 3px; padding: 6px 8px; text-shadow: none; background: #399bff; border-radius: 3px; cursor: pointer; }
+/*timer*/
+main .center .widget{ margin:0 0 20px 0; padding:0; border:0; height: 35px; line-height: 35px; float: right; display: block; }
+main .center .widget .time-text{ margin:0; padding:0; border:0; height: 35px; line-height: 35px; float: right; text-align: center; }
+main .center .widget .time-text .time-number{ margin:0; padding: 0 2px; border: 0; font-size: 18px; line-height: 35px; font-family: 'roboto'; color: #555555; }
+main .center .widget .time-text .time-caption{ margin:0; padding: 0 2px; border: 0; font-size: 18px; line-height: 35px; font-family: 'roboto'; color: #555555; }
+main .center .widget .time-separator{ margin:0; padding:0 2px; border:0; width:10px; font-size: 18px; height: 35px; line-height: 35px; float: right; text-align: center; font-family: 'roboto'; color: #555555; }
+/*dragable area*/
+main .center .my-form .dragableArea{ margin:0; padding: 10px; background-color: #399bff; text-align: center; height: 80px; position: relative; }
+main .center .my-form .dragableArea h3{ margin:30px 0 0 0; line-height: 20px; font-size: 18px; color: #ecf0f1; }
+main .center .my-form .dragableArea #progress-bar{ margin: 0; padding: 0; height: 10px; position: absolute; bottom: 0px; left:0px; background-color: #ef4836;  }
+main .center .my-form #img{ margin: 0; padding: 0; width:250px; height: 180px; position: relative; text-align: center; background-color: #cccccc;  }
+main .center .my-form #img p{ margin: 72px 0 0 0; padding: 0; width: 250px; line-height: 35px; font-size: 25px; color: #555555; text-align: center; float: left; font-family: 'roboto' }
+main .center .my-form #img img{ margin: 0; padding: 0; width: 250px; height: 180px; }
+main .center .my-form #img .close{ display: none; text-align: center; color: #555555; }
+main .center .my-form #img:hover .close{ margin:0; padding: 0; cursor: pointer; position: absolute; right: 10px; top: 10px; display:block; }
+/*tab style*/
+main .center .content .my-form #tabs{ margin: 20px 0 0 0; padding: 0; border:0; border-radius:0px; box-shadow:none !important; width:100%; }
+main .center .content .my-form #tabs .ui-tabs-panel{ margin: 0; padding: 10px; border:1px solid #cccccc; border-radius:0px; box-shadow:none !important; }
+main .center .content .my-form #tabs .ui-state-active{ border: 1px solid #cccccc; border-bottom: none; margin-left: -3px; }
+main .center .content .my-form #tabs a{ color:#ef4836; }
+main .center .content .my-form #tabs .ui-state-focus, 
+main .center .content .my-form #tabs .ui-state-hover{ background-color: #ffffff; font-weight: bold; color: #555555; }
+main .center .content #table .cell .tab-1{ margin:0; padding:0; width:0; height:30px; float:left; }
+main .center .content #table .cell .tab-2{ margin:0; padding:0; width:10px; height:30px; float:left; }
+main .center .content #table .cell .tab-3{ margin:0; padding:0; width:20px; height:30px; float:left; }
+main .center .content #table .cell .tab-4{ margin:0; padding:0; width:30px; height:30px; float:left; }
+main .center .content #table .cell .tab-5{ margin:0; padding:0; width:40px; height:30px; float:left; }
+main .center .content #table .cell .tab-6{ margin:0; padding:0; width:50px; height:30px; float:left; }
+/* file box stylesheet */
+main .center .content .dropArea{ margin:0; padding:20px 0 10px 0; width: 100%; background: #ecf0f1; }
+main .center .content .dropArea .Droptitle{ margin:0; padding:0 0 20px 0; width: 100%; line-height: 35px; text-align: center; font-family: 'roboto'; font-size: 35px; color: #bdc3c7; }
+main .center .content .dropArea .dragElements .filebox{ margin:10px 1%; padding:0; width: 17.9%; height:130px; float: left; overflow: hidden; cursor: pointer; }
+main .center .content .dropArea .dragElements .filebox .action_panel{ margin:0; padding:0; line-height:25px; float: left;   background: #399bff; }
+main .center .content .dropArea .dragElements .filebox .action_panel a{ margin:0 5px; padding:0; width:10px; line-height:25px; float: left; text-decoration: none; color: white !important; }
+main .center .content .dropArea .dragElements .filebox .extention{ margin:0; padding:15px 0; width:100%; line-height:50px; float: left; color: white !important; font-family: 'roboto'; font-size: 50px; text-align: center; text-transform: uppercase; }
+main .center .content .dropArea .dragElements .filebox .filename{ margin:0; padding:0 5px; line-height:25px; float: left; color: white !important; font-family: 'roboto'; font-size: 14px; text-align: left; background: #399bff }
+/* file box stylesheet 2 */
+main .center .content .dropArea2{ margin:0; padding:20px 0 10px 0; width: 100%; background: #ecf0f1; }
+main .center .content .dropArea2 .Droptitle2{ margin:0; padding:0 0 20px 0; width: 100%; line-height: 35px; text-align: center; font-family: 'roboto'; font-size: 35px; color: #bdc3c7; }
+main .center .content .dropArea2 .dragElements2 .filebox2{ margin:10px 1%; padding:0; width: 17.9%; height:130px; float: left; overflow: hidden; cursor: pointer; position: relative; }
+main .center .content .dropArea2 .dragElements2 .filebox2 .action_panel2{ margin:0; padding:0; line-height:25px; float: left; position: absolute; top: 0; z-index: 100;   background: #399bff; }
+main .center .content .dropArea2 .dragElements2 .filebox2 .action_panel2 a{ margin:0 5px; padding:0; width:10px; line-height:25px; float: left; text-decoration: none; color: white !important; }
+main .center .content .dropArea2 .dragElements2 .filebox2 .extention2{ margin:0; padding:0; width:100%; height: 100%; float: left; color: white !important; font-family: 'roboto'; font-size: 50px; text-align: center; text-transform: uppercase; position: absolute; top: 0; z-index: 99; }
+main .center .content .dropArea2 .dragElements2 .filebox2 .filename2{ margin:0; padding:0 5px; line-height:20px; float: left; color: white !important; font-family: 'roboto'; font-size: 14px; text-align: left; position: absolute; bottom: 0; z-index: 100; background: #399bff }
+/*bread crups*/
+main .center .breadcrumb { font-family: 'roboto'; text-align: center; width: 100%; height: 25px; margin: 0 0 10px 0; padding: 0; }
+main .center .breadcrumb a { text-decoration: none; outline: none; float: left; font-size: 14px; line-height: 16px; color: #555555; padding: 0 10px 0 10px; position: relative; }
+main .center .breadcrumb a:first-child{ padding-left: 0px; }
+main .center .breadcrumb a:last-child{ text-decoration: underline; color: #ef4836; }
+main .center .breadcrumb a:hover{ color: #ef4836; text-decoration: underline; }
+main .center .breadcrumb a i{ margin: 0; padding: 0; font-size: 12px; position: absolute; right: 0px; top: 2px; }
+main .center .breadcrumb a:last-child i{ display: none; }
+
+main .center .moreinfo-add-list{ margin: -10px 0 0 -10px; padding: 0; width: 100%; float: left; }
+main .center .moreinfo-add-list .info-name{ margin: 5px 0 10px 10px; padding: 0 10px; min-width: 80px; height: 35px; line-height: 35px; float: left; text-align: center; border: solid 1px #ccc; cursor: pointer; display: block; }
+main .center .moreinfo-add-list .info-name:hover{ border: solid 1px #ef4836;}
+
+footer{ margin: 20px 0; padding: 0; width: 100%; height: 25px; }
+footer .center{ margin: 0 auto; padding: 0; width: 1200px; height: 25px;  }
+footer .center .copyright{ margin: 0 auto; padding: 0; width: 100%; height: 25px; line-height: 25px; font-family: 'roboto'; color: #555555; text-align: left;  }
+footer .center .copyright a{ margin: 0 auto; padding: 0; width: 100%; height: 25px; line-height: 25px; font-family: 'roboto'; color: #555555; text-align: left; text-decoration: none; font-size: 12px; }
+footer .center .copyright a:hover{ text-decoration: underline; }

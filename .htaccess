@@ -1,0 +1,23 @@
+
+# turn new php version
+AddHandler application/x-httpd-php55 .php .php5 .php4 .php3 
+
+#images|styles|scripts|uploads|_manager|_website|_cache|
+RewriteRule ^(images|styles|scripts|flash|files|files_pre|_plugins|.*\.(doc|docx|xls|xlsx|css|js|jpg|mp3|jpeg|gif|swf|xml|png|pdf|ico|zip|rar|php|html|txt|sql|woff|eot|ttf|svg)) - [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f [OR]
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule . open.php [QSA,L]
+# choose opener file
+DirectoryIndex open.php
+
+# block access to some sensible files
+<Files ~ "^sftp-config.json|.git|.htaccess|config.php|functions|backup|controller|model|view">
+  Order allow,deny
+  Deny from all
+</Files>
+
+# force non-www domain
+RewriteCond %{HTTP_HOST} ^www\.developer.404\.ge$ [NC]
+RewriteRule (.*) http://developer.404.ge/$1 [R=301,L]

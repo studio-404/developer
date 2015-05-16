@@ -1,0 +1,20 @@
+@font-face {
+  font-family: 'HighlandGothicFLF';
+  src: url('../_plugins/hightlandGothic/HighlandGothicFLF.eot?#iefix') format('embedded-opentype'),  
+  url('../_plugins/hightlandGothic/HighlandGothicFLF.woff') format('woff'), 
+  url('../_plugins/hightlandGothic/HighlandGothicFLF.ttf')  format('truetype'), 
+  url('../_plugins/hightlandGothic/HighlandGothicFLF.svg#HighlandGothicFLF') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family:'roboto'; 
+  src: url('../_plugins/roboto/Roboto-Regular.eot?#iefix') format('embedded-opentype'),  
+  url('../_plugins/roboto/Roboto-Regular.woff') format('woff'), 
+  url('../_plugins/roboto/Roboto-Regular.ttf')  format('truetype'), 
+  url('../_plugins/roboto/Roboto-Regular.svg#Roboto-Regular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
