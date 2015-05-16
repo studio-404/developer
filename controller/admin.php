@@ -359,6 +359,14 @@ class admin extends connection{
 				$news_slug = new news_slug();
 				$data["pre_slug"] = $news_slug->slug($c); 
 				@include("view/view_admin_addgallery.php");
+			}else if(isset($_GET["action"]) && $_GET["action"]=="editMediaItem"){
+				$data["website_title"] = "Edit gallery item / Admin Panel - v: ".$c['cmsversion'];
+				$model_admin_selectLanguage = new model_admin_selectLanguage();
+				$data["language_select"] = $model_admin_selectLanguage->select_option($c);
+
+				$edit_page_interface = new edit_page_interface();
+				$data["interface"] = $edit_page_interface->out_interface($c);
+				@include("view/view_admin_editMediaItem.php");
 			}else{ 
 				$data["website_title"] = "Welcome / Admin Panel - v: ".$c['cmsversion'];
 				$data["c"] = $c;

@@ -215,8 +215,9 @@ class ajaxupload extends connection{
 				$position++; 
 			}
 		}else if(isset($_GET['pageidx'],$_GET['extention'],$_GET['token']) && in_array($_GET['extention'], $allowfiletypes2)){
-			$pageidx = (isset($_GET['newsidx']) && $_GET['newsidx']!="false") ? $_GET['newsidx'] : $_GET['pageidx'];
 			
+			$pageidx = (isset($_GET['newsidx']) && $_GET['newsidx']!="false") ? $_GET['newsidx'] : $_GET['pageidx'];
+			//$pageidx = (isset($_GET["media"]) && $_GET["media"]=="true") ? $
 			// get page type
 			$get_page_type = new get_page_type();
 			$page_type = $get_page_type->type($_SESSION["C"],$_GET['pageidx']);

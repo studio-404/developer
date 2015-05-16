@@ -431,6 +431,70 @@ class edit_page_interface extends connection{
 				$this->out[1] .= '</div>';
 			}
 			break;
+			case "photogallerypage": 
+			if(isset($_GET['action']) && $_GET['action']=="editMediaItem"){
+				$sql = 'SELECT 
+				`studio404_media_item`.`idx` AS smi_idx,
+				`studio404_media_item`.`date` AS smi_date,  
+				`studio404_media_item`.`expiredate` AS smi_expiredate,  
+				`studio404_media_item`.`media_idx` AS smi_media_idx,  
+				`studio404_media_item`.`title` AS smi_title,  
+				`studio404_media_item`.`description` AS smi_description,  
+				`studio404_media_item`.`tags` AS smi_tags,  
+				`studio404_media_item`.`slug` AS smi_slug,  
+				`studio404_media_item`.`position` AS smi_position,  
+				`studio404_media_item`.`lang` AS smi_lang,  
+				`studio404_media_item`.`visibility` AS smi_visibility 
+				FROM 
+				`studio404_media_attachment`,`studio404_media`,`studio404_media_item` 
+				WHERE 
+				`studio404_media_attachment`.`connect_idx`=:connect_idx AND 
+				`studio404_media_attachment`.`lang`=:lang AND 
+				`studio404_media_attachment`.`status`!=:status AND 
+				`studio404_media_attachment`.`idx`=`studio404_media`.`idx` AND 
+				`studio404_media`.`lang`=:lang AND 
+				`studio404_media`.`status`!=:status AND 
+				`studio404_media`.`idx`=`studio404_media_item`.`media_idx` AND 
+				`studio404_media_item`.`idx`=:smi_idx AND 
+				`studio404_media_item`.`lang`=:lang AND 
+				`studio404_media_item`.`status`!=:status 
+				';
+				$prepare = $conn->prepare($sql);
+				$prepare->execute(array(
+				":connect_idx"=>$_GET['id'], 
+				":smi_idx"=>$_GET['midx'], 
+				":lang"=>LANG_ID, 
+				":status"=>1
+				));
+				$fetch = $prepare->fetch(PDO::FETCH_ASSOC);
+				$this->out[0] = '<ul>';
+				$this->out[0] .= '<li><a href="#tabs-1">General</a></li>';
+				$this->out[0] .= '<li><a href="#tabs-2">Content</a></li>';
+				$this->out[0] .= '<li><a href="#tabs-3">Manage photo</a></li>';		
+				$this->out[0] .= '</ul>';
+				$this->out[1] = '<div id="tabs-1">';
+				$this->out[1] .= $this->general_form_gallery($fetch);
+				$this->out[1] .= '</div>';
+				$this->out[1] .= '<div id="tabs-2">';
+				$this->out[1] .= $this->content_form_gallery($fetch);
+				$this->out[1] .= '</div>';
+				$this->out[1] .= '<div id="tabs-3">';
+				$this->out[1] .= $this->content_images($fetch,$c);
+				$this->out[1] .= '</div>';
+			}else{
+				$this->out[0] = '<ul>';
+				$this->out[0] .= '<li><a href="#tabs-1">General</a></li>';
+				$this->out[0] .= '<li><a href="#tabs-2">Content</a></li>';
+				$this->out[0] .= '<li class="justlink"><a href="javascript:;" onclick="redirect(\'_self\',\'?action=gallery&type=photogallerypage&id='.$_GET['id'].'&super='.$_GET['super'].'&token='.$_SESSION['token'].'\')">Manage gallery folders</a></li>';
+				$this->out[0] .= '</ul>';
+				$this->out[1] = '<div id="tabs-1">';
+				$this->out[1] .= $this->general_form($fetch,'Text Page');
+				$this->out[1] .= '</div>';
+				$this->out[1] .= '<div id="tabs-2">';
+				$this->out[1] .= $this->content_form($fetch);
+				$this->out[1] .= '</div>';
+			}
+			break;
 		}
 
 		return $this->out;
@@ -503,11 +567,6 @@ class edit_page_interface extends connection{
 	}
 
 	public function general_form_news($fetch){
-		// $date = date('d-m-Y',$fetch["smi_date"]);
-		// $out = '<label for="date">Date: <font color="RED">*</font></label>';
-		// $out .= '<input type="text" name="date" id="datepicker" value="'.$date.'" />';
-		// $out .= '<script>$(function() { $( "#datepicker" ).datepicker({ dateFormat: \'dd-mm-yy\'}); }); </script>';
-
 		$date = (empty($fetch['smi_date'])) ? date('d-m-Y H:i') : date('d-m-Y H:i',$fetch['smi_date']);
 		$expiredate = (empty($fetch['smi_expiredate'])) ? date('d-m-Y H:i') : date('d-m-Y H:i',$fetch['smi_expiredate']);
 		
@@ -543,6 +602,43 @@ class edit_page_interface extends connection{
 
 		return $out;
 	}
+
+
+	public function general_form_gallery($fetch){
+		$date = (empty($fetch['smi_date'])) ? date('d-m-Y H:i') : date('d-m-Y H:i',$fetch['smi_date']);
+		$expiredate = (empty($fetch['smi_expiredate'])) ? date('d-m-Y H:i') : date('d-m-Y H:i',$fetch['smi_expiredate']);
+		
+		$out = '<label for="date">Date: <font color="RED">*</font></label>';
+		$out .= '<input type="text" name="date" id="date" class="datepicker" value="'.$date.'" />';
+		$out .= '<label for="expiredate">Expire date: <font color="RED">*</font></label>';
+		$out .= '<input type="text" name="expiredate" id="expiredate" class="datepicker" value="'.$expiredate.'" />';
+		$out .= '<script>$(function(){ $(".datepicker").datetimepicker({ dateFormat: \'dd-mm-yy\', changeYear: true }); }); </script>';
+
+
+
+		$out .= '<label for="title">Title: <font color="RED">*</font></label>';
+		$out .= '<input type="text" name="title" id="title" value="'.htmlentities($fetch["smi_title"]).'" autocomplete="off">';
+
+		$out .= '<label for="friendlyurl">Friendly URL: <font color="RED">*</font></label><br />';
+
+		$out .= '<input type="text" name="friendlyurl" value="'.htmlentities(WEBSITE.LANG.'/'.$fetch["smi_slug"]).'" disabled="disabled" /><div class="clearfix"></div>';
+
+		$out .= '<label for="tags">Tags: (Comma seperated value)</label>';
+		$out .= '<input type="text" name="tags" id="tags" value="'.htmlentities($fetch["smi_tags"]).'" autocomplete="off">';
+
+		$out .= '<label for="visibility">Visibility: <font color="RED">*</font></label><br />';
+		if($fetch['smi_visibility']==1){ $true = ''; $false = 'checked="checked"'; }
+		else if($fetch['smi_visibility']==2){ $true = 'checked="checked"'; $false = ''; }
+		else{ $true = ''; $false = 'checked="checked"'; }
+
+		$out .= '<label>Show &nbsp;&nbsp;&nbsp;<input type="radio" name="visibility" value="true" '.$true.' /></label>&nbsp;&nbsp;&nbsp;';
+		
+		$out .= '<label>Hide &nbsp;&nbsp;&nbsp;<input type="radio" name="visibility" value="false" '.$false.' /></label>';
+
+		return $out;
+	}
+
+
 
 	public function general_form($fetch,$page_type){
 		$date = (empty($fetch['date'])) ? date('d-m-Y H:i') : date('d-m-Y H:i',$fetch['date']);
@@ -596,6 +692,12 @@ class edit_page_interface extends connection{
 		$out .= '<textarea name="short_description" class="tinyMce">'.htmlentities($fetch['smi_short_description']).'</textarea>';
 		$out .= '<label>Long description: </label>';
 		$out .= '<textarea name="long_description" class="tinyMce">'.htmlentities($fetch['smi_long_description']).'</textarea>';
+		return $out;
+	}
+
+	public function content_form_gallery($fetch){
+		$out .= '<label>Description: </label>';
+		$out .= '<textarea name="description" class="tinyMce">'.htmlentities($fetch['smi_description']).'</textarea>';
 		return $out;
 	}
 
@@ -761,6 +863,7 @@ class edit_page_interface extends connection{
 		$conn = $this->conn($c);
 		if(isset($_GET['newsidx'])){ $sp_idx=$_GET['newsidx']; }
 		else if(isset($_GET['cidx'])){ $sp_idx=$_GET['cidx']; }
+		else if(isset($_GET['midx'])){ $sp_idx=$_GET['midx']; }
 		else{ $sp_idx=$_GET['id']; }
 		// get page type
 		$get_page_type = new get_page_type();

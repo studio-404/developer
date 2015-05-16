@@ -212,7 +212,7 @@ class model_admin_breadcrups extends connection{
 				$this->breadcrups .= '<a href="?action=sitemap&super='.$_GET['super'].'">'.$getsupername.' <i class="fa fa-caret-right"></i></a>';
 				$getpagetitle = $this->getpagetitle($c);
 				$this->breadcrups .= '<a href="?action=editSitemap&super='.$_GET['super'].'&id='.$_GET['id'].'&token='.$_SESSION['token'].'">'.$getpagetitle.' <i class="fa fa-caret-right"></i></a>';	
-				$this->breadcrups .= '<a href="?action=gallery&type=photogallerypage&id='.$_GET['id'].'&super='.$_GET['super'].'&token='.$_SESSION['token'].'">Manage <i class="fa fa-caret-right"></i></a>';
+				$this->breadcrups .= '<a href="?action=gallery&type=photogallerypage&id='.$_GET['id'].'&super='.$_GET['super'].'&token='.$_SESSION['token'].'">Manage gallery folder <i class="fa fa-caret-right"></i></a>';
 				break;
 				case "addGallery":
 				$this->breadcrups .= '<a href="?action=menuManagment">Page managment <i class="fa fa-caret-right"></i></a>';
@@ -220,8 +220,17 @@ class model_admin_breadcrups extends connection{
 				$this->breadcrups .= '<a href="?action=sitemap&super='.$_GET['super'].'">'.$getsupername.' <i class="fa fa-caret-right"></i></a>';
 				$getpagetitle = $this->getpagetitle($c);
 				$this->breadcrups .= '<a href="?action=editSitemap&super='.$_GET['super'].'&id='.$_GET['mediaidx'].'&token='.$_SESSION['token'].'">'.$getpagetitle.' <i class="fa fa-caret-right"></i></a>';	
-				$this->breadcrups .= '<a href="?action=gallery&type=photogallerypage&id='.$_GET['mediaidx'].'&super='.$_GET['super'].'&token='.$_SESSION['token'].'">Manage <i class="fa fa-caret-right"></i></a>';
+				$this->breadcrups .= '<a href="?action=gallery&type=photogallerypage&id='.$_GET['mediaidx'].'&super='.$_GET['super'].'&token='.$_SESSION['token'].'">Manage gallery folder <i class="fa fa-caret-right"></i></a>';
 				$this->breadcrups .= '<a href="?action=addGallery&mediaidx='.$_GET['mediaidx'].'&super='.$_GET['super'].'">Add gallery <i class="fa fa-caret-right"></i></a>';
+				break;
+				case "editMediaItem":
+				$this->breadcrups .= '<a href="?action=menuManagment">Page managment <i class="fa fa-caret-right"></i></a>';
+				$getsupername = $this->getsupername($c);
+				$this->breadcrups .= '<a href="?action=sitemap&super='.$_GET['super'].'">'.$getsupername.' <i class="fa fa-caret-right"></i></a>';
+				$getpagetitle = $this->getpagetitle($c);
+				$this->breadcrups .= '<a href="?action=editSitemap&super='.$_GET['super'].'&id='.$_GET['id'].'&token='.$_SESSION['token'].'">'.$getpagetitle.' <i class="fa fa-caret-right"></i></a>';	
+				$this->breadcrups .= '<a href="?action=gallery&type=photogallerypage&id='.$_GET['id'].'&super='.$_GET['super'].'&token='.$_SESSION['token'].'">Manage gallery folder <i class="fa fa-caret-right"></i></a>';
+				$this->breadcrups .= '<a href="?action=editMediaItem&id='.$_GET["id"].'&midx='.$_GET['midx'].'&super='.$_GET['super'].'&token='.$_SESSION["token"].'">Edit gallery folder item <i class="fa fa-caret-right"></i></a>';
 				break;
 			}
 			$this->breadcrups .= '</div>';

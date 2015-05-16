@@ -120,13 +120,14 @@ var f_obj2 = $(".dropArea2");
 		  alert("File name error !");
 		  return false;
 		}
-		
+		var media="false";
 		xhr = new XMLHttpRequest();
 		if(par['newsidx']){ var newsidx = par['newsidx']; }
 		else if(par['cidx']){ var newsidx = par['cidx']; }
+		else if(par['midx']){ var newsidx = par['midx']; media="true"; }
 		else{ var newsidx = "false"; }
 		// initiate request
-		xhr.open('post','/en/ajaxupload?extention='+extLast+'&pageidx='+par['id']+"&newsidx="+newsidx+"&token="+par['token'],true);
+		xhr.open('post','/en/ajaxupload?extention='+extLast+'&pageidx='+par['id']+"&newsidx="+newsidx+"&media="+media+"&token="+par['token'],true);
 		//set header
 		xhr.setRequestHeader('Content-Type','multipart/form-data');
 		xhr.setRequestHeader('X-File-Name',file.name);
