@@ -35,8 +35,8 @@ $c['upload.max.filesize'] = "64M";
 $c['session.expire.time'] = 1200; // 20 minute
 //image sizes
 $c['admin.photo.dementions'] = "200-130";
-$c["product.view.pre.slug"] = "view";
-$c["gallery.view.pre.slug"] = "gallery";
+$c["product.view.pre.slug"] = "view"; // product page inside
+$c["gallery.view.pre.slug"] = "gallery"; // gallery page inside
 $c["website.directory"] = "template";
 $c["invoice.due.date"] = 259200; // 3 day
 

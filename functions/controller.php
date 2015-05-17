@@ -44,19 +44,135 @@ class controller
 			}
 		}else{
 			if($file!="admin"){// load custom pages
-				$controller = "controller/".$file.".php";
+
+				//select page types
+				$get_page_type = new get_page_type();
+				$page_type = $get_page_type->type_page($c);
+				
+				// text pages
+				$controller_text = "controller/text.php"; 
+				// home page
+				$controller_home = "controller/homepage.php";
+				// photo gallery page
+				$controller_photo_gallery = "controller/photogallery.php"; 
+				// video gallery page
+				$contoller_video_gallery = "controller/videogallery.php"; 
+				// catalog page
+				$controller_catalog = "controller/catalog.php";
+				// custom page
 				$cust = str_replace("-", "", $file);
 				$controller_custom = "controller/custom/".$cust.".php";
-
-				if(file_exists($controller)){
-					$controller = new $file($obj,$c); 
-				}else if(file_exists($controller_custom)){
-					$controller = new $cust($c); 
+				//event page
+				$controller_event = "controller/events.php"; 
+				//eventsinside page 
+				$controller_eventsinside = "controller/eventsinside.php"; 
+				//news page
+				$controller_news = "controller/news.php"; 
+				//newsinside page
+				$controller_newsinside = "controller/newsinside.php"; 
+				//publication page
+				$controller_publication = "controller/publication.php";
+				// team page
+				$controller_team = "controller/team.php";
+				// administrator pages
+				$controller = "controller/".$file.".php";
+				//product page
+				$controller_product = "controller/product.php";
+				//gallery folder page 
+				$controller_galleryfolder = "controller/galleryfolder.php";
+				// error page 
+				$controller_errorpage = "controller/error_page.php";
+				
+				if(empty($page_type) || $page_type=="error_page"){
+					if(file_exists($controller)){
+						$controller = new $file($obj,$c); 
+					}
 				}else{
-					$controller = new error_page(); 
+					switch ($page_type) {
+						case 'homepage':
+						if(file_exists($controller_home)){
+							$controller = new homepage($c);
+						}	
+						break;
+						case 'textpage':
+						if(file_exists($controller_text)){
+							$controller = new text($c);
+						}	
+						break;
+						case 'photogallerypage':
+						if(file_exists($controller_photo_gallery)){
+							$controller = new photogallery($c);
+						}	
+						break;
+						case 'videogallerypage':
+						if(file_exists($contoller_video_gallery)){
+							$controller = new videogallery($c);
+						}	
+						break;
+						case 'catalogpage':
+						if(file_exists($controller_catalog)){
+							$controller = new catalog($c);
+						}	
+						break;
+						case 'custompage':
+						if(file_exists($controller_custom)){
+							$controller = new $cust($c); 
+						}	
+						break;
+						case 'eventpage':
+						if(file_exists($controller_event)){
+							$controller = new events($c);
+						}	
+						break;
+						case 'eventsinside':
+						if(file_exists($controller_eventsinside)){
+							$controller = new eventsinside($c);
+						}	
+						break;
+						case 'newspage':
+						if(file_exists($controller_news)){
+							$controller = new news($c);
+						}	
+						break;
+						case 'newsinside':
+						if(file_exists($controller_newsinside)){
+							$controller = new newsinside($c);
+						}	
+						break;
+						case 'publicationpage':
+						if(file_exists($controller_publication)){
+							$controller = new publication($c);
+						}	
+						break;
+						case 'teampage':
+						if(file_exists($controller_team)){
+							$controller = new team($c);
+						}	
+						break;
+						case 'product':
+						if(file_exists($controller_product)){
+							$controller = new product($c);
+						}	
+						break;
+						case 'galleryfolder':
+						if(file_exists($controller_galleryfolder)){
+							$controller = new galleryfolder($c);
+						}	
+						break;
+						case 'error_page':
+						if(file_exists($controller_errorpage)){
+							$controller = new error_page();
+						}	
+						break;
+						default:
+						if(file_exists($controller)){
+							$controller = new $file($obj,$c); 
+						}
+						break;
+					}
 				}
 			}else{
-					$controller = new error_page(); 
+				$controller = new error_page(); 
 			}
 		}
 		

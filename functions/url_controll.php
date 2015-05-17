@@ -4,7 +4,7 @@ class url_controll{
 		
 	}
 
-	public function slugs(){
+	public function slugs(){ 
 		$actual_link = "$_SERVER[REQUEST_URI]";
 		$s = @explode("?",$actual_link);
 		$x = @explode("/",$s[0]); 
