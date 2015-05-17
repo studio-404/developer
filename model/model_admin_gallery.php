@@ -63,20 +63,21 @@ class model_admin_gallery extends connection{
 			$token = md5(sha1(time()));
 			$_SESSION['token'] = $token;
 			$maxpos = $this->maxpos($c,$_GET['id']);
+			$media_type = $_GET['type'];
 			while($rows = $query->fetch()){
 				$out .= '<div class="row">';
 
 				$visibilityx = ($rows['smi_visibility']==1) ? "red" : "green";
 				$_SESSION['token'] = md5(sha1(time()));
-				$link_visibility = "?action=gallery&type=photogallerypage&id=".$_GET['id']."&mediaidx=".$rows['smi_idx']."&super=".$_GET['super']."&visibilitychnage=true&token=".$_SESSION['token'];
+				$link_visibility = "?action=gallery&type=".$media_type."&id=".$_GET['id']."&mediaidx=".$rows['smi_idx']."&super=".$_GET['super']."&visibilitychnage=true&token=".$_SESSION['token'];
 				$out .= '<span class="cell primary"><a href="'.htmlentities($link_visibility).'" style="color:'.$visibilityx.'" title="Change visibility"><i class="fa fa-dot-circle-o"></i></a></span>';
 				
 				$out .= '<span class="cell">';
 				if($rows['smi_position']!=1){
-					$out .= '<a href="?action=gallery&type=photogallerypage&id='.$_GET['id'].'&midx='.$rows['smi_idx'].'&super='.$_GET['super'].'&up=true&token='.$_SESSION['token'].'" class="changeposition" title="Move up"><i class="fa fa-arrow-circle-up"></i></a>';
+					$out .= '<a href="?action=gallery&type='.$media_type.'&id='.$_GET['id'].'&midx='.$rows['smi_idx'].'&super='.$_GET['super'].'&up=true&token='.$_SESSION['token'].'" class="changeposition" title="Move up"><i class="fa fa-arrow-circle-up"></i></a>';
 				}
 				if($rows['smi_position']!=$maxpos){
-					$out .= '<a href="?action=gallery&type=photogallerypage&id='.$_GET['id'].'&midx='.$rows['smi_idx'].'&super='.$_GET['super'].'&down=true&token='.$_SESSION['token'].'" class="changeposition" title="Move down"><i class="fa fa-arrow-circle-down"></i></a>';
+					$out .= '<a href="?action=gallery&type='.$media_type.'&id='.$_GET['id'].'&midx='.$rows['smi_idx'].'&super='.$_GET['super'].'&down=true&token='.$_SESSION['token'].'" class="changeposition" title="Move down"><i class="fa fa-arrow-circle-down"></i></a>';
 				}
 				$out .= '</span>';
 
@@ -89,7 +90,7 @@ class model_admin_gallery extends connection{
 						<a href="'.WEBSITE.LANG."/".htmlentities($rows['smi_slug']).'" target="_blank" title="Check gallery"><i class="fa fa-eye"></i></a>
 						<a href="?action=editMediaItem&id='.$_GET['id'].'&midx='.$rows['smi_idx'].'&super='.$_GET['super'].'&typ='.$_GET["type"].'&token='.$_SESSION['token'].'" title="Edit gallery"><i class="fa fa-pencil-square-o"></i></a>
 						'.$insert_image_link.'
-						<a href="javascript:;" onclick="deleteComfirm(\'?action=gallery&type=photogallerypage&id='.$_GET['id'].'&rmidx='.$rows['smi_idx'].'&super='.$_GET['super'].'&remove=true&token='.$_SESSION['token'].'\')" title="Remove gallery item"><i class="fa fa-times"></i></a>
+						<a href="javascript:;" onclick="deleteComfirm(\'?action=gallery&type='.$media_type.'&id='.$_GET['id'].'&rmidx='.$rows['smi_idx'].'&super='.$_GET['super'].'&remove=true&token='.$_SESSION['token'].'\')" title="Remove gallery item"><i class="fa fa-times"></i></a>
 				</span>';
 				$out .= '</div>';
 			}
@@ -127,6 +128,41 @@ class model_admin_gallery extends connection{
 		));
 		$fetch = $preparep->fetch(PDO::FETCH_ASSOC);
 		return $fetch['smi_position'];
+	}
+
+
+	public function removeMe($c){
+		$conn = $this->conn($c);
+		$rmidx = $_GET['rmidx'];
+		// select current item position
+		$sqlp = 'SELECT `media_idx`,`position` FROM `studio404_media_item` WHERE `idx`=:idx AND `lang`=:lang AND `status`!=:status'; 
+		$preparep = $conn->prepare($sqlp);
+		$preparep->execute(array(
+			":idx"=>$rmidx, 
+			":lang"=>LANG_ID, 
+			":status"=>1
+		));
+		$fetch = $preparep->fetch(PDO::FETCH_ASSOC);
+		$media_idx = $fetch["media_idx"];
+		$position = $fetch["position"];
+
+		// minus one position in every item which is greater then current position
+		$sqlm = 'UPDATE `studio404_media_item` SET `position`=`position`-1 WHERE `media_idx`=:media_idx AND `position`>:current_position AND `status`!=:status';
+		$preparem = $conn->prepare($sqlm);
+		$preparem->execute(array(
+			":media_idx"=>$media_idx, 
+			":current_position"=>$position, 
+			":status"=>1
+		));
+
+		$sql = 'UPDATE `studio404_media_item` SET `status`=:status WHERE `idx`=:comid AND `status`!=:status';
+		$prepare = $conn->prepare($sql);
+		$prepare->execute(array(
+			":status"=>1, 
+			":comid"=>$rmidx
+		));
+
+		$this->outMessage = 1;
 	}
 
 	function __destruct(){

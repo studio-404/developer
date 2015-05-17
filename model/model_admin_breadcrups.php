@@ -220,7 +220,7 @@ class model_admin_breadcrups extends connection{
 				$this->breadcrups .= '<a href="?action=sitemap&super='.$_GET['super'].'">'.$getsupername.' <i class="fa fa-caret-right"></i></a>';
 				$getpagetitle = $this->getpagetitle($c);
 				$this->breadcrups .= '<a href="?action=editSitemap&super='.$_GET['super'].'&id='.$_GET['mediaidx'].'&token='.$_SESSION['token'].'">'.$getpagetitle.' <i class="fa fa-caret-right"></i></a>';	
-				$this->breadcrups .= '<a href="?action=gallery&type=photogallerypage&id='.$_GET['mediaidx'].'&super='.$_GET['super'].'&token='.$_SESSION['token'].'">Manage gallery folder <i class="fa fa-caret-right"></i></a>';
+				$this->breadcrups .= '<a href="?action=gallery&type='.$_GET['type'].'&id='.$_GET['mediaidx'].'&super='.$_GET['super'].'&token='.$_SESSION['token'].'">Manage gallery folder <i class="fa fa-caret-right"></i></a>';
 				$this->breadcrups .= '<a href="?action=addGallery&mediaidx='.$_GET['mediaidx'].'&super='.$_GET['super'].'">Add gallery <i class="fa fa-caret-right"></i></a>';
 				break;
 				case "editMediaItem":

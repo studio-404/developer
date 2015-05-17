@@ -350,6 +350,15 @@ class model_admin_requests extends connection{
 			}
 		}
 
+		if(isset($_GET['remove'],$_GET['action'],$_GET['rmidx']) && $_GET['action']=="gallery"){
+			$model_admin_gallery = new model_admin_gallery();
+			$model_admin_gallery->removeMe($c);
+			if($model_admin_gallery->outMessage==1){
+				$redirect = new redirect();
+				$redirect->go('?action=gallery&type='.$_GET['type'].'&id='.$_GET['id'].'&super='.$_GET['super'].'&token='.$_SESSION["token"]);
+			}
+		}
+
 		if(isset($_POST['add_gallery'])){
 			$model_admin_addgallery = new model_admin_addgallery();
 			$data["outMessage"] = $model_admin_addgallery->add($c);

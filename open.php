@@ -38,6 +38,10 @@ function __autoload($class_name) {
 		@include 'controller/'.$class_name.'.php';
 		$class_load = true;
 	}
+	if(file_exists('controller/custom/'.$class_name.'.php')){// auto load module
+		@include 'controller/custom/'.$class_name.'.php';
+		$class_load = true;
+	}
 	if(file_exists('model/'.$class_name.'.php')){// auto load module
 		@include 'model/'.$class_name.'.php';
 		$class_load = true;
@@ -66,6 +70,7 @@ define('LANG', $LANG);
 define('LANG_ID', $lang_id);
 define('PRE_VIEW', $c["product.view.pre.slug"]);
 define('PRE_GALLERY', $c["gallery.view.pre.slug"]);
+define('WEB_DIR', $c["website.directory"]);
 /*
 ** Controller function
 */

@@ -93,7 +93,6 @@ class model_admin_editMenuManagment extends connection{
 			isset($_POST['expiredate']) && 
 			isset($_POST['title']) && 
 			isset($_POST['shorttitle']) && 
-			isset($_POST['friendlyurl']) && 
 			isset($_POST['description']) && 
 			isset($_POST['pagecontent']) && 
 			isset($_POST['redirectLink']) && 
@@ -109,7 +108,6 @@ class model_admin_editMenuManagment extends connection{
 				$this->noEmpty($_POST['expiredate']) && 
 				$this->noEmpty($_POST['title']) && 
 				$this->noEmpty($_POST['shorttitle']) && 
-				$this->noEmpty($_POST['friendlyurl']) && 
 				$this->noEmpty($_POST['visibility']) && 
 				$super 
 			){
@@ -150,12 +148,6 @@ class model_admin_editMenuManagment extends connection{
 						":status"=>1
 				));
 				////////////////////////////////// background end ////////////////////////////
-				$slug_generation = new slug_generation();
-				if($_POST['slug']){
-					$slug = $_POST['slug']."/".$slug_generation->generate($_POST['friendlyurl']);	
-				}else{
-					$slug = $slug_generation->generate($_POST['friendlyurl']);
-				}
 				$sql = 'UPDATE `studio404_pages` SET 
 						`date`=:datex,
 						`expiredate`=:expiredate,
@@ -165,7 +157,6 @@ class model_admin_editMenuManagment extends connection{
 						`text`=:textx,
 						`redirectlink`=:redirectlink, 
 						`keywords`=:keywords,
-						`slug`=:slug,  
 						`videourl`=:videourl,  
 						`visibility`=:visibility 
 						WHERE 
@@ -183,7 +174,6 @@ class model_admin_editMenuManagment extends connection{
 						":textx"=>$_POST['pagecontent'],
 						":redirectlink"=>$redirectlink,
 						":keywords"=>$_POST['keywords'],
-						":slug"=>$slug, 
 						":videourl"=>$_POST['videourl'], 
 						":visibility"=>$visibility, 
 						":idx"=>$_GET['id'], 

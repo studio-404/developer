@@ -22,25 +22,42 @@ class controller
 		// select page types
 		$type_obj = new page_type();
 		$page_type = $type_obj->get_page_type($c);
-		echo $page_type;
+		$get_ip = new get_ip();
+		$ip = $get_ip->ip;
 
-		// if go to admin
-		if($file==$c['admin.slug']){
+		
+		if($c['website.mode']=="UnderDeveloper" && !in_array($ip, $c['allowes.ips'])){
+			// if under developer
+			$controller = "controller/under.php";
+			if(file_exists($controller)){
+				$controller = new under($c); 
+			}else{
+				$controller = new error_page(); 
+			}
+		}else if($file==$c['admin.slug']){
+			// administrator page
 			$controller = "controller/admin.php";
 			if(file_exists($controller)){
 				$controller = new admin($obj,$c); 
 			}else{
 				$controller = new error_page(); 
 			}
-		}else if(1==2){
-			// check file types
 		}else{
-			$controller = "controller/".$file.".php";
-			if(file_exists($controller)){
-				$controller = new $file($obj,$c); 
+			if($file!="admin"){// load custom pages
+				$controller = "controller/".$file.".php";
+				$cust = str_replace("-", "", $file);
+				$controller_custom = "controller/custom/".$cust.".php";
+
+				if(file_exists($controller)){
+					$controller = new $file($obj,$c); 
+				}else if(file_exists($controller_custom)){
+					$controller = new $cust($c); 
+				}else{
+					$controller = new error_page(); 
+				}
 			}else{
-				$controller = new error_page(); 
-			}			
+					$controller = new error_page(); 
+			}
 		}
 		
 

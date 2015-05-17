@@ -45,7 +45,7 @@ class edit_page_interface extends connection{
 			$this->out[0] .= '<li><a href="#tabs-4">Manage files</a></li>';					
 			$this->out[0] .= '</ul>';
 			$this->out[1] = '<div id="tabs-1">';
-			$this->out[1] .= $this->general_form($fetch,'Text Page');
+			$this->out[1] .= $this->general_form($fetch,'Home Page');
 			$this->out[1] .= '</div>';
 			$this->out[1] .= '<div id="tabs-2">';
 			$this->out[1] .= $this->content_form($fetch);
@@ -120,7 +120,7 @@ class edit_page_interface extends connection{
 				$this->out[0] .= '<li class="justlink"><a href="javascript:;" onclick="redirect(\'_self\',\'?action=newsModule&type=newspage&id='.$_GET['id'].'&super='.$_GET['super'].'&token='.$_SESSION['token'].'\')">Manage events</a></li>';
 				$this->out[0] .= '</ul>';
 				$this->out[1] = '<div id="tabs-1">';
-				$this->out[1] .= $this->general_form($fetch,'Text Page');
+				$this->out[1] .= $this->general_form($fetch,'Event Page');
 				$this->out[1] .= '</div>';
 				$this->out[1] .= '<div id="tabs-2">';
 				$this->out[1] .= $this->content_form($fetch);
@@ -133,7 +133,7 @@ class edit_page_interface extends connection{
 			$this->out[0] .= '<li><a href="#tabs-2">Content</a></li>';
 			$this->out[0] .= '</ul>';
 			$this->out[1] = '<div id="tabs-1">';
-			$this->out[1] .= $this->general_form($fetch,'Text Page');
+			$this->out[1] .= $this->general_form($fetch,'Feedback Page');
 			$this->out[1] .= '</div>';
 			$this->out[1] .= '<div id="tabs-2">';
 			$this->out[1] .= $this->content_form($fetch);
@@ -202,7 +202,7 @@ class edit_page_interface extends connection{
 				$this->out[0] .= '<li class="justlink"><a href="javascript:;" onclick="redirect(\'_self\',\'?action=newsModule&type=newspage&id='.$_GET['id'].'&super='.$_GET['super'].'&token='.$_SESSION['token'].'\')">Manage news</a></li>';
 				$this->out[0] .= '</ul>';
 				$this->out[1] = '<div id="tabs-1">';
-				$this->out[1] .= $this->general_form($fetch,'Text Page');
+				$this->out[1] .= $this->general_form($fetch,'News Page');
 				$this->out[1] .= '</div>';
 				$this->out[1] .= '<div id="tabs-2">';
 				$this->out[1] .= $this->content_form($fetch);
@@ -276,7 +276,7 @@ class edit_page_interface extends connection{
 				$this->out[0] .= '<li class="justlink"><a href="javascript:;" onclick="redirect(\'_self\',\'?action=catalogModule&type=catalogpage&id='.$_GET['id'].'&super='.$_GET['super'].'&token='.$_SESSION['token'].'\')">Manage catalogs</a></li>';
 				$this->out[0] .= '</ul>';
 				$this->out[1] = '<div id="tabs-1">';
-				$this->out[1] .= $this->general_form($fetch,'Text Page');
+				$this->out[1] .= $this->general_form($fetch,'Catalog Page');
 				$this->out[1] .= '</div>';
 				$this->out[1] .= '<div id="tabs-2">';
 				$this->out[1] .= $this->content_form($fetch);
@@ -350,7 +350,7 @@ class edit_page_interface extends connection{
 				$this->out[0] .= '<li class="justlink"><a href="javascript:;" onclick="redirect(\'_self\',\'?action=catalogModule&type=catalogpage&id='.$_GET['id'].'&super='.$_GET['super'].'&token='.$_SESSION['token'].'\')">Manage publications</a></li>';
 				$this->out[0] .= '</ul>';
 				$this->out[1] = '<div id="tabs-1">';
-				$this->out[1] .= $this->general_form($fetch,'Text Page');
+				$this->out[1] .= $this->general_form($fetch,'Publication page');
 				$this->out[1] .= '</div>';
 				$this->out[1] .= '<div id="tabs-2">';
 				$this->out[1] .= $this->content_form($fetch);
@@ -424,7 +424,7 @@ class edit_page_interface extends connection{
 				$this->out[0] .= '<li class="justlink"><a href="javascript:;" onclick="redirect(\'_self\',\'?action=catalogModule&type=catalogpage&id='.$_GET['id'].'&super='.$_GET['super'].'&token='.$_SESSION['token'].'\')">Manage team</a></li>';
 				$this->out[0] .= '</ul>';
 				$this->out[1] = '<div id="tabs-1">';
-				$this->out[1] .= $this->general_form($fetch,'Text Page');
+				$this->out[1] .= $this->general_form($fetch,'Team page');
 				$this->out[1] .= '</div>';
 				$this->out[1] .= '<div id="tabs-2">';
 				$this->out[1] .= $this->content_form($fetch);
@@ -488,7 +488,7 @@ class edit_page_interface extends connection{
 				$this->out[0] .= '<li class="justlink"><a href="javascript:;" onclick="redirect(\'_self\',\'?action=gallery&type=photogallerypage&id='.$_GET['id'].'&super='.$_GET['super'].'&token='.$_SESSION['token'].'\')">Manage gallery folders</a></li>';
 				$this->out[0] .= '</ul>';
 				$this->out[1] = '<div id="tabs-1">';
-				$this->out[1] .= $this->general_form($fetch,'Text Page');
+				$this->out[1] .= $this->general_form($fetch,'Photo gallery');
 				$this->out[1] .= '</div>';
 				$this->out[1] .= '<div id="tabs-2">';
 				$this->out[1] .= $this->content_form($fetch);
@@ -552,12 +552,32 @@ class edit_page_interface extends connection{
 				$this->out[0] .= '<li class="justlink"><a href="javascript:;" onclick="redirect(\'_self\',\'?action=gallery&type=videogallerypage&id='.$_GET['id'].'&super='.$_GET['super'].'&token='.$_SESSION['token'].'\')">Manage gallery folders</a></li>';
 				$this->out[0] .= '</ul>';
 				$this->out[1] = '<div id="tabs-1">';
-				$this->out[1] .= $this->general_form($fetch,'Text Page');
+				$this->out[1] .= $this->general_form($fetch,'Video gallery');
 				$this->out[1] .= '</div>';
 				$this->out[1] .= '<div id="tabs-2">';
 				$this->out[1] .= $this->content_form($fetch);
 				$this->out[1] .= '</div>';
 			}
+			break;
+			case "custompage": 
+			$this->out[0] = '<ul>';
+			$this->out[0] .= '<li><a href="#tabs-1">General</a></li>';
+			$this->out[0] .= '<li><a href="#tabs-2">Content</a></li>';
+			$this->out[0] .= '<li><a href="#tabs-3">Manage photo</a></li>';
+			$this->out[0] .= '<li><a href="#tabs-4">Manage files</a></li>';			
+			$this->out[0] .= '</ul>';
+			$this->out[1] = '<div id="tabs-1">';
+			$this->out[1] .= $this->general_form($fetch,'Custom page');
+			$this->out[1] .= '</div>';
+			$this->out[1] .= '<div id="tabs-2">';
+			$this->out[1] .= $this->content_form($fetch);
+			$this->out[1] .= '</div>';
+			$this->out[1] .= '<div id="tabs-3">';
+			$this->out[1] .= $this->content_images($fetch,$c);
+			$this->out[1] .= '</div>';
+			$this->out[1] .= '<div id="tabs-4">';
+			$this->out[1] .= $this->content_files($fetch,$c);
+			$this->out[1] .= '</div>';
 			break;
 		}
 
@@ -720,7 +740,7 @@ class edit_page_interface extends connection{
 		$out .= '<input type="text" name="shorttitle" id="shorttitle" value="'.htmlentities($fetch['shorttitle']).'" autocomplete="off">';
 		$out .= '<label for="friendlyurl">Friendly URL: <font color="RED">*</font></label><br />';
 		$out .= '<span class="frURL">'.WEBSITE.LANG.'/</span>';
-		$out .= '<input type="text" name="friendlyurl" id="friendlyurl" class="frURLInput" value="'.htmlentities($fetch['slug']).'" autocomplete="off" /><div class="clearfix"></div>';
+		$out .= '<input type="text" name="friendlyurl" id="friendlyurl" class="frURLInput" value="'.htmlentities($fetch['slug']).'" autocomplete="off" disabled="disabled" /><div class="clearfix"></div>';
 		
 		$out .= '<label for="page_type">Page type: <font color="RED">*</font></label>';
 		$out .= '<select name="page_type" id="page_type" class="page_type" disabled>';

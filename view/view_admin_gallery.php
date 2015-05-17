@@ -23,7 +23,7 @@
 			?>
 			<div class="content">
 				<div class="button">
-					<a href="?action=addGallery&amp;mediaidx=<?=$_GET['id']?>&super=<?=$_GET['super']?>"><i class="fa fa-plus-circle"></i> <span>Add</span></a>
+					<a href="?action=addGallery&amp;mediaidx=<?=$_GET['id']?>&type=<?=$_GET['type']?>&super=<?=$_GET['super']?>"><i class="fa fa-plus-circle"></i> <span>Add</span></a>
 				</div>
 
 				<div class="wrap">

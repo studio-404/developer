@@ -3,8 +3,11 @@
 defined('DIR') OR exit;
 
 $c['cmsversion'] = '1.0.1';
+$c['website.mode'] = 'UnderDeveloper'; // UnderDeveloper or WorkingMode
+$c['developer.message'] = 'Website is under developer !'; // Developer message when under developer
+$c['allowes.ips'] = array('176.73.234.42'); // allowed ips when website is under developer
 // SITE CONFIGURATION
-$c['site.url'] = 'http://developer.404.ge/';
+$c['site.url'] = 'http://developer.404.ge/'; 
 $c['site.name'] = 'Developer CMS';
 
 $c['admin.slug'] = 'administrator';
@@ -34,6 +37,7 @@ $c['session.expire.time'] = 1200; // 20 minute
 $c['admin.photo.dementions'] = "200-130";
 $c["product.view.pre.slug"] = "view";
 $c["gallery.view.pre.slug"] = "gallery";
+$c["website.directory"] = "template";
 $c["invoice.due.date"] = 259200; // 3 day
 
 return $c;

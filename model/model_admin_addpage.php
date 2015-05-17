@@ -7,6 +7,12 @@ class model_admin_addpage extends connection{
 
 	public function add($c){
 		$conn = $this->conn($c);
+		$slug_generation = new slug_generation();
+		if($_POST['slug']){
+			$slug = $_POST['slug']."/".$slug_generation->generate($_POST['friendlyurl']);	
+		}else{
+			$slug = $slug_generation->generate($_POST['friendlyurl']);
+		}
 		if(
 			isset($_POST['date']) && 
 			isset($_POST['expiredate']) && 
@@ -19,7 +25,8 @@ class model_admin_addpage extends connection{
 			isset($_POST['redirectLink']) && 
 			isset($_POST['keywords']) && 
 			isset($_POST['videourl']) && 
-			isset($_POST['visibility']) 
+			isset($_POST['visibility']) && 
+			$this->check_friendly_url($c,$slug)
 		){
 			// check if super exists
 			$check_super = new check_super();
@@ -60,7 +67,6 @@ class model_admin_addpage extends connection{
 				else{ $datex=time(); }
 				if(isset($_POST['expiredate'])){ $expiredate = strtotime($_POST['expiredate']); }
 				else{ $expiredate=time(); }
-				//
 				
 				$background = '';
 				if(isset($_POST['background'])){
@@ -119,12 +125,7 @@ class model_admin_addpage extends connection{
 							`status`=:status
 					';
 					$insert = $conn->prepare($sql);
-					$slug_generation = new slug_generation();
-					if($_POST['slug']){
-						$slug = $_POST['slug']."/".$slug_generation->generate($_POST['friendlyurl']);	
-					}else{
-						$slug = $slug_generation->generate($_POST['friendlyurl']);
-					}
+					
 					
 					$insert->execute(array(
 						":idx"=>$maxid,
@@ -161,12 +162,54 @@ class model_admin_addpage extends connection{
 						$this->insertmediamodule($c,$maxid,$lang_row['id'],$_POST['page_type']);
 					}
 
+					if($_POST['page_type']=="custompage"){
+						$this->create_custom_page($c,$slug);
+					}
+
 				}
 				$this->outMessage = 1;
 			}
 		}
 		return $this->outMessage;
 	}
+
+
+	public function create_custom_page($c,$s){
+		$custom_dir = "controller/custom/";
+		$s = str_replace("-", "", $s);
+		$custom_file = $custom_dir.$s.".php";
+		$custom_file_website = $c["website.directory"]."/".$s.".php";
+		if(!file_exists($custom_file) && !file_exists($custom_file_website)){
+			$controller_write = '<?php if(!defined("DIR")){ exit(); }
+			class '.$s.'{
+				function __construct($c){
+					$this->template($c,"'.$s.'");
+				}
+				
+				public function template($c,$page){
+					$include = WEB_DIR."/'.$s.'.php";
+					if(file_exists($include)){
+					/* 
+					** Here goes any code developer wants to 
+					*/
+					@include($include);
+					}else{
+						$controller = new error_page(); 
+					}
+				}
+			}
+			?>';
+			$view_write = 'Template page ... ';
+			$file = fopen($custom_file,"w");
+			fwrite($file,$controller_write);
+			fclose($file);
+
+			$file2 = fopen($custom_file_website,"w");
+			fwrite($file2,$view_write);
+			fclose($file2);
+		}
+	}
+
 
 	public function insertmedia($c,$connect_idx,$lang,$maxid,$maxpos){
 		if($_POST['page_type']!="newspage" && $_POST['page_type']!="catalogpage") :
@@ -302,6 +345,93 @@ class model_admin_addpage extends connection{
 				":lang"=>$lang, 
 				":status"=>0
 			));
+	}
+
+	public function check_friendly_url($c,$ufu_slug){
+		switch($ufu_slug){
+			case $c['admin.slug']:
+				$out = false;
+			break;
+			case $c["product.view.pre.slug"]:
+				$out = false;
+			break;
+			case $c["gallery.view.pre.slug"]:
+				$out = false;
+			break;
+			case $c["website.directory"]:
+				$out = false;
+			break;
+			case "admin":
+				$out = false;
+			break;
+			case "_ajax":
+				$out = false;
+			break;
+			case "_plugins":
+				$out = false;
+			break;
+			case "backup":
+				$out = false;
+			break;
+			case "controller":
+				$out = false;
+			break;
+			case "files":
+				$out = false;
+			break;
+			case "files_pre":
+				$out = false;
+			break;
+			case "flash":
+				$out = false;
+			break;
+			case "functions":
+				$out = false;
+			break;
+			case "images":
+				$out = false;
+			break;
+			case "model":
+				$out = false;
+			break;
+			case "paypal":
+				$out = false;
+			break;
+			case "scripts":
+				$out = false;
+			break;
+			case "styles":
+				$out = false;
+			break;
+			case "thumbs":
+				$out = false;
+			break;
+			case "view":
+				$out = false;
+			break;
+			case "ajaxmoveimage":
+				$out = false;
+			break;
+			case "ajaxupload":
+				$out = false;
+			break;
+			case "error_page":
+				$out = false;
+			break;
+			case "invoices":
+				$out = false;
+			break;
+			case "session_timeout":
+				$out = false;
+			break;
+			case "under":
+				$out = false;
+			break;
+			default:
+				$out = true;
+			break;
+		}
+		return $out;
 	}
 
 	public function noEmpty($str){
