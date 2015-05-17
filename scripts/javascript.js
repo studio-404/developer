@@ -45,8 +45,9 @@ function askBeforeDelete(type,idx) {
 	var x = confirm("Would you like to delete item?");
 	if(type=="photo" && x==true){
 		removeFile2(idx);
-	}
-    if(type=="file" && x==true){
+	}else if(type=="video" && x==true){
+		removeFile3(idx);
+	}else if(type=="file" && x==true){
     	removeFile(idx);
     }
 }
@@ -107,6 +108,23 @@ function removeFile2(maxidx){
 		}
 	}); 
 	$.get("/en/ajaxupload",{ idx:maxidx, idxes3:send_idx_array }, function(data){
+		console.log(data);
+	});
+}
+
+function removeFile3(maxidx){
+	$("#flexbox2-"+maxidx).fadeOut("slow").remove();
+	var send_idx_array = "empty";
+
+	$("main .center .content .dropArea2 .dragElements2 .filebox2").each(function(index){
+		var get_id = $(this).attr("id");
+		var idx = get_id.split("flexbox2-");
+		send_idx_array = new Array();
+		if(idx[1]!=maxidx){
+			send_idx_array.push(idx[1]); 
+		}
+	}); 
+	$.get("/en/ajaxupload",{ idx:maxidx, idxes3:send_idx_array, media_type:"video" }, function(data){
 		console.log(data);
 	});
 }

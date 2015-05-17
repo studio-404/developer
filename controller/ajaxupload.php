@@ -4,7 +4,7 @@ class ajaxupload extends connection{
 		set_time_limit($_SESSION["C"]["time.limit"]); 
 		$conn = $this->conn($_SESSION["C"]);
 		$allowfiletypes = array("doc","docx","xls","xlsx","zip","rar","pdf");
-		$allowfiletypes2 = array("jpg","jpeg","gif","png");
+		$allowfiletypes2 = array("jpg","jpeg","gif","png","mp4","avi");
 
 		if(!isset($_GET['extention']) && !isset($_GET['filename']) && !isset($_GET['removefile']) && !isset($_GET['idxes']) && !isset($_GET['idxes2']) && !isset($_GET['idxes3']) && !isset($_GET['idxes_photos'])){
 			$str = file_get_contents("php://input");
@@ -170,6 +170,7 @@ class ajaxupload extends connection{
 				$position++; 
 			}
 		}else if(isset($_GET['idx'],$_GET['idxes3'])){
+			$media_type = (isset($_GET["media_type"]) && $_GET["media_type"]=="video") ? "video" : "photo";
 			$sql = 'UPDATE `studio404_gallery_file` SET `status`=:status WHERE `idx`=:idx';
 			$prepare = $conn->prepare($sql);
 			$prepare->execute(array(
@@ -177,16 +178,18 @@ class ajaxupload extends connection{
 				":idx"=>$_GET['idx']
 			));
 			$position=1;
-			foreach($_GET['idxes3'] as $idx){
-				$sql2 = 'UPDATE `studio404_gallery_file` SET `position`=:position WHERE `media_type`=:media_type AND `idx`=:idx AND `status`!=:status';
-				$prepare2 = $conn->prepare($sql2);
-				$prepare2->execute(array(
-					":media_type"=>"photo", 
-					":position"=>$position, 
-					":idx"=>$idx, 
-					":status"=>1
-				));
-				$position++; 
+			if($_GET["idxes3"]!="empty"){
+				foreach($_GET['idxes3'] as $idx){
+					$sql2 = 'UPDATE `studio404_gallery_file` SET `position`=:position WHERE `media_type`=:media_type AND `idx`=:idx AND `status`!=:status';
+					$prepare2 = $conn->prepare($sql2);
+					$prepare2->execute(array(
+						":media_type"=>$media_type, 
+						":position"=>$position, 
+						":idx"=>$idx, 
+						":status"=>1
+					));
+					$position++; 
+				}
 			}
 		}else if(isset($_GET['idxes'])){
 			$position=1;
@@ -203,11 +206,12 @@ class ajaxupload extends connection{
 			}
 		}else if(isset($_GET['idxes_photos'])){
 			$position=1;
+			$media_type = (isset($_GET["type"]) && $_GET["type"]=="videogallerypage") ? "video" : "photo";
 			foreach($_GET['idxes_photos'] as $idx){
 				$sql = 'UPDATE `studio404_gallery_file` SET `position`=:position WHERE `media_type`=:media_type AND `idx`=:idx AND `status`!=:status';
 				$prepare = $conn->prepare($sql);
 				$prepare->execute(array(
-					":media_type"=>"photo", 
+					":media_type"=>$media_type, 
 					":position"=>$position, 
 					":idx"=>$idx, 
 					":status"=>1
@@ -217,7 +221,7 @@ class ajaxupload extends connection{
 		}else if(isset($_GET['pageidx'],$_GET['extention'],$_GET['token']) && in_array($_GET['extention'], $allowfiletypes2)){
 			
 			$pageidx = (isset($_GET['newsidx']) && $_GET['newsidx']!="false") ? $_GET['newsidx'] : $_GET['pageidx'];
-			//$pageidx = (isset($_GET["media"]) && $_GET["media"]=="true") ? $
+			$media_type = (isset($_GET["media"]) && $_GET["media"]=="false") ? "video" : "photo";
 			// get page type
 			$get_page_type = new get_page_type();
 			$page_type = $get_page_type->type($_SESSION["C"],$_GET['pageidx']);
@@ -266,7 +270,7 @@ class ajaxupload extends connection{
 					$sql3 = 'SELECT MAX(`position`) as maxpos FROM `studio404_gallery_file` WHERE `media_type`=:media_type AND `lang`=:lang AND `gallery_idx`=:gallery_idx AND `status`!=:status';
 					$prepare3 = $conn->prepare($sql3);
 					$prepare3->execute(array(
-						":media_type"=>'photo', 
+						":media_type"=>$media_type, 
 						":lang"=>LANG_ID, 
 						":gallery_idx"=>$fetch['sg_idx'], 
 						":status"=>1
@@ -280,7 +284,7 @@ class ajaxupload extends connection{
 				$model_admin_selectLanguage = new model_admin_selectLanguage();
 				$languages = $model_admin_selectLanguage->select_languages($_SESSION["C"]); 
 				// move file to file folder
-				$path_new = "files/photo/".$timegenerate.".".$_GET["extention"];
+				$path_new = "files/".$media_type."/".$timegenerate.".".$_GET["extention"];
 				if(@copy($path,$path_new)){
 					@unlink($path);
 				}
@@ -307,7 +311,7 @@ class ajaxupload extends connection{
 						":datex"=>time(), 
 						":gallery_idx"=>$fetch['sg_idx'], 
 						":file"=>$path_new, 
-						":media_type"=>"photo", 
+						":media_type"=>$media_type, 
 						":title"=>"Not defined", 
 						":description"=>"Not defined", 
 						":filesize"=>$filesize, 
@@ -321,7 +325,7 @@ class ajaxupload extends connection{
 				$sql5 = 'SELECT `id`,`position` FROM `studio404_gallery_file` WHERE `media_type`=:media_type AND `idx`=:idx AND `lang`=:lang AND `status`!=:status';
 				$prepare5 = $conn->prepare($sql5);
 				$prepare5->execute(array(
-					":media_type"=>'photo', 
+					":media_type"=>$media_type, 
 					":idx"=>$maxid, 
 					":lang"=>LANG_ID, 
 					":status"=>1
@@ -329,11 +333,16 @@ class ajaxupload extends connection{
 				$fetch5 = $prepare5->fetch(PDO::FETCH_ASSOC);
 				$out = '<div class="filebox2" id="flexbox2-'.$maxid.'">';
 				$out .= '<div class="action_panel2">';
-				$out .= '<a href="/'.$path_new.'" target="_blank"><i class="fa fa-eye"></i></a>';
+				$out .= '<a href="/'.$path_new.'" class="fancybox"><i class="fa fa-eye"></i></a>';
 				$out .= '<a href="javascript:;" onclick="openPromt2(\''.$maxid.'\')"><i class="fa fa-pencil-square-o"></i></a>';
 				$out .= '<a href="javascript:;" onclick="removeFile2(\''.$maxid.'\')"><i class="fa fa-times"></i></a>';
 				$out .= '</div>';
-				$out .= '<div class="extention2"><img src="/'.$path_new.'" width="100%" /></div>';
+				if($media_type=="video"){
+					$out .= '<div class="extention2"><img src="/images/video_icon.png" width="100%" /></div>';	
+				}else{
+					$out .= '<div class="extention2"><img src="/'.$path_new.'" width="100%" /></div>';
+				}
+				
 				$out .= '<div class="filename2 n2-'.$maxid.'" id="fid2-'.$fetch5['id'].'">Not defined</div>';
 				$out .= '</div>';
 				echo $out;

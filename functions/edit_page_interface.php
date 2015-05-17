@@ -495,6 +495,70 @@ class edit_page_interface extends connection{
 				$this->out[1] .= '</div>';
 			}
 			break;
+			case "videogallerypage": 
+			if(isset($_GET['action']) && $_GET['action']=="editMediaItem"){
+				$sql = 'SELECT 
+				`studio404_media_item`.`idx` AS smi_idx,
+				`studio404_media_item`.`date` AS smi_date,  
+				`studio404_media_item`.`expiredate` AS smi_expiredate,  
+				`studio404_media_item`.`media_idx` AS smi_media_idx,  
+				`studio404_media_item`.`title` AS smi_title,  
+				`studio404_media_item`.`description` AS smi_description,  
+				`studio404_media_item`.`tags` AS smi_tags,  
+				`studio404_media_item`.`slug` AS smi_slug,  
+				`studio404_media_item`.`position` AS smi_position,  
+				`studio404_media_item`.`lang` AS smi_lang,  
+				`studio404_media_item`.`visibility` AS smi_visibility 
+				FROM 
+				`studio404_media_attachment`,`studio404_media`,`studio404_media_item` 
+				WHERE 
+				`studio404_media_attachment`.`connect_idx`=:connect_idx AND 
+				`studio404_media_attachment`.`lang`=:lang AND 
+				`studio404_media_attachment`.`status`!=:status AND 
+				`studio404_media_attachment`.`idx`=`studio404_media`.`idx` AND 
+				`studio404_media`.`lang`=:lang AND 
+				`studio404_media`.`status`!=:status AND 
+				`studio404_media`.`idx`=`studio404_media_item`.`media_idx` AND 
+				`studio404_media_item`.`idx`=:smi_idx AND 
+				`studio404_media_item`.`lang`=:lang AND 
+				`studio404_media_item`.`status`!=:status 
+				';
+				$prepare = $conn->prepare($sql);
+				$prepare->execute(array(
+				":connect_idx"=>$_GET['id'], 
+				":smi_idx"=>$_GET['midx'], 
+				":lang"=>LANG_ID, 
+				":status"=>1
+				));
+				$fetch = $prepare->fetch(PDO::FETCH_ASSOC);
+				$this->out[0] = '<ul>';
+				$this->out[0] .= '<li><a href="#tabs-1">General</a></li>';
+				$this->out[0] .= '<li><a href="#tabs-2">Content</a></li>';
+				$this->out[0] .= '<li><a href="#tabs-3">Manage video</a></li>';		
+				$this->out[0] .= '</ul>';
+				$this->out[1] = '<div id="tabs-1">';
+				$this->out[1] .= $this->general_form_gallery($fetch);
+				$this->out[1] .= '</div>';
+				$this->out[1] .= '<div id="tabs-2">';
+				$this->out[1] .= $this->content_form_gallery($fetch);
+				$this->out[1] .= '</div>';
+				$this->out[1] .= '<div id="tabs-3">';
+				$this->out[1] .= $this->content_images($fetch,$c,"video");
+				$this->out[1] .= '</div>';
+			}else{
+				$this->out[0] = '<ul>';
+				$this->out[0] .= '<li><a href="#tabs-1">General</a></li>';
+				$this->out[0] .= '<li><a href="#tabs-2">Content</a></li>';
+				$this->out[0] .= '<li class="justlink"><a href="javascript:;" onclick="redirect(\'_self\',\'?action=gallery&type=videogallerypage&id='.$_GET['id'].'&super='.$_GET['super'].'&token='.$_SESSION['token'].'\')">Manage gallery folders</a></li>';
+				$this->out[0] .= '</ul>';
+				$this->out[1] = '<div id="tabs-1">';
+				$this->out[1] .= $this->general_form($fetch,'Text Page');
+				$this->out[1] .= '</div>';
+				$this->out[1] .= '<div id="tabs-2">';
+				$this->out[1] .= $this->content_form($fetch);
+				$this->out[1] .= '</div>';
+			}
+			break;
 		}
 
 		return $this->out;
@@ -848,14 +912,20 @@ class edit_page_interface extends connection{
 	}
 
 
-	public function content_images($fetch,$c){
+	public function content_images($fetch,$c,$media_type="photo"){
+		if(isset($_GET["type"]) && $_GET["type"]=='videogallerypage'){
+			$ext = 'mp4,avi';
+		}else{
+			$ext = 'jpeg,jpg,gif,png';
+		}
+
 		$out = '<div class="button makeFileDragable2" style="background-color:green">
 					<a href="#" style="color:white"><i class="fa fa-arrows"></i><span id="dragText2">Start sorting</span> </a>
 				</div><div class="clearfix"></div>';	
 
 		$out .= '<div class="dropArea2">';
 		$out .= '<div class="Droptitle2">
-				Drag and drop photo (jpeg,jpg,gif,png) 
+				Drag and drop photo ('.$ext.') 
 				<span id="progress2">0%</span>
 			</div>';
 		$out .= '<div class="dragElements2">';
@@ -894,7 +964,7 @@ class edit_page_interface extends connection{
 		$prepare->execute(array(
 			":sp_idx"=>$sp_idx, 
 			":lang"=>LANG_ID, 
-			":media_type"=>'photo', 
+			":media_type"=>$media_type, 
 			":page_type"=>$page_type, 
 			":status"=>1
 		));
@@ -904,9 +974,13 @@ class edit_page_interface extends connection{
 			$out .= '<div class="action_panel2">';
 			$out .= '<a href="/'.$r->sgf_file.'" class="fancyBox"><i class="fa fa-eye"></i></a>';
 			$out .= '<a href="javascript:;" onclick="openPromt2(\''.$r->sgf_idx.'\')"><i class="fa fa-pencil-square-o"></i></a>';
-			$out .= '<a href="javascript:;" onclick="askBeforeDelete(\'photo\',\''.$r->sgf_idx.'\')"><i class="fa fa-times"></i></a>';
+			$out .= '<a href="javascript:;" onclick="askBeforeDelete(\''.$media_type.'\',\''.$r->sgf_idx.'\')"><i class="fa fa-times"></i></a>';
 			$out .= '</div>';
-			$out .= '<div class="extention2"><img src="/'.$r->sgf_file.'" width="100%" /></div>';
+			if($media_type=="video"){
+				$out .= '<div class="extention2"><img src="/images/video_icon.png" width="100%" /></div>';	
+			}else{
+				$out .= '<div class="extention2"><img src="/'.$r->sgf_file.'" width="100%" /></div>';
+			}
 			$out .= '<div class="filename2 n2-'.$r->sgf_idx.'" id="fid2-'.$r->sgf_id.'">'.$r->sgf_title.'</div>';
 			$out .= '</div>';
 		}		

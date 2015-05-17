@@ -110,7 +110,7 @@
 				var idx = get_id.split("flexbox2-");
 				send_idx_array.push(idx[1]); 
 			}); 
-			$.get("/en/ajaxupload",{ idxes_photos:send_idx_array },function(d){
+			$.get("/en/ajaxupload",{ idxes_photos:send_idx_array, type:'<?=$_GET['type']?>' },function(d){
 				console.log(d);
 			});
 		}        

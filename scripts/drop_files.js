@@ -124,8 +124,10 @@ var f_obj2 = $(".dropArea2");
 		xhr = new XMLHttpRequest();
 		if(par['newsidx']){ var newsidx = par['newsidx']; }
 		else if(par['cidx']){ var newsidx = par['cidx']; }
-		else if(par['midx']){ var newsidx = par['midx']; media="true"; }
+		else if(par['midx']){ var newsidx = par['midx']; }
 		else{ var newsidx = "false"; }
+
+		if(par["type"]!="videogallerypage"){ media="true"; }
 		// initiate request
 		xhr.open('post','/en/ajaxupload?extention='+extLast+'&pageidx='+par['id']+"&newsidx="+newsidx+"&media="+media+"&token="+par['token'],true);
 		//set header
@@ -134,8 +136,10 @@ var f_obj2 = $(".dropArea2");
 		xhr.setRequestHeader('X-File-Size',file.size);
 		xhr.setRequestHeader('X-File-Type',file.type);
 		$('#progress').html('1%');
-		if(extLast!="jpeg" && extLast!="jpg" && extLast!="png" && extLast!="gif"){
+		if(extLast!="jpeg" && extLast!="jpg" && extLast!="png" && extLast!="gif" && media!="false"){
 			alert("Please drop jpeg, jpg, gif or png file !");
+		}else if(media=="false" && par["type"]=="videogallerypage" && extLast!="mp4" && extLast!="avi"){
+			alert("Please drop mp4 or avi file !");
 		}else{
 			//send file
 			xhr.send(file);

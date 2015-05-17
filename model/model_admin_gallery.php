@@ -80,14 +80,14 @@ class model_admin_gallery extends connection{
 				}
 				$out .= '</span>';
 
-				$out .= '<span class="cell"><a href="?action=editMediaItem&id='.$_GET['id'].'&midx='.$rows['smi_idx'].'&super='.$_GET['super'].'&token='.$_SESSION['token'].'">'.$rows['smi_title'].'</a> <br /> <a href="'.WEBSITE.LANG."/".htmlentities($rows['smi_slug']).'" class="slugs" target="_blank">'.WEBSITE.LANG."/".$rows['smi_slug'].'</a></span>';
+				$out .= '<span class="cell"><a href="?action=editMediaItem&id='.$_GET['id'].'&midx='.$rows['smi_idx'].'&super='.$_GET['super'].'&type='.$_GET["type"].'&token='.$_SESSION['token'].'">'.$rows['smi_title'].'</a> <br /> <a href="'.WEBSITE.LANG."/".htmlentities($rows['smi_slug']).'" class="slugs" target="_blank">'.WEBSITE.LANG."/".$rows['smi_slug'].'</a></span>';
 			
 				$out .= '<span class="cell">'.$rows['smi_idx'].'</span>';
-				$insert_image_link = '<a href="?action=editMediaItem&id='.$_GET['id'].'&midx='.$rows['smi_idx'].'&super='.$_GET['super'].'&token='.$_SESSION['token'].'#tabs-2" title="Attach pictures/videos"> <i class="fa fa-picture-o"></i></a>';
+				$insert_image_link = '<a href="?action=editMediaItem&id='.$_GET['id'].'&midx='.$rows['smi_idx'].'&super='.$_GET['super'].'&type='.$_GET["type"].'&token='.$_SESSION['token'].'#tabs-2" title="Attach pictures/videos"> <i class="fa fa-picture-o"></i></a>';
 
 				$out .= '<span class="cell" style="width:120px;">
 						<a href="'.WEBSITE.LANG."/".htmlentities($rows['smi_slug']).'" target="_blank" title="Check gallery"><i class="fa fa-eye"></i></a>
-						<a href="?action=editMediaItem&id='.$_GET['id'].'&midx='.$rows['smi_idx'].'&super='.$_GET['super'].'&token='.$_SESSION['token'].'" title="Edit gallery"><i class="fa fa-pencil-square-o"></i></a>
+						<a href="?action=editMediaItem&id='.$_GET['id'].'&midx='.$rows['smi_idx'].'&super='.$_GET['super'].'&typ='.$_GET["type"].'&token='.$_SESSION['token'].'" title="Edit gallery"><i class="fa fa-pencil-square-o"></i></a>
 						'.$insert_image_link.'
 						<a href="javascript:;" onclick="deleteComfirm(\'?action=gallery&type=photogallerypage&id='.$_GET['id'].'&rmidx='.$rows['smi_idx'].'&super='.$_GET['super'].'&remove=true&token='.$_SESSION['token'].'\')" title="Remove gallery item"><i class="fa fa-times"></i></a>
 				</span>';
