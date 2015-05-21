@@ -163,7 +163,9 @@ class model_admin_addpage extends connection{
 					}
 
 					if($_POST['page_type']=="custompage"){
-						$this->create_custom_page($c,$slug);
+						$s = @explode("/",$slug);
+						$s = @end($s);
+						$this->create_custom_page($c,$s);
 					}
 
 				}

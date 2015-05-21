@@ -18,6 +18,7 @@
 					</li>
 					<li><a href="javascript:;"><i class="fa fa-cube"></i>&nbsp;&nbsp;&nbsp;Modules</a>
 						<ul>
+							<li><a href="?action=vectormap">Trade map</a></li>
 							<li><a href="?action=invoices">Invoices</a></li>
 							<li><a href="?action=catalogMoreInfo">Catalog more info</a></li>
 							<li><a href="?action=components">Components</a></li>

@@ -28,7 +28,7 @@ ini_set('upload_max_filesize',$c['upload.max.filesize']); // upload max file siz
 ** auto load class
 */
 
-function __autoload($class_name) {
+function __autoload($class_name){
 	$class_load = false;
 	if(file_exists('functions/'.$class_name.'.php')){// auto load function
     	@include 'functions/'.$class_name.'.php';

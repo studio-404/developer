@@ -367,7 +367,30 @@ class admin extends connection{
 				$edit_page_interface = new edit_page_interface();
 				$data["interface"] = $edit_page_interface->out_interface($c);
 				@include("view/view_admin_editMediaItem.php");
-			}else{ 
+			}else if(isset($_GET["action"]) && $_GET["action"]=="vectormap"){
+				$data["website_title"] = "Vector map / Admin Panel - v: ".$c['cmsversion'];
+				
+				$model_admin_selectLanguage = new model_admin_selectLanguage();
+				$data["language_select"] = $model_admin_selectLanguage->select_option($c);
+
+				$model_admin_vectormap = new model_admin_vectormap();
+				$map = $model_admin_vectormap->select($c);
+
+				$data['table'] = $map['table'];
+				$data['pager'] = $map['pager'];
+
+				@include("view/view_admin_map.php");
+			}else if(isset($_GET["action"]) && $_GET["action"]=="editVectorMap"){
+				$data["website_title"] = "Edit trade map / Admin Panel - v: ".$c['cmsversion'];
+				$lang = new model_admin_languageData();
+				
+				$model_admin_selectLanguage = new model_admin_selectLanguage();
+				$data["language_select"] = $model_admin_selectLanguage->select_option($c);
+
+				$model_admin_vectormap= new model_admin_vectormap();
+				$data["select"] = $model_admin_vectormap->select_one($c);
+				@include("view/view_admin_editvectormap.php");
+			}else{
 				$data["website_title"] = "Welcome / Admin Panel - v: ".$c['cmsversion'];
 				$data["c"] = $c;
 				$userData = new userData();

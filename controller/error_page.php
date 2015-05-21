@@ -4,8 +4,6 @@ class error_page{
 		$include = WEB_DIR.'/error_page.php';
 		if(file_exists($include)){
 			@include($include);
-		}else{
-			$controller = new error_page(); 
 		}
 	}
 

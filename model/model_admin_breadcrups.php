@@ -232,6 +232,14 @@ class model_admin_breadcrups extends connection{
 				$this->breadcrups .= '<a href="?action=gallery&type='.$_GET["type"].'&id='.$_GET['id'].'&super='.$_GET['super'].'&token='.$_SESSION['token'].'">Manage gallery folder <i class="fa fa-caret-right"></i></a>';
 				$this->breadcrups .= '<a href="?action=editMediaItem&id='.$_GET["id"].'&midx='.$_GET['midx'].'&super='.$_GET['super'].'&type='.$_GET["type"].'&token='.$_SESSION["token"].'">Edit gallery folder item <i class="fa fa-caret-right"></i></a>';
 				break;
+				case "vectormap":
+				$this->breadcrups .= '<a href="?action=vectormap">Trade map <i class="fa fa-caret-right"></i></a>';
+				//$this->breadcrups .= '<a href="?action=editInvoice&id='.$_GET["id"].'&token='.$_SESSION["token"].'">edit invoice <i class="fa fa-caret-right"></i></a>';
+				break;
+				case "editVectorMap":
+				$this->breadcrups .= '<a href="?action=vectormap">Trade map <i class="fa fa-caret-right"></i></a>';
+				$this->breadcrups .= '<a href="?action=editVectorMap&id='.$_GET["id"].'&token='.$_SESSION["token"].'">edit trade map <i class="fa fa-caret-right"></i></a>';
+				break;
 			}
 			$this->breadcrups .= '</div>';
 		}

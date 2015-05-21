@@ -22,6 +22,15 @@ class url_controll{
 		return $o;
 	}
 
+	public function url_last(){
+		$actual_link = "$_SERVER[REQUEST_URI]";
+		$s='';
+		$s = @explode("?",$actual_link);
+		$s = @explode("/", $s[0]);
+		$s = @end($s);
+		return $s;
+	}
+
 	public function url($type, $segment = 0){
 		$actual_link = "$_SERVER[REQUEST_URI]";
 		if($type=="segment"){

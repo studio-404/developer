@@ -224,6 +224,12 @@ class model_admin_requests extends connection{
 			$data["outMessage"] = $model_admin_editmediaitem->outMessage;
 		}
 
+		if(isset($_POST['edit_vectormap'])){
+			$model_admin_vectormap = new model_admin_vectormap();
+			$model_admin_vectormap->edit($c);
+			$data["outMessage"] = $model_admin_vectormap->outMessage;
+		}
+
 		if(isset($_POST['add_catalog_more_info'])){
 			$model_admin_addcatalogmoreinfo = new model_admin_addcatalogmoreinfo(); 
 			$model_admin_addcatalogmoreinfo->add($c);
