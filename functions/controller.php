@@ -49,6 +49,26 @@ class controller
 			if(file_exists($controller_sessiontime)){
 				$controller = new session_timeout();
 			}
+		}else if($file=="ajaxloadoptions"){
+			$controller_ajaxloadoptions = 'controller/ajaxloadoptions.php';
+			if(file_exists($controller_ajaxloadoptions)){
+				$controller = new ajaxloadoptions();
+			}
+		}else if($file=="invoices"){
+			$controller_ajaxloadoptions = 'controller/invoices.php';
+			if(file_exists($controller_ajaxloadoptions)){
+				$controller = new invoices($obj,$c);
+			}
+		}else if($file=="ajaxmoveimage"){
+			$controller_ajaxmoveimage = 'controller/ajaxmoveimage.php';
+			if(file_exists($controller_ajaxmoveimage)){
+				$controller = new ajaxmoveimage();
+			}
+		}else if($file=="ajaxupload"){
+			$controller_ajaxupload = 'controller/ajaxupload.php';
+			if(file_exists($controller_ajaxupload)){
+				$controller = new ajaxupload();
+			}
 		}else{
 			if($file!="admin"){// load pages
 				//select page types

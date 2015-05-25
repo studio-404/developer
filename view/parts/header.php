@@ -19,6 +19,7 @@
 					<li><a href="javascript:;"><i class="fa fa-cube"></i>&nbsp;&nbsp;&nbsp;Modules</a>
 						<ul>
 							<li><a href="?action=vectormap">Trade map</a></li>
+							<li><a href="?action=emailnewsletter">Email newsletter</a></li>
 							<li><a href="?action=invoices">Invoices</a></li>
 							<li><a href="?action=catalogMoreInfo">Catalog more info</a></li>
 							<li><a href="?action=components">Components</a></li>
@@ -33,7 +34,8 @@
 					</li>
 					<li><a href="javascript:;"><i class="fa fa-users"></i>&nbsp;&nbsp;&nbsp;Users</a>
 						<ul>
-							<li><a href="?action=userList">User list</a></li>
+							<li><a href="?action=wuserList">Website users</a></li>
+							<li><a href="?action=userList">Admin users</a></li>
 							<li><a href="?action=userRights">User right groups .??</a></li>
 						</ul>
 					</li>

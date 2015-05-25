@@ -1,0 +1,32 @@
+<html>
+<head>
+	<title>Hereti fm</title>
+	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+</head>
+<body>
+
+<audio controls style="display:none" id="hidden_player" class="hidden_player">
+  <source src="http://iis.ge:8000/hereti.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+
+<div id="button" class="hereti-strem-button" data-playstatus="no">Play</div>
+
+<script type="text/javascript">
+$(document).on("click",".hereti-strem-button",function(){
+	var status = $(this).data("playstatus");
+	if(status=="no"){
+		document.getElementById('hidden_player').play();
+		$(this).data("playstatus","yes");
+		$(this).html("Streaming...");
+	}else{
+		document.getElementById('hidden_player').pause();
+		$(this).data("playstatus","no");
+		$(this).html("Play");
+	}
+});
+</script>
+
+</body>
+</html>

@@ -68,17 +68,30 @@ class model_admin_breadcrups extends connection{
 				$this->breadcrups .= '<a href="?action=editNewsItem&id='.$_GET['id'].'&newsidx='.$_GET['newsidx'].'&super='.$_GET['super'].'">'.$getnewstitle.' <i class="fa fa-caret-right"></i></a>';
 				break;
 				case "userList":
-				$this->breadcrups .= '<a href="?action=userList">User list <i class="fa fa-caret-right"></i></a>';
+				$this->breadcrups .= '<a href="?action=userList">Admin users <i class="fa fa-caret-right"></i></a>';
 				break;
 				case "addAdmin":
-				$this->breadcrups .= '<a href="?action=userList">User list <i class="fa fa-caret-right"></i></a>';
+				$this->breadcrups .= '<a href="?action=userList">Admin users <i class="fa fa-caret-right"></i></a>';
 				$this->breadcrups .= '<a href="?action=addAdmin">Add admin <i class="fa fa-caret-right"></i></a>';
 				break;
 				case "editprofile":
-				$this->breadcrups .= '<a href="?action=userList">User list <i class="fa fa-caret-right"></i></a>';
+				$this->breadcrups .= '<a href="?action=userList">Admin users <i class="fa fa-caret-right"></i></a>';
 				$getadminname = $this->getadminname($c);
 				$this->breadcrups .= '<a href="?action=editprofile&id='.$_GET['id'].'&token='.$_SESSION['token'].'">'.$getadminname.' <i class="fa fa-caret-right"></i></a>';
 				break;
+				case "wuserList":
+				$this->breadcrups .= '<a href="?action=wuserList">Website users <i class="fa fa-caret-right"></i></a>';
+				break;
+				case "waddUser":
+				$this->breadcrups .= '<a href="?action=wuserList">Website users <i class="fa fa-caret-right"></i></a>';
+				$this->breadcrups .= '<a href="?action=waddUser">Add user <i class="fa fa-caret-right"></i></a>';
+				break;
+				case "weditprofile":
+				$this->breadcrups .= '<a href="?action=wuserList">Website users <i class="fa fa-caret-right"></i></a>';
+				$getadminname = $this->getadminname($c);
+				$this->breadcrups .= '<a href="?action=weditprofile&id='.$_GET['id'].'&token='.$_SESSION['token'].'">'.$getadminname.' <i class="fa fa-caret-right"></i></a>';
+				break;
+
 				case "userRights":
 				$this->breadcrups .= '<a href="?action=userRights">User right groups <i class="fa fa-caret-right"></i></a>';
 				break;

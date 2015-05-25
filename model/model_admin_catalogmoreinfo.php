@@ -6,7 +6,7 @@ class model_admin_catalogmoreinfo extends connection{
 	}
 
 	public function select_one($c,$idx){
-		$sql = 'SELECT `name` FROM `studio404_catalog_info` WHERE `idx`=:idx AND `lang`=:lang AND `status`!=:status';
+		$sql = 'SELECT `module_item_id`,`name` FROM `studio404_catalog_info` WHERE `idx`=:idx AND `lang`=:lang AND `status`!=:status';
 		$conn = $this->conn($c);
 		$prepare = $conn->prepare($sql);
 		$prepare->execute(array(
@@ -15,7 +15,7 @@ class model_admin_catalogmoreinfo extends connection{
 			":status"=>1
 		));
 		$fetch = $prepare->fetch(PDO::FETCH_ASSOC);
-		return $fetch['name'];
+		return $fetch;
 	}
 
 	public function updateMe($c){
@@ -35,9 +35,21 @@ class model_admin_catalogmoreinfo extends connection{
 		$out = array();		
 		if(isset($_GET['search']) && !empty($_GET['search']) ){
 			$search='%'.$_GET['search'].'%';
-			$search_in = ' AND `name` LIKE :search ';
-		}else{ $search='a'; $search_in = ' AND `id`!=:search ';  }
-			$sql = 'SELECT * FROM `studio404_catalog_info` WHERE `lang`=:lang AND `status`!=:status '.$search_in.' ORDER BY `name` ASC';
+			$search_in = ' AND `studio404_catalog_info`.`name` LIKE :search ';
+		}else{ $search='a'; $search_in = ' AND `studio404_catalog_info`.`id`!=:search ';  }
+			$sql = 'SELECT 
+			`studio404_catalog_info`.*,
+			`studio404_pages`.`title` AS sp_title 
+			FROM 
+			`studio404_catalog_info`,`studio404_pages` 
+			WHERE 
+			`studio404_catalog_info`.`lang`=:lang AND 
+			`studio404_catalog_info`.`status`!=:status AND 
+			`studio404_catalog_info`.`module_item_id`=`studio404_pages`.`idx` AND 
+			`studio404_pages`.`lang`=:lang AND 
+			`studio404_pages`.`status`!=:status  
+			'.$search_in.' 
+			ORDER BY `name` ASC';
 			
 			$exe_array = array(
 				":status"=>1, 
@@ -67,7 +79,7 @@ class model_admin_catalogmoreinfo extends connection{
 				$out .= '<div class="row">';
 			
 				$out .= '<span class="cell" style="width:60px">'.$rows['idx'].'</span>';
-
+				$out .= '<span class="cell">'.$rows['sp_title'].'</span>';
 				$out .= '<span class="cell primary"><a href="?action=editCatalogMoreInfo&id='.$rows['idx'].'">'.$rows['name'].'</a></span>';
 				
 				$out .= '<span class="cell" style="width:120px;">

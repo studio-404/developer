@@ -3,7 +3,7 @@
 defined('DIR') OR exit;
 
 $c['cmsversion'] = '1.0.1';
-$c['website.mode'] = 'UnderDeveloper'; // UnderDeveloper or WorkingMode
+$c['website.mode'] = 'WorkingMode'; // UnderDeveloper or WorkingMode
 $c['developer.message'] = 'Website is under developer !'; // Developer message when under developer
 $c['allowes.ips'] = array('176.73.234.42'); // allowed ips when website is under developer
 // SITE CONFIGURATION
@@ -39,5 +39,6 @@ $c["product.view.pre.slug"] = "view"; // product page inside
 $c["gallery.view.pre.slug"] = "gallery"; // gallery page inside
 $c["website.directory"] = "template";
 $c["invoice.due.date"] = 259200; // 3 day
+$c["max.send.email.per.day"] = 500; 
 
 return $c;

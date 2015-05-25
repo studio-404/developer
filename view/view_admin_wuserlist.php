@@ -9,7 +9,6 @@
 	<link href="<?=STYLES?>general.css" type="text/css" rel="stylesheet" /> 
 	<script src="<?=SCRIPTS?>jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="<?=SCRIPTS?>javascript.js" type="text/javascript" charset="utf-8"></script>
-	<link rel="stylesheet" href="<?=PLUGINS?>jquery-ui-1.11.4.custom/jquery-ui.css">
 </head>
 <body>
 	<?php
@@ -18,31 +17,38 @@
 	<main>
 		<div class="center">
 			<?php
-				@include("view/parts/change_language.php");
-				@include("view/parts/breadcrups.php");
+			@include("view/parts/breadcrups.php");
 			?>
 			<div class="content">
 				<div class="button">
-					<a href="?action=addCatalogMoreInfo"><i class="fa fa-plus-circle"></i> <span>Add</span></a>
+					<a href="?action=waddUser"><i class="fa fa-plus-circle"></i> <span>Add</span></a>
 				</div>
-
 				<div class="wrap">
 					<div class="search">
-					<input type="text" class="searchTerm" placeholder="What are you looking for?">
-					<input type="submit" class="searchButton">
+					<input type="text" class="searchTerm" value="" placeholder="Name or Username or User code" />
+					<input type="submit" class="searchButton" value="">
 					</div>
 				</div>
 
 				<div id="table">
+
 					<div class="header-row row">
-						<span class="cell">ID</span>
-						<span class="cell">Page name</span>
-						<span class="cell">Title</span>
-						<span class="cell" style="width:100px">Action</span>
-					</div>					
+						<span class="cell">Allowed</span>
+						<span class="cell primary">Name</span>
+						<span class="cell">Username</span>
+						<span class="cell">User code</span>
+						<span class="cell">User type</span>
+						<span class="cell">Log time</span>
+						<span class="cell">Action</span>
+					</div>
+
 					<?=$data['table']?>
+					
 				</div>
-			<?=$data['pager']?>
+
+				<?=$data['pager']?>
+
+			</div>
 		</div>
 	</main>
 	<div class="clearfix"></div>

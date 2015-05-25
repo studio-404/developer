@@ -53,6 +53,27 @@ class model_admin_catalogmodule extends connection{
 		return $out;
 	}
 
+	public function getcatalogs($c){
+		$conn = $this->conn($c);
+		$sql = 'SELECT `idx`, `title` FROM 
+		`studio404_pages`
+		WHERE 
+		`page_type`=:sma_page_type AND 
+		`lang`=:lang AND 
+		`status`!=:status 
+		ORDER BY 
+		`title` ASC 
+		';
+		$prepare = $conn->prepare($sql);
+		$prepare->execute(array(
+			":sma_page_type"=>"catalogpage", 
+			":status"=>1,  
+			":lang"=>LANG_ID
+		));
+		$fetch = $prepare->fetchAll(PDO::FETCH_ASSOC);
+		return $fetch;
+	}
+
 	public function table($c,$sql,$exe_array){
 		$out = '';
 		$conn = $this->conn($c);

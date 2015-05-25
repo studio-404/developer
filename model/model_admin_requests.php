@@ -26,9 +26,20 @@ class model_admin_requests extends connection{
 			$data["outMessage"] = $model_admin_adduser->add($c);
 		}
 
+		if(isset($_POST['add_website_user'])){
+			$model_admin_adduser = new model_admin_adduser();
+			$data["outMessage"] = $model_admin_adduser->addwebsiteuser($c);
+		}
+
 		if(isset($_POST['edit_admin'])){
 			$model_admin_editprofile = new model_admin_editprofile();
 			$model_admin_editprofile->edit($c);
+			$data["outMessage"] = $model_admin_editprofile->outMessage;
+		}
+
+		if(isset($_POST['edit_website_user'])){
+			$model_admin_editprofile = new model_admin_editprofile();
+			$model_admin_editprofile->wedit($c);
 			$data["outMessage"] = $model_admin_editprofile->outMessage;
 		}
 
@@ -38,6 +49,15 @@ class model_admin_requests extends connection{
 			if($model_admin_editprofile->outMessage==1){
 				$redirect = new redirect();
 				$redirect->go('?action=userList');
+			}
+		}
+
+		if(isset($_GET['remove']) && isset($_GET['action']) && $_GET['action']=="wuserList"){
+			$model_admin_editprofile = new model_admin_editprofile();
+			$model_admin_editprofile->removeMe($c);
+			if($model_admin_editprofile->outMessage==1){
+				$redirect = new redirect();
+				$redirect->go('?action=wuserList');
 			}
 		}
 
@@ -169,6 +189,16 @@ class model_admin_requests extends connection{
 			if($model_admin_changeVisibility->outMessage==1){
 				$redirect = new redirect();
 				$redirect->go('?action=sitemap&super='.$_GET['super']);
+			}
+		}
+
+		if(isset($_GET['visibilitychnage'],$_GET["wuserid"]) && $_GET['visibilitychnage']=="true" && $_GET['token']===$_SESSION['token']){
+			$_SESSION['token'] = md5(sha1(time()));
+			$model_admin_changeVisibility = new model_admin_changeVisibility();
+			$model_admin_changeVisibility->changeUserAllowed($c);
+			if($model_admin_changeVisibility->outMessage==1){
+				$redirect = new redirect();
+				$redirect->go('?action=wuserList'); 
 			}
 		}
 

@@ -608,7 +608,7 @@ class edit_page_interface extends connection{
 
 	public function content_more_info($fetch,$c){
 		$out = '<div class="button" style="background-color:green">
-					<a href="http://developer.404.ge/en/admin?action=addCatalogMoreInfo" style="color:white"><i class="fa fa-plus"></i><span>Add info</span> </a>
+					<a href="?action=addCatalogMoreInfo&id='.(int)$_GET['id'].'" style="color:white"><i class="fa fa-plus"></i><span>Add info</span> </a>
 				</div>
 				<div class="button makeFileDragable3" style="background-color:green; margin-left:10px;">
 					<a href="#" style="color:white"><i class="fa fa-arrows"></i><span id="dragText3">Start sorting</span> </a>
@@ -1013,9 +1013,10 @@ class edit_page_interface extends connection{
 	public function selectmoreinfo($c){
 		$out = '';
 		$conn = $this->conn($c); 
-		$sql = 'SELECT `idx`,`name` FROM `studio404_catalog_info` WHERE `lang`=:lang AND `status`!=:status';
+		$sql = 'SELECT `idx`,`name` FROM `studio404_catalog_info` WHERE `module_item_id`=:module_item_id AND `lang`=:lang AND `status`!=:status';
 		$prepare = $conn->prepare($sql);
 		$prepare->execute(array(
+			":module_item_id"=>$_GET['id'],
 			":lang"=>LANG_ID,
 			":status"=>1
 		));

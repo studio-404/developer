@@ -43,8 +43,15 @@
 				<form action="" method="post" class="my-form hundredPorsent" autocomplete="off">
 					<div class="from-header" style="color:#ef4836; text-transform:uppercase">Add catalog more info</div>
 					
+					<label for="module_item_id">Page name: <font color="RED">*</font></label>
+					<select name="module_item_id" id="module_item_id">
+						<?php foreach($data["catalogs"] as $c): ?>
+							<option value="<?=$c['idx']?>" <?=($c['idx']==$_GET['id']) ? 'selected="selected"' : ''?>><?=$c['title']?></option>
+						<?php endforeach; ?>
+					</select>
+
 					<label for="name">Name: <font color="RED">*</font></label>
-					<input type="text" name="name" id="username" value="" autocomplete="off">
+					<input type="text" name="name" id="name" value="" autocomplete="off">
 					
 					
 					<input type="submit" name="add_catalog_more_info" id="submit" value="Submit"><br>

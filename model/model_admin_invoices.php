@@ -64,7 +64,7 @@ class model_admin_invoices extends connection{
 		';
 		//echo $sql;
 		
-		$itemsPerPage = 10;
+		$itemsPerPage = 20;
 		$pager = new pager();
 		$pager = $pager->action($c,$sql,$exe_array,$path,$itemsPerPage);	
 		$out['table'] = $this->table($c,$pager[0],$exe_array);

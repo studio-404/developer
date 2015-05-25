@@ -126,5 +126,28 @@ class model_admin_changeVisibility extends connection{
 		}
 		return $this->outMessage;
 	}
+
+	public function changeUserAllowed($c){ 
+		$conn = $this->conn($c);
+		if(isset($_GET['visibilitychnage'],$_GET['wuserid']) && $_GET['visibilitychnage']=="true"){
+			$select_sql = 'SELECT `allow` FROM `studio404_users` WHERE `id`=:id';
+			$select_prepare = $conn->prepare($select_sql);
+			$select_prepare->execute(array(
+				":id"=>$_GET['wuserid']
+			));
+			$select_fetch = $select_prepare->fetch(PDO::FETCH_ASSOC);
+		
+			if($select_fetch['allow']==1){ $c_visibility = 2; }else{ $c_visibility = 1; }
+			$sql = 'UPDATE `studio404_users` SET `allow`=:c_visibility WHERE `id`=:id';
+			$prepare = $conn->prepare($sql);
+			$prepare->execute(array(
+				":c_visibility"=>$c_visibility, 
+				":id" => $_GET['wuserid']
+			));
+
+			$this->outMessage = 1;
+		}
+		return $this->outMessage;
+	}
 }
 ?>

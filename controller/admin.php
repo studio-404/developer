@@ -35,12 +35,30 @@ class admin extends connection{
 				$data["admin_types"] = $model_admin_select_admintypes->select($c);
 				@include("view/view_admin_addAdmin.php");
 			}else if(isset($_GET["action"]) && $_GET["action"]=="userList"){
-				$data["website_title"] = "User list / Admin Panel - v: ".$c['cmsversion'];
+				$data["website_title"] = "Admin users / Admin Panel - v: ".$c['cmsversion'];
 				$model_admin_select = new model_admin_select();
 				$admin_list = $model_admin_select->select_admins($c);
 				$data['table'] = $admin_list['table'];
 				$data['pager'] = $admin_list['pager'];
 				@include("view/view_admin_userlist.php");
+			}else if(isset($_GET["action"]) && $_GET["action"]=="wuserList"){
+				$data["website_title"] = "Website users / Admin Panel - v: ".$c['cmsversion'];
+				$model_admin_select = new model_admin_select();
+				$admin_list = $model_admin_select->select_websiteusers($c);
+				$data['table'] = $admin_list['table'];
+				$data['pager'] = $admin_list['pager'];
+
+				@include("view/view_admin_wuserlist.php");
+			}else if(isset($_GET["action"]) && $_GET["action"]=="waddUser"){
+				$data["website_title"] = "Add website user / Admin Panel - v: ".$c['cmsversion'];
+				@include("view/view_admin_addwebsiteuser.php"); 
+			}else if(isset($_GET["action"]) && $_GET["action"]=="weditprofile"){
+				$data["website_title"] = "Edit website user / Admin Panel - v: ".$c['cmsversion'];
+				$model_admin_editprofile = new model_admin_editprofile();
+				$_SESSION["token"] = $_GET['token'];
+				$data["profile"] = $model_admin_editprofile->select_profile2($c);
+
+				@include("view/view_admin_editwebsiteuser.php");
 			}else if(isset($_GET["action"]) && $_GET["action"]=="editprofile"){
 				$data["website_title"] = "Edit profile / Admin Panel - v: ".$c['cmsversion'];
 				$model_admin_editprofile = new model_admin_editprofile();
@@ -207,13 +225,18 @@ class admin extends connection{
 				@include("view/view_admin_catalogmoreinfo.php");
 			}else if(isset($_GET["action"]) && $_GET["action"]=="addCatalogMoreInfo"){
 				$data["website_title"] = "Add catalog more info / Admin Panel - v: ".$c['cmsversion'];
+				$model_admin_catalogmodule = new model_admin_catalogmodule();
+				$data["catalogs"] = $model_admin_catalogmodule->getcatalogs($c);
+
 				@include("view/view_admin_addcatalogmoreinfo.php");
 			}else if(isset($_GET["action"],$_GET['id']) && is_numeric($_GET['id']) && $_GET["action"]=="editCatalogMoreInfo"){
 				$data["website_title"] = "Edit catalog more info / Admin Panel - v: ".$c['cmsversion'];
 				$model_admin_catalogmoreinfo = new model_admin_catalogmoreinfo();
-				$data['name'] = $model_admin_catalogmoreinfo->select_one($c,$_GET['id']); 
+				$data['info'] = $model_admin_catalogmoreinfo->select_one($c,$_GET['id']); 
 				$model_admin_selectLanguage = new model_admin_selectLanguage();
 				$data["language_select"] = $model_admin_selectLanguage->select_option($c);
+				$model_admin_catalogmodule = new model_admin_catalogmodule();
+				$data["catalogs"] = $model_admin_catalogmodule->getcatalogs($c);
 				
 				@include("view/view_admin_editcatalogmoreinfo.php");
 			}else if(isset($_GET["action"]) && $_GET["action"]=="components"){

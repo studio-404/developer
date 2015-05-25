@@ -20,11 +20,12 @@ class model_admin_addcatalogmoreinfo extends connection{
 		$lang_query = $model_admin_selectLanguage->select_languages($c);
 		
 		foreach($lang_query as $lang_row){
-			$sql = 'INSERT INTO `studio404_catalog_info` SET `idx`=:idx, `name`=:name, `type`=:type, `insert_admin`=:insert_admin, `lang`=:lang';
+			$sql = 'INSERT INTO `studio404_catalog_info` SET `idx`=:idx, `name`=:name, `module_item_id`=:module_item_id, `type`=:type, `insert_admin`=:insert_admin, `lang`=:lang';
 			$prepare = $conn->prepare($sql);
 			$prepare->execute(array(
 				":idx"=>$maxidm, 
 				":name"=>$_POST['name'], 
+				":module_item_id"=>$_POST['module_item_id'], 
 				":type"=>"catalogpage", 
 				":insert_admin"=>$_SESSION['user404_id'], 
 				":lang"=>$lang_row['id']
