@@ -15,6 +15,33 @@ class model_admin_requests extends connection{
 			$data["outMessage"] = $model_change_admin_password->change($c);
 		}
 
+		if(isset($_POST['add_email'])){
+			$model_admin_emaillist = new model_admin_emaillist(); 
+			$model_admin_emaillist->add($c);
+			$data["outMessage"] = $model_admin_emaillist->outMessage;
+		}
+
+		if(isset($_POST['edit_email'])){
+			$model_admin_emaillist = new model_admin_emaillist(); 
+			$model_admin_emaillist->edit($c);
+			$data["outMessage"] = $model_admin_emaillist->outMessage;
+		}
+
+		if(isset($_GET['remove']) && isset($_GET['action']) && $_GET['action']=="showemails"){
+			$model_admin_emaillist = new model_admin_emaillist();
+			$model_admin_emaillist->removeMe($c);
+			if($model_admin_emaillist->outMessage==1){
+				$redirect = new redirect();
+				$redirect->go('?action=showemails&id='.$_GET['id']);
+			}
+		}
+
+		if(isset($_POST['newsletter_send'])){
+			$model_admin_menageemails = new model_admin_menageemails();
+			$model_admin_menageemails->addSendEmail($c); 
+			$data["outMessage"] = $model_admin_menageemails->outMessage;
+		}
+
 		if($_POST['admin_change_profile']){
 			$model_admin_profile = new model_admin_profile();
 			$model_admin_profile->updateMe($c);
@@ -26,6 +53,19 @@ class model_admin_requests extends connection{
 			$data["outMessage"] = $model_admin_adduser->add($c);
 		}
 
+		if(isset($_POST['add_emailgroup'])){
+			$model_admin_menageemails = new model_admin_menageemails();
+			$model_admin_menageemails->add($c); 
+			$data["outMessage"] = $model_admin_menageemails->outMessage; 
+		}
+
+		if(isset($_POST['edit_emailgroup'])){
+			$model_admin_menageemails = new model_admin_menageemails();
+			$model_admin_menageemails->edit($c); 
+			$data["outMessage"] = $model_admin_menageemails->outMessage; 
+		}
+
+
 		if(isset($_POST['add_website_user'])){
 			$model_admin_adduser = new model_admin_adduser();
 			$data["outMessage"] = $model_admin_adduser->addwebsiteuser($c);
@@ -35,6 +75,12 @@ class model_admin_requests extends connection{
 			$model_admin_editprofile = new model_admin_editprofile();
 			$model_admin_editprofile->edit($c);
 			$data["outMessage"] = $model_admin_editprofile->outMessage;
+		}
+
+		if(isset($_POST['newsletter_main'])){
+			$model_admin_newslettermain = new model_admin_newslettermain();
+			$model_admin_newslettermain->edit_main($c); 
+			$data["outMessage"] = $model_admin_newslettermain->outMessage;
 		}
 
 		if(isset($_POST['edit_website_user'])){
@@ -49,6 +95,15 @@ class model_admin_requests extends connection{
 			if($model_admin_editprofile->outMessage==1){
 				$redirect = new redirect();
 				$redirect->go('?action=userList');
+			}
+		}
+
+		if(isset($_GET['remove']) && isset($_GET['action']) && $_GET['action']=="managedemails"){
+			$model_admin_menageemails = new model_admin_menageemails();
+			$model_admin_menageemails->removeMe($c);
+			if($model_admin_menageemails->outMessage==1){
+				$redirect = new redirect();
+				$redirect->go('?action=managedemails');
 			}
 		}
 

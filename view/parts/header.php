@@ -20,6 +20,7 @@
 						<ul>
 							<li><a href="?action=vectormap">Trade map</a></li>
 							<li><a href="?action=emailnewsletter">Email newsletter</a></li>
+							<li><a href="?action=managedemails&token=<?=$_SESSION["token"]?>"><i class="fa fa-minus"></i> Manage email groups</a></li>
 							<li><a href="?action=invoices">Invoices</a></li>
 							<li><a href="?action=catalogMoreInfo">Catalog more info</a></li>
 							<li><a href="?action=components">Components</a></li>

@@ -27,12 +27,28 @@ class controller
 		$get_ip = new get_ip();
 		$ip = $get_ip->ip;
 
-		
 		if($c['website.mode']=="UnderDeveloper" && !in_array($ip, $c['allowes.ips'])){
 			// if under developer
 			$controller = "controller/under.php";
 			if(file_exists($controller)){
 				$controller = new under($c); 
+			}else{
+				$controller = new error_page(); 
+			}
+		}else if($file=='cron'){
+			// if under developer
+			$controller = "controller/cron.php";
+			if(file_exists($controller)){
+				$controller = new cron($c); 
+			}else{
+				$controller = new error_page(); 
+			}
+		}else if($obj->url("segment",1)=='unsubscribe'){
+			// if under developer
+			$controller = "controller/unsubscribe.php";
+			if(file_exists($controller)){
+				$encr = $obj->url("segment",2);
+				$controller = new unsubscribe($c,$encr); 
 			}else{
 				$controller = new error_page(); 
 			}

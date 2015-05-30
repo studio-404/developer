@@ -253,6 +253,44 @@ class model_admin_breadcrups extends connection{
 				$this->breadcrups .= '<a href="?action=vectormap">Trade map <i class="fa fa-caret-right"></i></a>';
 				$this->breadcrups .= '<a href="?action=editVectorMap&id='.$_GET["id"].'&token='.$_SESSION["token"].'">edit trade map <i class="fa fa-caret-right"></i></a>';
 				break;
+				case "emailnewsletter":
+				$this->breadcrups .= '<a href="?action=emailnewsletter">Newsletter <i class="fa fa-caret-right"></i></a>';
+				break;
+				case "managedemails":
+				$this->breadcrups .= '<a href="?action=emailnewsletter">Newsletter <i class="fa fa-caret-right"></i></a>';
+				$this->breadcrups .= '<a href="?action=managedemails">Manage email groups <i class="fa fa-caret-right"></i></a>';
+				break;
+				case "addEmailGroup":
+				$this->breadcrups .= '<a href="?action=emailnewsletter">Newsletter <i class="fa fa-caret-right"></i></a>';
+				$this->breadcrups .= '<a href="?action=managedemails">Manage email groups <i class="fa fa-caret-right"></i></a>';
+				$this->breadcrups .= '<a href="?action=addEmailGroup&token='.$_SESSION['token'].'">Add email groups <i class="fa fa-caret-right"></i></a>';
+				break;
+				case "editEmailGroup":
+				$this->breadcrups .= '<a href="?action=emailnewsletter">Newsletter <i class="fa fa-caret-right"></i></a>';
+				$this->breadcrups .= '<a href="?action=managedemails">Manage email groups <i class="fa fa-caret-right"></i></a>';
+				$this->breadcrups .= '<a href="?action=editEmailGroup&id='.$_GET['id'].'&token='.$_SESSION['token'].'">Edit email groups <i class="fa fa-caret-right"></i></a>';
+				break;
+				case "showemails": 
+				$this->breadcrups .= '<a href="?action=emailnewsletter">Newsletter <i class="fa fa-caret-right"></i></a>';
+				$this->breadcrups .= '<a href="?action=managedemails">Manage email groups <i class="fa fa-caret-right"></i></a>';
+				$this->breadcrups .= '<a href="?action=showemails&id='.$_GET['id'].'">Email list <i class="fa fa-caret-right"></i></a>';
+				break;
+				case "addEmail": 
+				$this->breadcrups .= '<a href="?action=emailnewsletter">Newsletter <i class="fa fa-caret-right"></i></a>';
+				$this->breadcrups .= '<a href="?action=managedemails">Manage email groups <i class="fa fa-caret-right"></i></a>';
+				$this->breadcrups .= '<a href="?action=showemails&id='.$_GET['id'].'">Email list <i class="fa fa-caret-right"></i></a>';
+				$this->breadcrups .= '<a href="?action=addEmail&id='.$_GET['id'].'">Add email <i class="fa fa-caret-right"></i></a>';
+				break;
+				case "editEmail": 
+				$this->breadcrups .= '<a href="?action=emailnewsletter">Newsletter <i class="fa fa-caret-right"></i></a>';
+				$this->breadcrups .= '<a href="?action=managedemails">Manage email groups <i class="fa fa-caret-right"></i></a>';
+				$this->breadcrups .= '<a href="?action=showemails&id='.$_GET['id'].'">Email list <i class="fa fa-caret-right"></i></a>';
+				$this->breadcrups .= '<a href="?action=editEmail&id='.$_GET['id'].'&eid='.$_GET['eid'].'&token='.$_SESSION['token'].'">Edit email <i class="fa fa-caret-right"></i></a>';
+				break;
+				case "outbox": 
+				$this->breadcrups .= '<a href="?action=emailnewsletter">Newsletter <i class="fa fa-caret-right"></i></a>';
+				$this->breadcrups .= '<a href="?action=outbox">Outbox <i class="fa fa-caret-right"></i></a>';
+				break;
 			}
 			$this->breadcrups .= '</div>';
 		}

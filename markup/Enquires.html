@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TRADE</title>
+<link href="css/bootstrap.css" type="text/css" rel="stylesheet"/>
+<link href="css/bootstrap-theme.css" type="text/css" rel="stylesheet"/>
+<link href="css/fonts.css" type="text/css" rel="stylesheet"/>
+<link href="css/style.css" type="text/css" rel="stylesheet"/>
+<link href="css/custom_res.css" type="text/css" rel="stylesheet"/> 
+<link href="css/fonts.css" type="text/css" rel="stylesheet"/> 
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,400italic,500,500italic,700,900' rel='stylesheet' type='text/css'>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/jquery.tablesorter.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$(function(){
+			$("#export_table").tablesorter();
+		});
+	});
+</script>
+</head>
+<body>
+ 
+<!-- START LOGIN POPUP -->
+<div id="login_popup" class="modal fade" role="dialog">
+  <div class="modal-dialog" style="width:340px;">
+    <!-- Modal content-->
+    <div class="modal-content">
+		<div class="modal-body">
+			<h3 class="modal-title">Register in <small>Login</small></h3>
+			
+			<div class="form-group">
+				<label>E-mail Address</label>
+				<input type="text" class="form-control"/>
+			</div>
+			<div class="form-group">
+				<label>Password</label>
+				<input type="password" class="form-control"/>
+			</div>
+			<div class="btn btn-block btn-yellow" style="font-size:19px; margin-top:35px;">REGISTER</div>
+		</div> 
+    </div>
+  </div>
+</div>
+<!-- END LOGIN POPUP -->
+
+
+
+<!-- START REGISTER POPUP -->
+<div id="register_popup" class="modal fade" role="dialog">
+  <div class="modal-dialog" style="width:340px;">
+    <!-- Modal content-->
+    <div class="modal-content">
+		<div class="modal-body">
+			<h3 class="modal-title">Register in <small data-toggle="modal" data-target="#login_popup" onclick="$('#register_popup').modal('hide')">Login</small></h3>
+			<ul class="" role="tablist">
+				<li class="btn btn-block btn-blue active">
+					<a href="#export_catalogue" aria-controls="export_catalogue" role="tab" data-toggle="tab">EXPORT CATALOGUE</a>
+				</li>
+				<li class="btn btn-block btn-blue">
+					<a href="#bussines_enquires" aria-controls="bussines_enquires" role="tab" data-toggle="tab">BUSSINES ENQUIRES</a>
+				</li>
+			</ul>
+			 
+			<div class="tab-content">
+				<div role="tabpanel" class="tab-pane active" id="export_catalogue">
+				</br/>
+						<div class="form-group">
+							<label>Company Type</label>
+							<select class="form-control">
+								<option>Manufacturing</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label>E-mail Address</label>
+							<input type="text" class="form-control"/>
+						</div>
+						<div class="form-group">
+							<label>Password</label>
+							<input type="password" class="form-control"/>
+						</div>
+						<div class="form-group">
+							<label>Repeat Password</label>
+							<input type="password" class="form-control"/>
+						</div>
+						
+						<input type="checkbox"  style="float:left; margin-right:5px; "/>
+						<div class="text_formats">By clicking Register, you agree that you have read and accepted the <a href="#">User Agreement.</a> </div>
+						
+						<div class="btn btn-block btn-yellow" style="font-size:19px; margin-top:35px;">REGISTER</div>
+				</div>
+				<div role="tabpanel" class="tab-pane" id="bussines_enquires">
+				</br/>
+						<div class="form-group">
+							<label>Register As</label>
+							<select class="form-control">
+								<option>Individual</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label>E-mail Address</label>
+							<input type="text" class="form-control"/>
+						</div>
+						<div class="form-group">
+							<label>Password</label>
+							<input type="password" class="form-control"/>
+						</div>
+						<div class="form-group">
+							<label>Repeat Password</label>
+							<input type="password" class="form-control"/>
+						</div>
+						
+						<input type="checkbox"  style="float:left; margin-right:5px; "/>
+						<div class="text_formats">By clicking Register, you agree that you have read and accepted the <a href="#">User Agreement.</a> </div>
+						
+						<div class="btn btn-block btn-yellow" style="font-size:19px; margin-top:35px;">REGISTER</div>
+				</div>
+			</div>
+ 
+		</div> 
+    </div>
+  </div>
+</div>
+<!-- END REGISTER POPUP -->
+
+ 
+<header id="header" class="container-fluid" style="padding:0">
+	<div class="container">
+		<div id="header_line">
+			<div class="col-sm-12 text-right padding_0">			
+				<div id="members_area">					
+					<a href="#" data-toggle="modal" data-target="#register_popup">Register</a> | 
+					<a href="#" data-toggle="modal" data-target="#login_popup">Login</a>
+				</div>
+			</div>
+		</div>
+		<div id="header_2">
+			<div class="col-sm-5 col-md-5 col-xs-5 col-lg-5 padding_0 logo_text">
+				<a href="home.html">
+					<img src="img/logo.png"/>
+				</a>
+			</div>
+			<div class="col-sm-5 head_contact text-right">
+				<div id="live_chat_div"><a href="#">Live Chat</a></div>
+				<div id="header_contact">
+					<li>Call us 24/7 on Hotline</li>
+					<li><span>+995 32 2 96 00 10</span></li>
+				</div>
+			</div>
+			<div class="col-sm-2 header_map text-right">
+				<img src="img/enterprise_georgia.png"/>
+			</div>
+		</div>
+	</div>	
+</header>
+
+
+<!-- gio START -->
+<div class="container">
+	<nav class="navbar navbar-trade">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			</button> 
+		</div>
+		<div id="navbar" class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
+			<li><a href="http://developer.404.ge/markup/home.html">START</a></li>
+			<li><a href="http://developer.404.ge/markup/country_profile.html">COUNTRY PROFILE</a></li>
+			<li><a href="http://developer.404.ge/markup/Export_companies.html">EXPORT CATALOG</a></li>
+			<li class="active"><a href="http://developer.404.ge/markup/Enquires.html">BUSSINES ENQUIRES</a></li>
+			<li><a href="http://developer.404.ge/markup/Foreign%20Trade.html">FOREIGN TRADE</a></li>
+			<li><a href="http://developer.404.ge/markup/about.html">ABOUT</a></li>
+			</ul>
+		</div>
+	</nav>
+</div>
+<!-- gio END -->
+
+
+
+<div class="container" id="container">
+	 
+	<div class="export_search_div">
+		<div class="col-sm-10 padding_0">
+			<input type="text" class="form-control" placeholder="Search By Name Or Phrase"/>
+		</div>
+		<div class="col-sm-2 padding_0" style="padding-left:5px;">
+			<button class="btn btn-block btn-sm btn-yellow">SEARCH</button>
+		</div>
+	</div>
+	
+	
+	<div class="export_companies">
+		<div class="filters_div">
+			<div class="col-sm-8 active">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+					Buy And Sell<span class="caret"></span>
+				</a>
+				<ul class="dropdown-menu">
+					<li><a href="#">Buy And Sell</a></li>
+					<li><a href="#">Buy And Sell</a></li>
+					<li><a href="#">Buy And Sell</a></li>
+				</ul>
+			</div>
+			<div class="col-sm-2">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+					Individuals <span class="caret"></span>
+				</a>
+				<ul class="dropdown-menu">
+					<li><a href="#">Individuals</a></li>
+					<li><a href="#">Individuals</a></li>
+					<li><a href="#">Individuals</a></li>
+				</ul>
+			</div>
+			<div class="col-sm-2">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+					Sector <span class="caret"></span>
+				</a>
+				<ul class="dropdown-menu">
+					<li><a href="#">Sector</a></li>
+					<li><a href="#">Sector</a></li>
+					<li><a href="#">Sector</a></li>
+				</ul>				
+			</div>
+		</div>
+		
+		<div class="filter_content for_enquires">
+			<div class="content_divs">
+				<div class="col-sm-8 no-float itemssss" style="text-align:left;">
+					<div class="enquire enquire_small no_border">
+						<div class="date">03.03.2015</div>
+						<div class="col-sm-12">
+							<div class="title">
+								Aromatic plants and herbs
+							</div>
+							<div class="text">
+								I am looking for buyers of Moringa seeds and Moringa leaf powder. 
+								<small>Proposal</small>
+							</div>
+						</div>	 
+					</div>
+				</div>
+				<div class="col-sm-2 no-float itemssss"><a href="#">Niki Getsadze</a></div>
+				<div class="col-sm-2 no-float itemssss">Agriculture</div>
+			</div>	
+		</div>
+		<div class="filter_content for_enquires">
+			<div class="content_divs">
+				<div class="col-sm-8 no-float itemssss" style="text-align:left;">
+					<div class="enquire enquire_small no_border">
+						<div class="date">03.03.2015</div>
+						<div class="col-sm-12">
+							<div class="title">
+								Looking for New Business Partners in Europe
+							</div>
+							<div class="text">
+								We are a trade service company based in Hong Kong and focused on premium food and beverages. Currently, we are looking for agents, distributors or contacts who can help us to enter the European market .... 
+								<small>Enquiry</small>
+							</div>
+						</div>	 
+					</div>
+				</div>
+				<div class="col-sm-2 no-float itemssss"><a href="#">Sofio Bendiashvili</a></div>
+				<div class="col-sm-2 no-float itemssss">Bussines Services</div>
+			</div>	
+		</div>
+		<div class="filter_content for_enquires">
+			<div class="content_divs">
+				<div class="col-sm-8 no-float itemssss" style="text-align:left;">
+					<div class="enquire enquire_small no_border">
+						<div class="date">03.03.2015</div>
+						<div class="col-sm-12">
+							<div class="title">
+								Looking for New Business Partners in Europe
+							</div>
+							<div class="text">
+								We are a trade service company based in Hong Kong and focused on premium food and beverages. Currently, we are looking for agents, distributors or contacts who can help us to enter the European market .... 
+								<small>Enquiry</small>
+							</div>
+						</div>	 
+					</div>
+				</div>
+				<div class="col-sm-2 no-float itemssss"><a href="#">Sofio Bendiashvili</a></div>
+				<div class="col-sm-2 no-float itemssss">Bussines Services</div>
+			</div>	
+		</div>	
+		<div class="filter_content for_enquires">
+			<div class="content_divs">
+				<div class="col-sm-8 no-float itemssss" style="text-align:left;">
+					<div class="enquire enquire_small no_border">
+						<div class="date">03.03.2015</div>
+						<div class="col-sm-12">
+							<div class="title">
+								Looking for New Business Partners in Europe
+							</div>
+							<div class="text">
+								We are a trade service company based in Hong Kong and focused on premium food and beverages. Currently, we are looking for agents, distributors or contacts who can help us to enter the European market .... 
+								<small>Enquiry</small>
+							</div>
+						</div>	 
+					</div>
+				</div>
+				<div class="col-sm-2 no-float itemssss"><a href="#">Sofio Bendiashvili</a></div>
+				<div class="col-sm-2 no-float itemssss">Bussines Services</div>
+			</div>	
+		</div>	
+		<div class="filter_content for_enquires">
+			<div class="content_divs">
+				<div class="col-sm-8 no-float itemssss" style="text-align:left;">
+					<div class="enquire enquire_small no_border">
+						<div class="date">03.03.2015</div>
+						<div class="col-sm-12">
+							<div class="title">
+								Looking for New Business Partners in Europe
+							</div>
+							<div class="text">
+								We are a trade service company based in Hong Kong and focused on premium food and beverages. Currently, we are looking for agents, distributors or contacts who can help us to enter the European market .... 
+								<small>Enquiry</small>
+							</div>
+						</div>	 
+					</div>
+				</div>
+				<div class="col-sm-2 no-float itemssss"><a href="#">Sofio Bendiashvili</a></div>
+				<div class="col-sm-2 no-float itemssss">Bussines Services</div>
+			</div>	
+		</div>	
+		<div class="filter_content for_enquires">
+			<div class="content_divs">
+				<div class="col-sm-8 no-float itemssss" style="text-align:left;">
+					<div class="enquire enquire_small no_border">
+						<div class="date">03.03.2015</div>
+						<div class="col-sm-12">
+							<div class="title">
+								Looking for New Business Partners in Europe
+							</div>
+							<div class="text">
+								We are a trade service company based in Hong Kong and focused on premium food and beverages. Currently, we are looking for agents, distributors or contacts who can help us to enter the European market .... 
+								<small>Enquiry</small>
+							</div>
+						</div>	 
+					</div>
+				</div>
+				<div class="col-sm-2 no-float itemssss"><a href="#">Sofio Bendiashvili</a></div>
+				<div class="col-sm-2 no-float itemssss">Bussines Services</div>
+			</div>	
+		</div>	
+		<div class="filter_content for_enquires">
+			<div class="content_divs">
+				<div class="col-sm-8 no-float itemssss" style="text-align:left;">
+					<div class="enquire enquire_small no_border">
+						<div class="date">03.03.2015</div>
+						<div class="col-sm-12">
+							<div class="title">
+								Looking for New Business Partners in Europe
+							</div>
+							<div class="text">
+								We are a trade service company based in Hong Kong and focused on premium food and beverages. Currently, we are looking for agents, distributors or contacts who can help us to enter the European market .... 
+								<small>Enquiry</small>
+							</div>
+						</div>	 
+					</div>
+				</div>
+				<div class="col-sm-2 no-float itemssss"><a href="#">Sofio Bendiashvili</a></div>
+				<div class="col-sm-2 no-float itemssss">Bussines Services</div>
+			</div>	
+		</div>	
+		<div class="filter_content for_enquires">
+			<div class="content_divs">
+				<div class="col-sm-8 no-float itemssss" style="text-align:left;">
+					<div class="enquire enquire_small no_border">
+						<div class="date">03.03.2015</div>
+						<div class="col-sm-12">
+							<div class="title">
+								Looking for New Business Partners in Europe
+							</div>
+							<div class="text">
+								We are a trade service company based in Hong Kong and focused on premium food and beverages. Currently, we are looking for agents, distributors or contacts who can help us to enter the European market .... 
+								<small>Enquiry</small>
+							</div>
+						</div>	 
+					</div>
+				</div>
+				<div class="col-sm-2 no-float itemssss"><a href="#">Sofio Bendiashvili</a></div>
+				<div class="col-sm-2 no-float itemssss">Bussines Services</div>
+			</div>	
+		</div>			
+	</div>
+	
+	
+</div>
+
+
+
+<!--------------------------------- START FOOTER ------------------------------------>
+<footer class="container-fluid padding_0">
+	<div id="footer_div">
+		<div id="footer" class="container">
+			<div class="col-sm-9 padding_0">
+				<div id="footer_links">
+					<ul>
+						<span>Home / Country Profile:</span>
+						<li><a href="#">Facts about Georgia</a></li> /
+						<li><a href="#">Why trade with Georgia</a></li> / 
+						<li><a href="#">Doing business in Georgia</a></li> / 
+						<li><a href="#">Success Stories</a></li>
+					</ul>		
+					<ul>
+						<span>Export Catalog / business Enquiries / Foreign Trade:</span>
+						<li><a href="#">Trade map</a></li> / 
+						<li><a href="#">Export Analysis</a></li> / 
+						<li><a href="#">How To export From Georgia</a></li> / 
+						<li><a href="#">Useful Links</a></li>
+					</ul>
+					<ul>					
+						<span>About Us: </span>
+						<li><a href="#">Events</a></li> / 
+						<li><a href="#">News</a></li> / 
+						<li><a href="#">Our Services</a></li> / 
+						<li><a href="#">Contact Us</a></li>
+					</ul>	
+				</div>
+			</div>
+			<div class="col-sm-3 text-right padding_0" id="footer_fb">
+				<li>Connect With Us</li>
+				<img src="img/footer_fb.png"/>
+			</div>
+		</div>	
+	</div>	
+	<div id="footer_div_2">
+		<div id="footer_2" class="container">
+			<div class="col-sm-4 padding_0">
+				<li>Tbilisi Office:</li>
+				<li>Faliashvili street 80, 0179, Tbilisi, Georgia</li>
+				<li>Tel: +995 322339893</li>
+				<li>E-Mail: info@enterprise.ge</li>
+			</div>
+			<div class="col-sm-2 padding_0">
+				<li>Hotline 24/7</li>
+				<li>+995 32 2 96 00 10</li>
+				<li><a href="#">Online Help Chat</a></li>
+			</div>
+			<div class="col-sm-4 padding_0">
+				<li>Donor Organization:</li>
+				<a href="#"><img src="img/donor_org.png"/></a>
+			</div>
+			<div class="col-sm-2 padding_0 text-right getsadze_design">
+				<img src="img/getsadze_design.png"/>
+			</div>
+		</div>
+	</div>
+</footer>
+<!------------------------------- END FOOTER ------------------------------------>
+
+
+
+
+
+
+
+</body>
+</html>

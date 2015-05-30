@@ -326,6 +326,14 @@ class admin extends connection{
 				$model_admin_languageData= new model_admin_languageData();
 				$data["info"] = $model_admin_languageData->select_one($c);
 				@include("view/view_admin_editlanguagedata.php");
+			}else if(isset($_GET["action"]) && $_GET["action"]=="emailnewsletter"){
+				$data["website_title"] = "Email newsletter / Admin Panel - v: ".$c['cmsversion'];
+				$model_admin_newslettermain = new model_admin_newslettermain();
+				$data["info"] = $model_admin_newslettermain->select_main($c);
+
+				$data["email_limit"] = $c["max.send.email.per.day"]; 
+
+				@include("view/view_admin_emailnewsletter.php");
 			}else if(isset($_GET["action"]) && $_GET["action"]=="invoices"){
 				$data["website_title"] = "Invoices / Admin Panel - v: ".$c['cmsversion'];
 				
@@ -403,6 +411,16 @@ class admin extends connection{
 				$data['pager'] = $map['pager'];
 
 				@include("view/view_admin_map.php");
+			}else if(isset($_GET["action"]) && $_GET["action"]=="managedemails"){
+				$data["website_title"] = "Manage emails / Admin Panel - v: ".$c['cmsversion'];
+				
+				$model_admin_menageemails = new model_admin_menageemails();
+				$groups = $model_admin_menageemails->select($c);
+
+				$data['table'] = $groups['table'];
+				$data['pager'] = $groups['pager'];
+
+				@include("view/view_admin_menageemails.php");
 			}else if(isset($_GET["action"]) && $_GET["action"]=="editVectorMap"){
 				$data["website_title"] = "Edit trade map / Admin Panel - v: ".$c['cmsversion'];
 				$lang = new model_admin_languageData();
@@ -413,7 +431,43 @@ class admin extends connection{
 				$model_admin_vectormap= new model_admin_vectormap();
 				$data["select"] = $model_admin_vectormap->select_one($c);
 				@include("view/view_admin_editvectormap.php");
-			}else{
+			}else if(isset($_GET["action"]) && $_GET["action"]=="addEmailGroup"){
+				$data["website_title"] = "Add email groups / Admin Panel - v: ".$c['cmsversion'];
+				@include("view/view_admin_addemailgroups.php");
+			}else if(isset($_GET["action"]) && $_GET["action"]=="editEmailGroup"){
+				$data["website_title"] = "Edit email groups / Admin Panel - v: ".$c['cmsversion'];
+				$model_admin_menageemails = new model_admin_menageemails();
+				$data['info'] = $model_admin_menageemails->select_one($c);
+				@include("view/view_admin_editemailgroups.php");
+			}else if(isset($_GET["action"]) && $_GET["action"]=="showemails"){
+				$data["website_title"] = "Email list / Admin Panel - v: ".$c['cmsversion'];
+				
+				$model_admin_emaillist = new model_admin_emaillist();
+				$groups = $model_admin_emaillist->select($c);
+
+				$data['table'] = $groups['table'];
+				$data['pager'] = $groups['pager'];
+
+				@include("view/view_admin_menageemailLiss.php");
+			}else if(isset($_GET["action"]) && $_GET["action"]=="addEmail"){
+				$data["website_title"] = "Add email / Admin Panel - v: ".$c['cmsversion'];
+				@include("view/view_admin_addemail.php");
+			}else if(isset($_GET["action"]) && $_GET["action"]=="editEmail"){
+				$data["website_title"] = "Edit email / Admin Panel - v: ".$c['cmsversion'];
+				$model_admin_emaillist = new model_admin_emaillist();
+				$data['info'] = $model_admin_emaillist->select_one($c);
+				@include("view/view_admin_editemail.php");
+			}else if(isset($_GET["action"]) && $_GET["action"]=="outbox"){
+				$data["website_title"] = "Outbox / Admin Panel - v: ".$c['cmsversion'];
+				
+				$model_admin_emaillist = new model_admin_emaillist();
+				$outbox = $model_admin_emaillist->outbox($c);
+
+				$data['table'] = $outbox['table'];
+				$data['pager'] = $outbox['pager'];
+
+				@include("view/view_admin_outbox.php");
+			}else{ 
 				$data["website_title"] = "Welcome / Admin Panel - v: ".$c['cmsversion'];
 				$data["c"] = $c;
 				$userData = new userData();

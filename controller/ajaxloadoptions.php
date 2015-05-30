@@ -78,6 +78,27 @@ class ajaxloadoptions extends connection{
 			}catch(Exception $e){
 				$out = "Error loading export markets !";
 			}
+		}else if(isset($_GET['newsletterGroups'])){
+			try{
+				$conn = $this->conn($this->c);
+				$sql = 'SELECT `id`,`name` FROM `studio404_newsletter_emails` WHERE `type`=:type AND `group_id`=:group_id AND `status`!=:status ORDER BY `name` ASC';
+				$prepare = $conn->prepare($sql);
+				$prepare->execute(array(
+					":type"=>'group', 
+					":group_id"=>0,
+					":status"=>1
+				));
+				$fetch = $prepare->fetchAll(PDO::FETCH_ASSOC);
+
+				$model_admin_menageemails = new model_admin_menageemails();
+
+				foreach($fetch as $f){
+					$num = $model_admin_menageemails->countinsideemails($this->c,$f['id']);
+					$out .= '<option value="'.(int)$f['id'].'">'.htmlentities($f['name']).' ( '.$num.' )</option>'; 	
+				}
+			}catch(Exception $e){
+				$out = "Error loading newsletter groups !";
+			}
 		}
 		echo $out;
 	}

@@ -3,6 +3,7 @@ session_start(); // session start
 /*
 ** define
 */
+header("Content-type: text/html; charset=utf-8");
 $dir_explode = explode("open.php",__FILE__);
 define("DIR",$dir_explode[0]);
 define("WEBSITE","http://developer.404.ge/");

@@ -15,7 +15,7 @@ class edit_page_interface extends connection{
 		));
 		$fetch = $prepare->fetch(PDO::FETCH_ASSOC);
 		$page_type = $fetch['page_type'];
-		
+
 		switch($page_type){
 			case "textpage": 
 			$this->out[0] = '<ul>';
@@ -582,6 +582,11 @@ class edit_page_interface extends connection{
 		}
 
 		return $this->out;
+	}
+
+	public function general_form_newsletter(){
+		$o = "test";
+		return $o;
 	}
 
 	public function general_form_components($c){
