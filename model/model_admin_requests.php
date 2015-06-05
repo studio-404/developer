@@ -216,7 +216,11 @@ class model_admin_requests extends connection{
 		if(isset($_GET['visibilitychnage'],$_GET['action'],$_GET['type'],$_GET['id'],$_GET['token']) && $_GET['visibilitychnage']=="true" && is_numeric($_GET['id']) && $_GET['token']===$_SESSION['token']){
 			if(isset($_GET['newsidx']) || isset($_GET['catalogidx'])){
 				$action = (isset($_GET['newsidx'])) ? "newsModule" : "catalogModule";
-				$pagetype = (isset($_GET['newsidx'])) ? "newspage" : "catalogpage";
+				if(isset($_GET['newsidx'])){ 
+					$pagetype = $_GET['type'];
+				}else{
+					$pagetype = "catalogpage";
+				}
 				$_SESSION['token'] = md5(sha1(time()));
 				$model_admin_changeVisibility = new model_admin_changeVisibility();
 				$model_admin_changeVisibility->change_news($c);
@@ -226,7 +230,7 @@ class model_admin_requests extends connection{
 				}
 			}else if(isset($_GET["mediaidx"])){
 				$action = "gallery";
-				$pagetype = "photogallerypage";
+				$pagetype = $_GET['type']; 
 				$_SESSION['token'] = md5(sha1(time()));
 				$model_admin_changeVisibility = new model_admin_changeVisibility();
 				$model_admin_changeVisibility->change_media($c);

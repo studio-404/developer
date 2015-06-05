@@ -19,5 +19,5 @@ DirectoryIndex open.php
 </Files>
 
 # force non-www domain
-RewriteCond %{HTTP_HOST} ^www\.developer.404\.ge$ [NC]
-RewriteRule (.*) http://developer.404.ge/$1 [R=301,L]
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteRule ^(.*)$ http://%1/$1 [R=301,L]

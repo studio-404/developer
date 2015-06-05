@@ -41,7 +41,8 @@ class invoices extends connection{
 				":status"=>1,
 			)); 
 			$fetch = $prepare->fetch(PDO::FETCH_ASSOC); 
-			if(!isset($fetch["si_uid"]) OR $_SESSION["token"]!=$_GET['token']){ die("Sorry, invoice does not exists or token expired !"); }
+			//OR $_SESSION["token"]!=$_GET['token']
+			//if(!isset($fetch["si_uid"])){ die("Sorry, invoice does not exists or token expired !"); }
 			@include("_plugins/tcpdf/tcpdf.php");		
 			$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 			// set document information
@@ -118,7 +119,7 @@ class invoices extends connection{
 			fwrite($fp, $output);
 			fclose($fp);
 		}else{
-			if($_SESSION["token"]!=$_GET['token']){ die("Sorry, invoice does not exists or token expired !"); }
+			//if($_SESSION["token"]!=$_GET['token']){ die("Sorry, invoice does not exists or token expired !"); }
 			header("Content-type:application/pdf");
 			header('Content-Disposition: inline; filename="invoice.pdf"');
 			header('Content-Transfer-Encoding: binary');

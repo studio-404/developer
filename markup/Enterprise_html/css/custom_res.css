@@ -1,33 +1,11 @@
 
 @media (min-width: 767px){
-	.navbar-trade .navbar-collapse {
-		margin-left:-15px;
-		margin-right:-15px;
+	.navbar-enterprise .navbar-collapse {
+		margin-left:-2px;
+		margin-right:-10px;
+		padding:0
 	}
-	.navbar-trade .nav > li > a:hover {background:none;}
-	.navbar-trade .nav > li.active a:after,
-	.navbar-trade .nav > li > a:hover:after {
-		content:'';
-		position:absolute;  
-		bottom:0;
-		left:50%;
-		margin-left:-10px;
-		width: 0;
-		height: 0;
-		border-style: solid;
-		border-width: 0 8px 10px 8px;
-		border-color: transparent transparent #fff transparent;
-		
-	}
-	.navbar-trade .nav > li > a:before {
-		content:" ";
-		background:url('../img/menu_a_border.png');
-		height:34px;
-		width:1px;
-		position:absolute;
-		left:0;
-		top:10px
-	}
+	 
 	.navbar .nav {
 		margin: 0;
 		display: table;
@@ -39,9 +17,7 @@
 		float: none;
 		text-align:center;
 	}
-
-	.navbar-trade .nav > li:first-child a:before{background:none}
-	.btn-service_item {width:120px; margin-bottom:6px; display:inline-block;}
+	
 	#sidebar {width:21%;}
 	#content {width:79%;}
 	.getsadze_design {  
@@ -55,30 +31,14 @@
 		display: table-cell;
 		text-align:left;
 	}
+	.navbar-nav {max-height:30px; float:none;}
+
 }
 
 
 
 @media (max-width: 767px){
-	.navbar-trade .navbar-collapse {
-		margin-left:0px;
-		margin-right:0px;
-	}
-	.navbar-trade .nav > li > a:hover {background:none;}
-	.navbar-trade .nav > li.active a:after,
-	.navbar-trade .nav > li > a:hover:after {
-		content:'';
-		position:absolute;  
-		bottom:0;
-		right:10px;
-		margin-left:-10px;
-		width: 0; 
-		height: 0;
-		border-style: solid;
-		border-width: 8px 10px 8px 0;
-		border-color: transparent #fff transparent transparent;
-		
-	}
+	
 	.logo_text {font-size:40px !important;} 
 	#footer_div_2 > #footer_2 {text-align:center;}
 	#sidebar {width:100% !important;}
@@ -89,6 +49,25 @@
 		display: inline-block;
 	}
 	.useful_div .useful_item {text-align:center;}.export_companies .filter_content .content_divs {display:inline-block !important;}
+	#footer_div{text-align:center;}
+	#footer_div .text_formats_blue {margin-bottom:15px;}
+	.sme_service {margin-bottom:18px;}
+	#header_contact,
+	.header_search,
+	.language,
+	#live_chat_div {display:none;}
+	.navbar-enterprise { }
+	#header{margin-bottom:10px;} 
+	.navbar-nav {margin:15px;}
+	.navbar-enterprise{background:none;}
+	.navbar-enterprise .navbar-toggle {border:none;}
+	#navbar{background:#fff}
+	html,body {padding:0 5px !important;}
+	.logo_text img{height:80px;}
+	 .news_div .news_item {min-height:42px;}
+	
+ 
+		
 	
 }
 
@@ -96,7 +75,7 @@
 	.contact_person .col-sm-4{width:100% !important;}
 	#events_items .col-sm-4 {width:100% !important;}
 	#events_items > .event_item .image {height:auto;}
-	.news_div .col-sm-4 {width:100% !important;}
+	.news_div .col-sm-12 {width:100% !important;}
 	
 	
 }
@@ -106,6 +85,15 @@
 	.navbar-trade .nav > li > a {font-size:18px;}
 	#content {padding-left:30px; width:75%;}
 	#sidebar {width:25%;}
+	
+	.navbar-enterprise .navbar-collapse {
+		margin-left:0px;
+		margin-right:-1px;
+		padding:0
+	}
+	.navbar-enterprise .nav > li > a {font-size:12px;}
+	.dropdown-menu-2 li a {padding-left:3px; font-size:12px;}
+	
 }
 
 
@@ -121,6 +109,8 @@
 		width:700px;
 		margin-left: -350px;
 	}
+	.navbar-enterprise .nav > li > a {font-size:9.5px;}
+	.dropdown-menu-2 li a {padding-left:1px; font-size:10px;}
 	
 	 
 }
@@ -149,8 +139,8 @@
 	#home_slider .carousel-inner {min-height:432px;}
 	#home_slider .carousel-inner .item  img{min-height:432px;} 	
 	.sidebar_menu {width:235px;}
-	#sidebar {width:32% !important;}
-	#content {width:68%;}
+	#sidebar {width:26% !important;}
+	#content {width:74%;}
 	.carousel-caption {
 		left: 50%;
 		width: 1170px;

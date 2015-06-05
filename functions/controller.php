@@ -129,7 +129,7 @@ class controller
 				
 				if(empty($page_type) || $page_type=="error_page"){
 					if(file_exists($controller_errorpage)){
-						$controller = new error_page(); 
+						$controller = new $c["welcome.page.class"]($c);  
 					}
 				}else{
 					switch ($page_type) {

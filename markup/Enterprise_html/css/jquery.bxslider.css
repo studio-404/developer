@@ -46,7 +46,14 @@
 .bx-wrapper .bx-controls-auto {
 	position: absolute;
 	bottom: -30px;
-	width: 100%;
+	width: 100%; 
+}
+
+.events_calendar .bx-wrapper .bx-pager,
+.events_calendar .bx-wrapper .bx-controls-auto {
+	position: absolute;
+	bottom: -30px;
+	width: 100%; 
 	display:none;
 }
 
@@ -66,8 +73,8 @@
 /* PAGER */
 
 .bx-wrapper .bx-pager {
-	text-align: center;
-	font-size: .85em;
+	text-align: right;
+	font-size: .0em;
 	font-family: Arial;
 	font-weight: bold;
 	color: #666;
@@ -82,7 +89,7 @@
 }
 
 .bx-wrapper .bx-pager.bx-default-pager a {
-	background: #666;
+	background: #ebebeb;
 	text-indent: -9999px;
 	display: block;
 	width: 10px;
@@ -96,7 +103,7 @@
 
 .bx-wrapper .bx-pager.bx-default-pager a:hover,
 .bx-wrapper .bx-pager.bx-default-pager a.active {
-	background: #000;
+	background: #cccccc;
 }
 
 /* DIRECTION CONTROLS (NEXT / PREV) */
@@ -197,3 +204,7 @@
 	font-size: .85em;
 	padding: 10px;
 }
+
+
+.home_news_events .bx-controls {position:absolute; right:10px; bottom:15px; width:100%;}
+.home_news_events .bx-controls .bx-pager-item {display:inline-block;}

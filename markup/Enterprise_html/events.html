@@ -7,8 +7,7 @@
 <title>TRADE</title>
 <link href="css/bootstrap.css" type="text/css" rel="stylesheet"/>
 <link href="css/bootstrap-theme.css" type="text/css" rel="stylesheet"/>
-<link href="css/fonts.css" type="text/css" rel="stylesheet"/>
-<link href="css/style.css" type="text/css" rel="stylesheet"/>
+<link href="css/fonts.css" type="text/css" rel="stylesheet"/><link href="css/style.css" type="text/css" rel="stylesheet"/>
 <link href="css/jquery.bxslider.css" type="text/css" rel="stylesheet"/>
 <link href="css/custom_res.css" type="text/css" rel="stylesheet"/> 
 <link href='http://fonts.googleapis.com/css?family=Roboto:400,400italic,500,500italic,700,900' rel='stylesheet' type='text/css'>
@@ -16,11 +15,11 @@
 <script src="js/bootstrap.js"></script>
 <script src="js/jquery.bxslider.min.js"></script>
 <script src="js/jquery.easing.1.3.js"></script>
-<script src="js/jquery.fitvids.js"></script>
+<script src="js/jquery.fitvids.js"></script><script src="js/scripts.js"></script>
 </head>
 <body>
 
-
+<style>#calendar2 {  width: 100%;  font: monospace;  line-height: 1.2em;  font-size: 15px;  text-align: center;}#calendar2 thead tr:last-child {  font-size: small;  color: rgb(85, 85, 85);}#calendar2 thead tr:nth-child(1) td:nth-child(2) {  color: rgb(50, 50, 50);}#calendar2 thead tr:nth-child(1) td:nth-child(1):hover, #calendar2 thead tr:nth-child(1) td:nth-child(3):hover {  cursor: pointer;}#calendar2 tbody td {  color: rgb(44, 86, 122);}#calendar2 tbody td:nth-child(n+6), #calendar2 .holiday {  color: rgb(231, 140, 92);}#calendar2 tbody td.today {  background: rgb(220, 0, 0);  color: #fff;}</style> 
  
 
  
@@ -64,7 +63,7 @@
 					</div>
 				</div>
 				
-					<!-- gio START -->
+					<!-- START MAIN MENU -->
 						<nav class="navbar navbar-enterprise" style="margin-top:0px;">
 							<div class="navbar-header">
 								<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -76,29 +75,69 @@
 							</div>
 							<div id="navbar" class="navbar-collapse collapse">
 								<ul class="nav navbar-nav">
-									<li>
-										<a href="http://developer.404.ge/markup/Enterprise_html/home.html">Home</a>
-									</li>
-									<li><a href="#">About Us</a></li>
-									<li>
-										<a href="http://developer.404.ge/markup/Enterprise_html/about_georgia.html">About Georgia</a>
-									</li>
-								<li><a href="#">What We Do</a></li>
-								<li>
-									<a href="http://developer.404.ge/markup/Enterprise_html/Portoflio.html">Portfolio</a>
+								<li><a href="http://developer.404.ge/markup/Enterprise_html/home.html">Home</a></li>
+								<li class="dropdown">
+									<a href="http://developer.404.ge/markup/Enterprise_html/Mission.html" data-toggle="dropdown" class="sub_menu_arrow dropdown-toggle">About Us </a>
+									<ul class="dropdown-menu-2">
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Mission Statement & objectives</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/team_01.html">Team</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Structure</a></li> 
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Strategy</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Statute</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Annual Report</a></li>
+									</ul>
 								</li>
-								<li><a href="#">Download Center</a></li>
-								<li class="active"><a href="http://developer.404.ge/markup/Enterprise_html/news.html">Media Center</a></li>
-								<li>
-									<a href="http://developer.404.ge/markup/Enterprise_html/Partners.html">Partners</a>
+								<li class="dropdown">
+									<a href="http://developer.404.ge/markup/Enterprise_html/Mission.html" data-toggle="dropdown" class="sub_menu_arrow dropdown-toggle">About Georgia </a>
+									<ul class="dropdown-menu-2">
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/about_georgia.html">Country Profile</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Doing Bussiness in georgia</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Facts and figures</a></li> 
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">usefull information</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">usefull links</a></li>
+									</ul>
+								</li>								 
+								<li class="dropdown">
+									<a href="http://developer.404.ge/markup/Enterprise_html/Mission.html" data-toggle="dropdown" class="sub_menu_arrow dropdown-toggle">What We Do</a>
+									<ul class="dropdown-menu-2">
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Access To finance</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Trainigs & consulting</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Export Promotion</a></li>  
+									</ul>
+								</li> 
+								<li class="dropdown">
+									<a href="http://developer.404.ge/markup/Enterprise_html/Mission.html" data-toggle="dropdown" class="sub_menu_arrow dropdown-toggle">Portfolio</a>
+									<ul class="dropdown-menu-2">
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Portoflio.html">Ongoing Project</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Portoflio.html">Upcoming Projects</a></li>  
+									</ul>
 								</li>
-								<li>
-									<a href="http://developer.404.ge/markup/Enterprise_html/contact_us.html">Contact Us</a>
+								<li class="dropdown">
+									<a href="http://developer.404.ge/markup/Enterprise_html/Mission.html" data-toggle="dropdown" class="sub_menu_arrow dropdown-toggle">Download Center</a>
+									<ul class="dropdown-menu-2">
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Sector Studies</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Program presentations</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Trade statistic</a></li>  
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Enterpreneurship Statistics</a></li>  
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Legal Framework</a></li>  
+									</ul>
 								</li>
+								<li class="active dropdown">
+									<a href="http://developer.404.ge/markup/Enterprise_html/Mission.html" data-toggle="dropdown" class="sub_menu_arrow dropdown-toggle">Media Center</a>
+									<ul class="dropdown-menu-2">
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/news.html">News</a></li>
+										<li class="active"><a href="http://developer.404.ge/markup/Enterprise_html/events.html">Events</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Photo_Gallery.html">Photo Gallery</a></li>  
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Gallery.html">Video Gallery</a></li>  
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Publications.html">Publications</a></li>  
+									</ul>
+								</li> 
+								<li><a href="http://developer.404.ge/markup/Enterprise_html/Partners.html">Partners</a></li>
+								<li><a href="http://developer.404.ge/markup/Enterprise_html/contact_us.html">Contact Us</a></li>
 								</ul>
 							</div>
 						</nav>
-					<!-- gio END -->
+					<!-- END MAIN MENU -->
 			</div>
 		</div>
 	</div>	
@@ -116,11 +155,11 @@
 		</div>
 		<div class="sidebar_menu">
 			<ul>
-				<li ><a href="http://developer.404.ge/markup/Enterprise_html/news.html">Media Center</a></li>
-				<li class="active"><a href="http://developer.404.ge/markup/Enterprise_html/events.html">Events</a></li>
-				<li><a href="http://developer.404.ge/markup/Enterprise_html/Publications.html">Publications</a></li>
-				<li><a href="http://developer.404.ge/markup/Enterprise_html/Gallery.html">Video Gallery</a></li> 
-				<li><a href="http://developer.404.ge/markup/Enterprise_html/Photo_Gallery.html">Photo Gallery</a></li> 
+				<li><a href="http://developer.404.ge/markup/Enterprise_html/news.html">News</a></li>
+										<li class="active"><a href="http://developer.404.ge/markup/Enterprise_html/events.html">Events</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Photo_Gallery.html">Photo Gallery</a></li>  
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Gallery.html">Video Gallery</a></li>  
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Publications.html">Publications</a></li>
 			</ul>
 		</div>
 	</div>
@@ -210,7 +249,7 @@
 				<label>Events Calendar</label>
 			</div>
 		
-		<div class="events_calendar">						
+		<div class="events_calendar">										
 			<div class="events_div">
 			
 				<div class="events_cal_slide">
@@ -441,68 +480,73 @@
 
 
 
-<!--------------------------------- START FOOTER ------------------------------------>
-<footer class="container-fluid padding_0">
+<!-- START FOOTER -->
+<footer class="container padding_0">
 	<div id="footer_div">
 		<div id="footer" class="container">
 			<div class="row">
 				<div class="col-sm-2">
 					<ul class="text_formats_blue">
 						<li><a href="#"><span>About Us</span></a></li>
-						<li><a href="#">Mission Statement & objectives</a></li>
-						<li><a href="#">Team</a></li>
-						<li><a href="#">Structure</a></li>
-						<li><a href="#">Strategy</a></li>
-						<li><a href="#">Statute</a></li>
-						<li><a href="#">Annual Report</a></li>
+						<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Mission Statement & objectives</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/team_01.html">Team</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Structure</a></li> 
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Strategy</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Statute</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Annual Report</a></li>
 					</ul>
 				</div>
 				<div class="col-sm-2">
 					<ul class="text_formats_blue">
 						<li><span>About Georgia</span></li>	
-						<li><a href="#">Country Profile</a></li>
-						<li><a href="#">Doing Bussiness In Georgia</a></li>
-						<li><a href="#">Facts and figures</a></li>
-						<li><a href="#">usefull information</a></li> 
-						<li><a href="#">Usefull links</a></li>
+						<li><a href="http://developer.404.ge/markup/Enterprise_html/about_georgia.html">Country Profile</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Doing Bussiness in georgia</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Facts and figures</a></li> 
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">usefull information</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">usefull links</a></li>
 					</ul>
 				</div>
 				<div class="col-sm-2">
 					<ul class="text_formats_blue">
 						<li><a href="#"><span>What We DO</span></a></li>
-						<li><a href="#">Access To finance</a></li>
-						<li><a href="#">Trainigs & consulting</a></li>
-						<li><a href="#">Export Promotion</a></li>
+						<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Access To finance</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Trainigs & consulting</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Export Promotion</a></li>  
 					</ul>
 				</div>
-				<div class="col-sm-2">
-					<ul class="text_formats_blue">
-						<li><a href="#"><span>Downloads & Presentation</span></a>
-						<li><a href="#">Sector Studies</a></li>
-						<li><a href="#">Program presentations</a></li>
-						<li><a href="#">Trade statistic</a></li>
-						<li><a href="#">Enterpreneurship Statistics</a></li>
-						<li><a href="#">Legal Framework</a></li>
-					</ul>
-				</div>
+
 				<div class="col-sm-2">
 					<ul class="text_formats_blue">
 						<li><a href="#"><span>Portfolio</span></a></li>
-						<li><a href="#">Ongoing Project</a></li>
-						<li><a href="#">Upcoming Projects</a></li>
+						<li><a href="http://developer.404.ge/markup/Enterprise_html/Portoflio.html">Ongoing Project</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Portoflio.html">Upcoming Projects</a></li> 
 					</ul>
 				</div>
+
+				<div class="col-sm-2">
+					<ul class="text_formats_blue">
+						<li><a href="#"><span>Downloads & Presentation</span></a>
+						<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Sector Studies</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Program presentations</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Trade statistic</a></li>  
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Enterpreneurship Statistics</a></li>  
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Legal Framework</a></li>
+					</ul>
+				</div>
+				
 				<div class="col-sm-2">
 					<ul class="text_formats_blue">
 						<li><a href="#"><span>Media Center</span></a></li>
-						<li><a href="#">News</a></li>
-						<li><a href="#">Events</a></li>
-						<li><a href="#">Photo Gallery</a></li>
-						<li><a href="#">Video Gallery</a></li>
-						<li><a href="#">Publications</a></li>
+						<li><a href="http://developer.404.ge/markup/Enterprise_html/news.html">News</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/events.html">Events</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Photo_Gallery.html">Photo Gallery</a></li>  
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Gallery.html">Video Gallery</a></li>  
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Publications.html">Publications</a></li>
 						<br/>
-						<li><a href="#"><span>Our Partners</span></a></li>
-						<li><a href="#"><span>Contact Us</span></a></li>
+						<!-- <li><a href="#"><span>Our Partners</span></a></li>
+						<li><a href="#"><span>Contact Us</span></a></li> -->
+						<li><a href="http://developer.404.ge/markup/Enterprise_html/Partners.html">Partners</a></li>
+								<li><a href="http://developer.404.ge/markup/Enterprise_html/contact_us.html">Contact Us</a></li>
 					</ul>
 				</div>
 			</div>	
@@ -531,10 +575,10 @@
 		</div>
 	</div>
 </footer>
-<!------------------------------- END FOOTER ------------------------------------>
+<!-- END FOOTER -->
  
  
-
+<table id="calendar2">  <thead>	<tr><td>‹<td colspan="5"><td>›	<tr><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс  <tbody></table>
 
  
 <script>
@@ -542,14 +586,13 @@
 	  infiniteLoop: false,	  
 	  boolean: true,
 	  hideControlOnEnd: true
-	  
 	});
 	
 	$('#popoverData').popover();
 	$('.event_deys').popover({ trigger: "hover" });
 </script>
 
-
+<script>function Calendar2(id, year, month) {	var Dlast = new Date(year,month+1,0).getDate(),		D = new Date(year,month,Dlast),		DNlast = new Date(D.getFullYear(),D.getMonth(),Dlast).getDay(),		DNfirst = new Date(D.getFullYear(),D.getMonth(),1).getDay(),		calendar = '<tr>',		month=["Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"];	if (DNfirst != 0) {	  for(var  i = 1; i < DNfirst; i++) calendar += '<td>';	}else{	  for(var  i = 0; i < 6; i++) calendar += '<td>';	}	for(var  i = 1; i <= Dlast; i++) {	  if (i == new Date().getDate() && D.getFullYear() == new Date().getFullYear() && D.getMonth() == new Date().getMonth()) {		calendar += '<td class="today">' + i;	  }else{		calendar += '<td>' + i;	  }	  if (new Date(D.getFullYear(),D.getMonth(),i).getDay() == 0) {		calendar += '<tr>';	  }	}	for(var  i = DNlast; i < 7; i++) calendar += '<td>&nbsp;';	document.querySelector('#'+id+' tbody').innerHTML = calendar;	document.querySelector('#'+id+' thead td:nth-child(2)').innerHTML = month[D.getMonth()] +' '+ D.getFullYear();	document.querySelector('#'+id+' thead td:nth-child(2)').dataset.month = D.getMonth();	document.querySelector('#'+id+' thead td:nth-child(2)').dataset.year = D.getFullYear();	if (document.querySelectorAll('#'+id+' tbody tr').length < 6) {  // чтобы при перелистывании месяцев не "подпрыгивала" вся страница, добавляется ряд пустых клеток. Итог: всегда 6 строк для цифр		document.querySelector('#'+id+' tbody').innerHTML += '<tr><td>&nbsp;<td>&nbsp;<td>&nbsp;<td>&nbsp;<td>&nbsp;<td>&nbsp;<td>&nbsp;';	}	}	Calendar2("calendar2", new Date().getFullYear(), new Date().getMonth());	// переключатель минус месяц	document.querySelector('#calendar2 thead tr:nth-child(1) td:nth-child(1)').onclick = function() {	  Calendar2("calendar2", document.querySelector('#calendar2 thead td:nth-child(2)').dataset.year, parseFloat(document.querySelector('#calendar2 thead td:nth-child(2)').dataset.month)-1);	}	// переключатель плюс месяц	document.querySelector('#calendar2 thead tr:nth-child(1) td:nth-child(3)').onclick = function() {	  Calendar2("calendar2", document.querySelector('#calendar2 thead td:nth-child(2)').dataset.year, parseFloat(document.querySelector('#calendar2 thead td:nth-child(2)').dataset.month)+1);	}</script>
 
 
 </body>

@@ -6,7 +6,7 @@ class ajaxupload extends connection{
 		$allowfiletypes = array("doc","docx","xls","xlsx","zip","rar","pdf");
 		$allowfiletypes2 = array("jpg","jpeg","gif","png","mp4","avi");
 
-		if(!isset($_GET['extention']) && !isset($_GET['filename']) && !isset($_GET['removefile']) && !isset($_GET['idxes']) && !isset($_GET['idxes2']) && !isset($_GET['idxes3']) && !isset($_GET['idxes_photos'])){
+		if(!isset($_GET['extention']) && !isset($_GET['filename']) && !isset($_GET['removefile']) && !isset($_GET['idxes']) && !isset($_GET['idxes2']) && !isset($_GET['idxes3']) && !isset($_GET['idxes_photos']) && !isset($_POST['youtubeLink'])){
 			$str = file_get_contents("php://input");
 			$filename = md5(time()).".jpg";
 			$path = 'files_pre/'.$filename;
@@ -347,6 +347,117 @@ class ajaxupload extends connection{
 				$out .= '</div>';
 				echo $out;
 			}
+		}else if(isset($_POST['youtubeLink'])){
+			///////////////////////////////////////////////////////////////////////
+
+			$pageidx = (isset($_POST['yt_mid'])) ? $_POST['yt_mid'] : 0;
+			$media_type = "video";
+			$page_type = "videogallerypage";
+			$sql = 'SELECT 
+			`studio404_gallery`.`idx` AS `sg_idx` 
+			FROM 
+			`studio404_gallery_attachment`,`studio404_gallery` 
+			WHERE 
+			`studio404_gallery_attachment`.`connect_idx`=:connect_idx AND 
+			`studio404_gallery_attachment`.`pagetype`=:pagetype AND 
+			`studio404_gallery_attachment`.`status`!=:status AND 
+			`studio404_gallery_attachment`.`idx`=`studio404_gallery`.`idx` AND 
+			`studio404_gallery`.`status`!=:status
+			';
+			$prepare = $conn->prepare($sql);
+			$prepare->execute(array(
+				":connect_idx"=>$pageidx, 
+				":pagetype"=>$page_type, 
+				":status"=>1 
+			));
+			$fetch = $prepare->fetch(PDO::FETCH_ASSOC);
+			if($fetch['sg_idx']){
+				// select max idx gallery photo
+				try{
+					$sql2 = 'SELECT `id`, MAX(`idx`) as maxid FROM `studio404_gallery_file` WHERE `lang`=:lang AND `status`!=:status'; 
+					$prepare2 = $conn->prepare($sql2);  
+					$prepare2->execute(array( "lang"=>LANG_ID, ":status"=>1));
+					$fetch2 = $prepare2->fetch(PDO::FETCH_ASSOC);
+					$maxid = ($fetch2['maxid']) ? $fetch2['maxid']+1 : 1;
+					$fileid = $fetch2['id'];
+				}catch(Exeption $e){
+					$maxid = 1;
+				}
+				
+				// select max position of gallery photo
+				try{
+					$sql3 = 'SELECT MAX(`position`) as maxpos FROM `studio404_gallery_file` WHERE `media_type`=:media_type AND `lang`=:lang AND `gallery_idx`=:gallery_idx AND `status`!=:status';
+					$prepare3 = $conn->prepare($sql3);
+					$prepare3->execute(array(
+						":media_type"=>$media_type, 
+						":lang"=>LANG_ID, 
+						":gallery_idx"=>$fetch['sg_idx'], 
+						":status"=>1
+					));
+					$fetch3 = $prepare3->fetch(PDO::FETCH_ASSOC);
+					$maxpos = ($fetch3['maxpos']) ? $fetch3['maxpos']+1 : 1;
+				}catch(Exeption $e){
+					$maxpos = 1;
+				}
+				
+				$model_admin_selectLanguage = new model_admin_selectLanguage();
+				$languages = $model_admin_selectLanguage->select_languages($_SESSION["C"]); 
+				foreach($languages as $lang){
+					//insert gallery photo
+					$sql4 = 'INSERT INTO `studio404_gallery_file` SET 
+					`idx`=:idx, 
+					`date`=:datex,
+					`gallery_idx`=:gallery_idx, 
+					`file`=:file, 
+					`media_type`=:media_type, 
+					`title`=:title, 
+					`description`=:description, 
+					`filesize`=:filesize, 
+					`insert_admin`=:insert_admin, 
+					`position`=:position, 
+					`lang`=:lang, 
+					`status`=:status 
+					';
+					$prepare4 = $conn->prepare($sql4);
+					$prepare4->execute(array(
+						":idx"=>$maxid, 
+						":datex"=>time(), 
+						":gallery_idx"=>$fetch['sg_idx'], 
+						":file"=>$_POST['youtubeLink'], 
+						":media_type"=>$media_type, 
+						":title"=>"Not defined", 
+						":description"=>"Not defined", 
+						":filesize"=>"0", 
+						":insert_admin"=>$_SESSION["user404_id"], 
+						":position"=>$maxpos,
+						":lang"=>$lang['id'], 
+						":status"=>0
+					));
+				}
+				//get inserted file id with current language
+				$sql5 = 'SELECT `id`,`position` FROM `studio404_gallery_file` WHERE `media_type`=:media_type AND `idx`=:idx AND `lang`=:lang AND `status`!=:status';
+				$prepare5 = $conn->prepare($sql5);
+				$prepare5->execute(array(
+					":media_type"=>$media_type, 
+					":idx"=>$maxid, 
+					":lang"=>LANG_ID, 
+					":status"=>1
+				));
+				$fetch5 = $prepare5->fetch(PDO::FETCH_ASSOC);
+				$out = '<div class="filebox2" id="flexbox2-'.$maxid.'">';
+				$out .= '<div class="action_panel2">';
+				$out .= '<a href="'.$_POST['youtubeLink'].'" target="_blank"><i class="fa fa-eye"></i></a>';
+				$out .= '<a href="javascript:;" onclick="openPromt2(\''.$maxid.'\')"><i class="fa fa-pencil-square-o"></i></a>';
+				$out .= '<a href="javascript:;" onclick="removeFile2(\''.$maxid.'\')"><i class="fa fa-times"></i></a>';
+				$out .= '</div>';
+				$out .= '<div class="extention2"><img src="/images/video_icon.png" width="100%" /></div>';	
+				
+				$out .= '<div class="filename2 n2-'.$maxid.'" id="fid2-'.$fetch5['id'].'">Not defined</div>';
+				$out .= '</div>';
+				echo $out;
+			}
+			/////////////////////////////////////////////////////////////////
+
 		}else{
 			echo "error";
 			exit();

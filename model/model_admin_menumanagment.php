@@ -157,13 +157,17 @@ class model_admin_menumanagment extends connection{
 				$out .= '<span class="cell">'.$rows['page_type'].'</span>';
 				$out .= '<span class="cell">'.$rows['idx'].'</span>';
 
-				if($rows['page_type']!="newspage" && $rows['page_type']!="eventpage" && $rows['page_type']!="publicationpage" && $rows['page_type']!="teampage" && $rows['page_type']!="catalogpage"){
+				if($rows['page_type']!="newspage" && $rows['page_type']!="eventpage" && $rows['page_type']!="publicationpage" && $rows['page_type']!="teampage" && $rows['page_type']!="catalogpage" && $rows['page_type']!="photogallerypage" && $rows['page_type']!="videogallerypage"){
 					$insert_image_link = '<a href="?action=editSitemap&super='.$_GET['super'].'&id='.$rows['idx'].'&token='.$_SESSION['token'].'#tabs-3" title="Attach pictures"> <i class="fa fa-picture-o"></i></a>';
 					$insert_image_link .= '<a href="?action=editSitemap&super='.$_GET['super'].'&id='.$rows['idx'].'&token='.$_SESSION['token'].'#tabs-4" title="Attach files"> <i class="fa fa-file"></i></a>';
 				}else if($rows['page_type']=="newspage" || $rows['page_type']=="eventpage"){					
-					$insert_image_link = '<a href="?action=newsModule&type=newspage&id='.$rows['idx'].'&super='.$_GET['super'].'&token='.$_SESSION['token'].'" title="Manage news"> <i class="fa fa-newspaper-o"></i></a>';
+					$insert_image_link = '<a href="?action=newsModule&type='.$rows['page_type'].'&id='.$rows['idx'].'&super='.$_GET['super'].'&token='.$_SESSION['token'].'" title="Manage news"> <i class="fa fa-newspaper-o"></i></a>';
 				}else if($rows['page_type']=="catalogpage" || $rows['page_type']=="publicationpage" || $rows['page_type']=="teampage"){			
 					$insert_image_link = '<a href="?action=catalogModule&type=catalogpage&id='.$rows['idx'].'&super='.$_GET['super'].'&token='.$_SESSION['token'].'" title="Manage catalog"> <i class="fa fa-list"></i></a>';
+				}else if($rows['page_type']=="photogallerypage"){			
+					$insert_image_link = '<a href="?action=gallery&type=photogallerypage&id='.$rows['idx'].'&super='.$_GET['super'].'&token='.$_SESSION['token'].'" title="Manage gallery folder"> <i class="fa fa-picture-o"></i></a>';
+				}else if($rows['page_type']=="videogallerypage"){			
+					$insert_image_link = '<a href="?action=gallery&type=videogallerypage&id='.$rows['idx'].'&super='.$_GET['super'].'&token='.$_SESSION['token'].'" title="Manage gallery folder"> <i class="fa fa-file-video-o"></i></a>';
 				}else{ $insert_image_link=''; }
 
 				$out .= '<span class="cell">

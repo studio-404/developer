@@ -8,6 +8,7 @@ $c['developer.message'] = 'Website is under developer !'; // Developer message w
 $c['allowes.ips'] = array('176.73.234.42'); // allowed ips when website is under developer
 // SITE CONFIGURATION
 $c['site.url'] = 'http://developer.404.ge/'; 
+$c["welcome.page.class"] = 'homepage';
 $c['site.name'] = 'Developer CMS';
 
 $c['admin.slug'] = 'administrator';

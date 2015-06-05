@@ -30,7 +30,12 @@ class model_admin_changeVisibility extends connection{
 	public function change_news($c){
 		$conn = $this->conn($c);
 		if(isset($_GET['visibilitychnage']) && $_GET['visibilitychnage']=="true" && isset($_GET['id'])){
-			$pagetype = (isset($_GET['newsidx'])) ? "newspage" : "catalogpage";
+			if(isset($_GET['newsidx'])){ 
+				$pagetype = $_GET['type'];
+			}else{
+				$pagetype = "catalogpage";
+			}
+
 			$idx = (isset($_GET['newsidx'])) ? $_GET['newsidx'] : $_GET['catalogidx'];
 
 			$select_sql = 'SELECT 
@@ -77,12 +82,11 @@ class model_admin_changeVisibility extends connection{
 		return $this->outMessage;
 	}
 
-	public function change_media($c){
+	public function change_media($c){ 
 		$conn = $this->conn($c);
 		if(isset($_GET['visibilitychnage']) && $_GET['visibilitychnage']=="true" && isset($_GET['id'])){
-			$pagetype = (isset($_GET['mediaidx'])) ? "photogallerypage" : "videogallerypage";
-			$idx = (isset($_GET['mediaidx'])) ? $_GET['mediaidx'] : $_GET['mediaidxv'];
-
+			$pagetype = $_GET['type'];
+			$idx = $_GET['mediaidx'];
 			$select_sql = 'SELECT 
 			`studio404_media_item`.`idx` AS smi_idx,
 			`studio404_media`.`idx` AS sm_idx,

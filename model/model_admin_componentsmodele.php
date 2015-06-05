@@ -122,8 +122,9 @@ class model_admin_componentsmodele extends connection{
 			if(file_exists($from)){	
 				if(@copy($from,$To)){
 					@unlink($from);
-					$background = explode("/home/geoweb/developer.404.ge",$To);
-					$background = $background[1];
+					$background = explode(DIR,$To);
+					$background = "/".$background[1];
+
 				}
 			}				
 		}
@@ -160,8 +161,8 @@ class model_admin_componentsmodele extends connection{
 			if(file_exists($from)){	
 				if(@copy($from,$To)){
 					@unlink($from);
-					$background = explode("/home/geoweb/developer.404.ge",$To);
-					$background = $background[1];
+					$background = explode(DIR,$To);
+					$background = "/".$background[1];
 				}
 			}
 			$sqlb = 'UPDATE `studio404_components_inside` SET `image`=:image WHERE `idx`=:idx AND `lang`=:lang AND `status`!=:status';

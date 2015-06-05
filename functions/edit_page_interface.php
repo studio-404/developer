@@ -117,7 +117,7 @@ class edit_page_interface extends connection{
 				$this->out[0] = '<ul>';
 				$this->out[0] .= '<li><a href="#tabs-1">General</a></li>';
 				$this->out[0] .= '<li><a href="#tabs-2">Content</a></li>';
-				$this->out[0] .= '<li class="justlink"><a href="javascript:;" onclick="redirect(\'_self\',\'?action=newsModule&type=newspage&id='.$_GET['id'].'&super='.$_GET['super'].'&token='.$_SESSION['token'].'\')">Manage events</a></li>';
+				$this->out[0] .= '<li class="justlink"><a href="javascript:;" onclick="redirect(\'_self\',\'?action=newsModule&type=eventpage&id='.$_GET['id'].'&super='.$_GET['super'].'&token='.$_SESSION['token'].'\')">Manage events</a></li>';
 				$this->out[0] .= '</ul>';
 				$this->out[1] = '<div id="tabs-1">';
 				$this->out[1] .= $this->general_form($fetch,'Event Page');
@@ -944,8 +944,12 @@ class edit_page_interface extends connection{
 			$ext = 'jpeg,jpg,gif,png';
 		}
 
-		$out = '<div class="button makeFileDragable2" style="background-color:green">
+		$out = '<div class="button makeFileDragable2" style="background-color:green; float:left">
 					<a href="#" style="color:white"><i class="fa fa-arrows"></i><span id="dragText2">Start sorting</span> </a>
+				</div>';	
+
+		$out .= '<div class="button addYtVideo" style="background-color:green; float:left; margin-left:10px;">
+					<a href="#" style="color:white"><i class="fa fa-plus"></i><span id="dragText2">Add youtube video</span> </a>
 				</div><div class="clearfix"></div>';	
 
 		$out .= '<div class="dropArea2">';
@@ -997,7 +1001,14 @@ class edit_page_interface extends connection{
 		while($r = $prepare->fetch()){
 			$out .= '<div class="filebox2" id="flexbox2-'.$r->sgf_idx.'">';
 			$out .= '<div class="action_panel2">';
-			$out .= '<a href="/'.$r->sgf_file.'" class="fancyBox"><i class="fa fa-eye"></i></a>';
+
+			if (true == strpos($r->sgf_file, '://')) {
+    			$url = $r->sgf_file;
+			}else{
+				$url = "/".$r->sgf_file;
+			}
+
+			$out .= '<a href="'.$url.'" target="_blank"><i class="fa fa-eye"></i></a>';
 			$out .= '<a href="javascript:;" onclick="openPromt2(\''.$r->sgf_idx.'\')"><i class="fa fa-pencil-square-o"></i></a>';
 			$out .= '<a href="javascript:;" onclick="askBeforeDelete(\''.$media_type.'\',\''.$r->sgf_idx.'\')"><i class="fa fa-times"></i></a>';
 			$out .= '</div>';

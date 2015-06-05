@@ -124,7 +124,7 @@ class model_admin_languages extends connection{
 				if(file_exists($from)){	
 					if(@copy($from,$To)){
 						@unlink($from);
-						$background = explode("/home/geoweb/developer.404.ge",$To);
+						$background = explode(DIR,$To);
 						$background = $background[1];
 					}
 				}

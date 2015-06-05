@@ -88,6 +88,17 @@
 		'transitionOut'	: 'elastic'
 	});
 
+    $(document).on("click",".addYtVideo", function(){
+		var YtLink = prompt("Please enter youtube link", "http://youtube.com");
+	    if (YtLink != null) {
+	    	var e = YtLink;
+	    	var yT_link = e;
+	    	$.post("/en/ajaxupload",{ yt_mid:'<?=(int)$_GET['midx']?>', youtubeLink: yT_link  },function(data){
+	        	$(".dragElements2").append(data);
+	    	});        
+	    }
+    });
+
     $('.makeFileDragable2').click(function(e) { 
     	e.stopPropagation();
 		e.preventDefault();

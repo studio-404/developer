@@ -4,24 +4,29 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>TRADE</title>
+<title>Enterprise</title>
 <link href="css/bootstrap.css" type="text/css" rel="stylesheet"/>
 <link href="css/bootstrap-theme.css" type="text/css" rel="stylesheet"/>
 <link href="css/fonts.css" type="text/css" rel="stylesheet"/>
 <link href="css/style.css" type="text/css" rel="stylesheet"/>
 <link href="css/home_slide.css" type="text/css" rel="stylesheet"/>
+<link href="css/jquery.bxslider.css" type="text/css" rel="stylesheet"/>
 <link href="css/custom_res.css" type="text/css" rel="stylesheet"/> 
 <link href='http://fonts.googleapis.com/css?family=Roboto:400,400italic,500,500italic,700,900' rel='stylesheet' type='text/css'>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="js/bootstrap.js"></script>
 <script type="text/javascript" src="js/jquery-ui-1.9.0.custom.min.js" ></script>
-<script type="text/javascript">
-	$(document).ready(function(){
-		$("#featured").tabs({fx:{opacity: "toggle"}}).tabs("rotate", 5000, true);
-	});
+
+<script type="text/javascript" src="http://demo.webdeveloperplus.com/featured-content-slider/js/jquery-ui-tabs-rotate.js" ></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/jquery.bxslider.min.js"></script>
+<script src="js/jquery.easing.1.3.js"></script>
+<script src="js/jquery.fitvids.js"></script>
+<script src="js/youtube_popup.js"></script>
+
+
 </script>
 </head>
-<body style="background-attachment: fixed;">
+<body>
  
  
 <header id="header" class="container padding_0">
@@ -64,7 +69,7 @@
 					</div>
 				</div>
 				
-					<!-- gio START -->
+					<!-- START MAIN MENU -->
 						<nav class="navbar navbar-enterprise" style="margin-top:0px;">
 							<div class="navbar-header">
 								<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -76,29 +81,69 @@
 							</div>
 							<div id="navbar" class="navbar-collapse collapse">
 								<ul class="nav navbar-nav">
-									<li class="active">
-										<a href="http://developer.404.ge/markup/Enterprise_html/home.html">Home</a>
-									</li>
-									<li><a href="#">About Us</a></li>
-									<li>
-										<a href="http://developer.404.ge/markup/Enterprise_html/about_georgia.html">About Georgia</a>
-									</li>
-								<li><a href="#">What We Do</a></li>
-								<li>
-									<a href="http://developer.404.ge/markup/Enterprise_html/Portoflio.html">Portfolio</a>
+								<li class="active"><a href="http://developer.404.ge/markup/Enterprise_html/home.html">Home</a></li>
+								<li class="dropdown">
+									<a href="http://developer.404.ge/markup/Enterprise_html/Mission.html" data-toggle="dropdown" class="sub_menu_arrow dropdown-toggle">About Us </a>
+									<ul class="dropdown-menu-2">
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Mission Statement & objectives</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/team_01.html">Team</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Structure</a></li> 
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Strategy</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Statute</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Annual Report</a></li>
+									</ul>
 								</li>
-								<li><a href="#">Download Center</a></li>
-								<li><a href="http://developer.404.ge/markup/Enterprise_html/news.html">Media Center</a></li>
-								<li>
-									<a href="http://developer.404.ge/markup/Enterprise_html/Partners.html">Partners</a>
+								<li class="dropdown">
+									<a href="http://developer.404.ge/markup/Enterprise_html/Mission.html" data-toggle="dropdown" class="sub_menu_arrow dropdown-toggle">About Georgia </a>
+									<ul class="dropdown-menu-2">
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/about_georgia.html">Country Profile</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Doing Bussiness in georgia</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Facts and figures</a></li> 
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">usefull information</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">usefull links</a></li>
+									</ul>
+								</li>								 
+								<li class="dropdown">
+									<a href="http://developer.404.ge/markup/Enterprise_html/Mission.html" data-toggle="dropdown" class="sub_menu_arrow dropdown-toggle">What We Do</a>
+									<ul class="dropdown-menu-2">
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Access To finance</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Trainigs & consulting</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Export Promotion</a></li>  
+									</ul>
+								</li> 
+								<li class="dropdown">
+									<a href="http://developer.404.ge/markup/Enterprise_html/Mission.html" data-toggle="dropdown" class="sub_menu_arrow dropdown-toggle">Portfolio</a>
+									<ul class="dropdown-menu-2">
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Portoflio.html">Ongoing Project</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Portoflio.html">Upcoming Projects</a></li>  
+									</ul>
 								</li>
-								<li>
-									<a href="http://developer.404.ge/markup/Enterprise_html/contact_us.html">Contact Us</a>
+								<li class="dropdown">
+									<a href="http://developer.404.ge/markup/Enterprise_html/Mission.html" data-toggle="dropdown" class="sub_menu_arrow dropdown-toggle">Download Center</a>
+									<ul class="dropdown-menu-2">
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Sector Studies</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Program presentations</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Trade statistic</a></li>  
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Enterpreneurship Statistics</a></li>  
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Legal Framework</a></li>  
+									</ul>
 								</li>
+								<li class="dropdown">
+									<a href="http://developer.404.ge/markup/Enterprise_html/Mission.html" data-toggle="dropdown" class="sub_menu_arrow dropdown-toggle">Media Center</a>
+									<ul class="dropdown-menu-2">
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/news.html">News</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/events.html">Events</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Photo_Gallery.html">Photo Gallery</a></li>  
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Gallery.html">Video Gallery</a></li>  
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Publications.html">Publications</a></li>  
+									</ul>
+								</li> 
+								<li><a href="http://developer.404.ge/markup/Enterprise_html/Partners.html">Partners</a></li>
+								<li><a href="http://developer.404.ge/markup/Enterprise_html/contact_us.html">Contact Us</a></li>
 								</ul>
 							</div>
 						</nav>
-					<!-- gio END -->				
+					<!-- END MAIN MENU -->				
 			</div>
 		</div>
 	</div>	
@@ -110,61 +155,75 @@
 <div class="container" id="container" style="padding-top:0; padding-bottom:0">
 	 
 	<div class="row">
-		<div class="col-sm-12" id="content_full">
+		<div class="col-sm-12" id="content_full" style="padding-bottom:0">
 			<div class="home_slider">
 			
 			
-			<div id="featured" style="width:100%;">
-		  <ul class="ui-tabs-nav">
-	        <li class="ui-tabs-nav-item" id="nav-fragment-1">
-				<a href="#fragment-1">
-					<span>Become Export In georgia agriculture</span><br/>
-					The meetings has been held in barselona summit 2015
-				</a>
-			</li>
+				<div id="featured" style="width:100%;">
+					
+					<div class="col-sm-8 padding_0">
+						<div id="fragment-1" class="ui-tabs-panel" style="">
+							<img src="img/home_slide.jpg" alt="" />
+							<div class="slider_info">
+								<div class="title">Georgia Agriculture</div>
+								<div class="text">We Are nominated as a best Enterprenuers in region</div>
+							</div>	
+						</div>
+						<div id="fragment-2" class="ui-tabs-panel ui-tabs-hide" style="">
+							<img src="img/home_slide.jpg" alt="" /> 
+							<div class="slider_info">
+								<div class="title">Georgia Agriculture</div>
+								<div class="text">We Are nominated as a best Enterprenuers in region</div>
+							</div>	
+						</div>
+						<div id="fragment-3" class="ui-tabs-panel ui-tabs-hide" style="">
+							<img src="img/home_slide.jpg" alt="" />
+							<div class="slider_info">
+								<div class="title">Georgia Agriculture</div>
+								<div class="text">We Are nominated as a best Enterprenuers in region</div>
+							</div>	
+						</div>
+						<div id="fragment-4" class="ui-tabs-panel ui-tabs-hide" style="">
+							<img src="img/home_slide.jpg" alt="" /> 
+							<div class="slider_info">
+								<div class="title">Georgia Agriculture</div>
+								<div class="text">We Are nominated as a best Enterprenuers in region</div>
+							</div>	
+						</div> 
+					</div>	
+					
+					<div class="col-sm-4 padding_0">			
+						<ul class="ui-tabs-nav">
+							<li class="ui-tabs-nav-item" id="nav-fragment-1">
+								<a href="#fragment-1">
+									<span>Become Export In georgia agriculture</span><br/>
+									The meetings has been held in barselona summit 2015
+								</a>
+							</li>
 
+							<li class="ui-tabs-nav-item" id="nav-fragment-2">
+								<a href="#fragment-2">
+									<span>watch the infographic statistics georgia</span><br/>
+									the tv add has been created to inform tranding statistics in georgia and its regions
+								</a>
+							</li>
+							<li class="ui-tabs-nav-item" id="nav-fragment-3">
+								<a href="#fragment-3">
+									<span>Latest tender announcment</span><br/>
+									we are giving away 5.000000 million georgian lari to georgian manufacturers
+								</a>
+							</li>
 
-	        <li class="ui-tabs-nav-item" id="nav-fragment-1">
-				<a href="#fragment-1">
-					<span>watch the infographic statistics georgia</span><br/>
-					the tv add has been created to inform tranding statistics in georgia and its regions
-				</a>
-			</li>
-			<li class="ui-tabs-nav-item" id="nav-fragment-1">
-				<a href="#fragment-1">
-					<span>Latest tender announcment</span><br/>
-					we are giving away 5.000000 million georgian lari to georgian manufacturers
-				</a>
-			</li>
-
-			<li class="ui-tabs-nav-item" id="nav-fragment-1">
-				<a href="#fragment-1">
-					<span>are you an investor? learn georgian trade</span><br/>
-					trade with us - event has been held in tbilisi mariott
-				</a>
-			</li>			
-	      </ul>
-
-			<!-- First Content -->
-			<div id="fragment-1" class="ui-tabs-panel" style="">
-				<img src="img/home_slide.jpg" alt="" /> 
-			</div>
-
-			<!-- Second Content -->
-			<div id="fragment-2" class="ui-tabs-panel ui-tabs-hide" style="">
-				<img src="img/home_slide.jpg" alt="" /> 
-			</div>
-
-			<!-- Third Content -->
-			<div id="fragment-3" class="ui-tabs-panel ui-tabs-hide" style="">
-				<img src="img/home_slide.jpg" alt="" /> 
-			</div>
-
-			<!-- Fourth Content -->
-			<div id="fragment-4" class="ui-tabs-panel ui-tabs-hide" style="">
-				<img src="img/home_slide.jpg" alt="" /> 
-			</div>
-		</div>
+							<li class="ui-tabs-nav-item" id="nav-fragment-4">
+								<a href="#fragment-4">
+									<span>are you an investor? learn georgian trade</span><br/>
+									trade with us - event has been held in tbilisi mariott
+								</a>
+							</li>	
+						</ul>
+					</div>
+					
+				</div>
 			
 			
 			</div>
@@ -172,66 +231,352 @@
 			<div class="page_title_6">Multimedia</div>
 			
 			
-			<div class="col-sm-8 padding_0">
+			<div class="col-sm-12 padding_0">
 				<div class="other_gallery">
 					<div class="row">
-						<div class="col-sm-6">
+						<div class="col-sm-4">
 							<div class="item">
-								<a href="#">
-									<div class="image"><img src="img/other_video_1.jpg" class="img-responsive"/></div>
-									<div class="play_icon"></div>
+								<a class="youtube" href="https://www.youtube.com/watch?v=a3UOkB8nuVA">
+									<div class="image"><img src="img/other_video_1.jpg" class="img-responsive"/>
+										<div class="play_icon"></div>
+									</div>									
 								</a>
 								<div class="text_formats">
 									This new TV add explores the possibilities of micro financing project from our organization.
 								</div>
 							</div>
 						</div>
-						<div class="col-sm-6">
+						<div class="col-sm-4">
 							<div class="item">
-								<a href="#">
-									<div class="image"><img src="img/other_video_2.jpg" class="img-responsive"/></div>
-									<div class="play_icon"></div>
+								<a class="youtube" href="https://www.youtube.com/watch?v=a3UOkB8nuVA">
+									<div class="image"><img src="img/other_video_2.jpg" class="img-responsive"/>
+										<div class="play_icon"></div>
+									</div>									
 								</a>
 								<div class="text_formats">
 									Georgian economy is growing and we are happy to be the part of this big proccess.
 								</div>
 							</div>
 						</div>
+						<div class="col-sm-4">
+							<div class="home_div_3">
+								<div class="row">
+									<div class="col-sm-12">
+										<a href="#">
+											<div class="item">					
+												<img src="img/produce_in_georgia.jpg" class="img-responsive"/>							
+											</div>
+										</a>	
+									</div>
+									<div class="col-sm-12">
+										<a href="#">
+											<div class="item">					
+												<img src="img/trade_with_georgia.jpg" class="img-responsive"/>						
+											</div>
+										</a>
+									</div>
+								</div>	
+							</div>
+						</div>
+						
 					</div>
-				</div>
-				
-				<img src="img/home_footer_img.jpg"/>
+				</div>				
 			</div>
 			
-			<div class="col-sm-4">
-				<div class="home_div_3">
-					<div class="row">
-						<div class="col-sm-12">
-							<a href="#">
-								<div class="item trade_map">					
-									<div class="title">Producced In Georgia</div>
-									<div class="text">
-										External Website<br/>
-										www.qartuli.ge
-									</div>							
+			<div class="row">
+				<div class="col-sm-12 padding_0">
+					
+					<div class="col-sm-4">
+						<div class="home_news_events" role="tabpanel">	
+							<div class="page_title_6" style="float:left;">News</div>			
+							<ul class="tablist_div" role="tablist">
+								
+								<li class="active home_news_event_tab">
+									<a href="#home_news" role="tab" data-toggle="tab">
+										<img src="img/home_news_tab.png"/>
+										News
+									</a>
+								</li>
+								<li class="home_news_event_tab">
+									<a href="#home_events" role="tab" data-toggle="tab">
+										<img src="img/home_events_tab.png"/>
+										Events
+									</a>
+								</li>
+							</ul>
+
+							<div class="tab-content">
+								<div role="tabpanel" class="tab-pane active" id="home_news">									
+										<ul class="hone_news_slide">										
+										<div>
+											<div class="news_div">												
+												<div class="col-sm-12 news_item">
+													<a href="#">
+														<div class="date"><span>01</span> May</div>
+														<div class="text">Trade with Georgia is the new website for international people.</div>
+													</a>	
+												</div>												
+												<div class="col-sm-12 news_item">
+													<a href="#">
+														<div class="date"><span>01</span> May</div>
+														<div class="text">Trade with Georgia is the new website for international people.</div>
+													</a>	
+												</div>																						
+												<div class="col-sm-12 news_item">
+													<a href="#">
+														<div class="date"><span>01</span> May</div>
+														<div class="text">Trade with Georgia is the new website for international people.</div>
+													</a>	
+												</div>
+												<div class="col-sm-12 news_item">
+													<a href="#">
+														<div class="date"><span>01</span> May</div>
+														<div class="text">Trade with Georgia is the new website for international people.</div>
+													</a>	
+												</div>
+												<div class="col-sm-12 news_item">
+													<a href="#">
+														<div class="date"><span>01</span> May</div>
+														<div class="text">Trade with Georgia is the new website for international people.</div>
+													</a>	
+												</div>
+											</div>	
+										</div>									
+										
+										<div>
+											<div class="news_div">												
+												<div class="col-sm-12 news_item">
+													<a href="#">
+														<div class="date"><span>01</span> May</div>
+														<div class="text">Trade with Georgia is the new website for international people.</div>
+													</a>	
+												</div>												
+												<div class="col-sm-12 news_item">
+													<a href="#">
+														<div class="date"><span>01</span> May</div>
+														<div class="text">Trade with Georgia is the new website for international people.</div>
+													</a>	
+												</div>																						
+												<div class="col-sm-12 news_item">
+													<a href="#">
+														<div class="date"><span>01</span> May</div>
+														<div class="text">Trade with Georgia is the new website for international people.</div>
+													</a>	
+												</div>
+												<div class="col-sm-12 news_item">
+													<a href="#">
+														<div class="date"><span>01</span> May</div>
+														<div class="text">Trade with Georgia is the new website for international people.</div>
+													</a>	
+												</div>
+												<div class="col-sm-12 news_item">
+													<a href="#">
+														<div class="date"><span>01</span> May</div>
+														<div class="text">Trade with Georgia is the new website for international people.</div>
+													</a>	
+												</div>
+											</div>	
+										</div>
+										
+										<div>
+											<div class="news_div">												
+												<div class="col-sm-12 news_item">
+													<a href="#">
+														<div class="date"><span>01</span> May</div>
+														<div class="text">Trade with Georgia is the new website for international people.</div>
+													</a>	
+												</div>												
+												<div class="col-sm-12 news_item">
+													<a href="#">
+														<div class="date"><span>01</span> May</div>
+														<div class="text">Trade with Georgia is the new website for international people.</div>
+													</a>	
+												</div>																						
+												<div class="col-sm-12 news_item">
+													<a href="#">
+														<div class="date"><span>01</span> May</div>
+														<div class="text">Trade with Georgia is the new website for international people.</div>
+													</a>	
+												</div>
+												<div class="col-sm-12 news_item">
+													<a href="#">
+														<div class="date"><span>01</span> May</div>
+														<div class="text">Trade with Georgia is the new website for international people.</div>
+													</a>	
+												</div>
+												<div class="col-sm-12 news_item">
+													<a href="#">
+														<div class="date"><span>01</span> May</div>
+														<div class="text">Trade with Georgia is the new website for international people.</div>
+													</a>	
+												</div>
+											</div>	
+										</div>
+										
+										
+										
+									</ul>		
 								</div>
-							</a>	
-						</div>
-						<div class="col-sm-12">
-							<a href="#">
-								<div class="item enterprise_georgia">					
-									<div class="title">Trade With Georgia</div>
-									<div class="text">
-										External Website<br/>
-										www.tradewithgeorgia.com
-									</div>								
+								<div role="tabpanel" class="tab-pane" id="home_events">									
+									<ul class="hone_news_slide2">
+										
+										<div>
+											<div class="news_div">												
+												<div class="col-sm-12 news_item">
+													<a href="#">
+														<div class="date"><span>02</span> May</div>
+														<div class="text">Trade with Georgia is the new website for international people.</div>
+													</a>	
+												</div>												
+												<div class="col-sm-12 news_item">
+													<a href="#">
+														<div class="date"><span>02</span> May</div>
+														<div class="text">Trade with Georgia is the new website for international people.</div>
+													</a>	
+												</div>																
+												<div class="col-sm-12 news_item">
+													<a href="#">
+														<div class="date"><span>02</span> May</div>
+														<div class="text">Trade with Georgia is the new website for international people.</div>
+													</a>	
+												</div>												
+												<div class="col-sm-12 news_item">
+													<a href="#">
+														<div class="date"><span>02</span> May</div>
+														<div class="text">Trade with Georgia is the new website for international people.</div>
+													</a>	
+												</div>
+												<div class="col-sm-12 news_item">
+													<a href="#">
+														<div class="date"><span>02</span> May</div>
+														<div class="text">Trade with Georgia is the new website for international people.</div>
+													</a>	
+												</div>												
+											</div>	
+										</div>
+										
+										<div>
+											<div class="news_div">												
+												<div class="col-sm-12 news_item">
+													<a href="#">
+														<div class="date"><span>02</span> May</div>
+														<div class="text">Trade with Georgia is the new website for international people.</div>
+													</a>	
+												</div>												
+												<div class="col-sm-12 news_item">
+													<a href="#">
+														<div class="date"><span>02</span> May</div>
+														<div class="text">Trade with Georgia is the new website for international people.</div>
+													</a>	
+												</div>																
+												<div class="col-sm-12 news_item">
+													<a href="#">
+														<div class="date"><span>02</span> May</div>
+														<div class="text">Trade with Georgia is the new website for international people.</div>
+													</a>	
+												</div>												
+												<div class="col-sm-12 news_item">
+													<a href="#">
+														<div class="date"><span>02</span> May</div>
+														<div class="text">Trade with Georgia is the new website for international people.</div>
+													</a>	
+												</div>
+												<div class="col-sm-12 news_item">
+													<a href="#">
+														<div class="date"><span>02</span> May</div>
+														<div class="text">Trade with Georgia is the new website for international people.</div>
+													</a>	
+												</div>												
+											</div>	
+										</div>
+										
+										<div>
+											<div class="news_div">												
+												<div class="col-sm-12 news_item">
+													<a href="#">
+														<div class="date"><span>02</span> May</div>
+														<div class="text">Trade with Georgia is the new website for international people.</div>
+													</a>	
+												</div>												
+												<div class="col-sm-12 news_item">
+													<a href="#">
+														<div class="date"><span>02</span> May</div>
+														<div class="text">Trade with Georgia is the new website for international people.</div>
+													</a>	
+												</div>																
+												<div class="col-sm-12 news_item">
+													<a href="#">
+														<div class="date"><span>02</span> May</div>
+														<div class="text">Trade with Georgia is the new website for international people.</div>
+													</a>	
+												</div>												
+												<div class="col-sm-12 news_item">
+													<a href="#">
+														<div class="date"><span>02</span> May</div>
+														<div class="text">Trade with Georgia is the new website for international people.</div>
+													</a>	
+												</div>
+												<div class="col-sm-12 news_item">
+													<a href="#">
+														<div class="date"><span>02</span> May</div>
+														<div class="text">Trade with Georgia is the new website for international people.</div>
+													</a>	
+												</div>												
+											</div>	
+										</div>
+										
+										
+										
+									</ul>		
 								</div>
-							</a>
+							</div>
+							
 						</div>
-					</div>	
+					</div>
+					
+					
+					<div class="col-sm-4">
+						<div class="sme_service">
+							<div class="title">SME - Service center</div>
+							<div class="text">Do you want to become qulified bussinesman? now is the time to ...</div>
+							<div class="find_out_more"><a href="#">Find Out More</a></div>
+						</div>
+					</div>
+					
+					
+					
+					<div class="col-sm-4">
+						
+						<div class="bussiness_ing_georgia">
+							<!-- <img src="img/bussiness_ing_georgia.jpg"/> -->
+							<iframe src="http://enterprise.404.ge/_plugins/canvas/index.php" style="margin:0; padding:0; border:0; width:100%; height:100%;"></iframe>
+						</div>
+					
+						<div id="home_subscribe">
+							<div class="row">
+								<div class="col-sm-12">
+									<div class="item">
+										<div class="title">Subscribe to E-newsletter</div>
+										<div class="text">Join the Enterprise Georgias mailling list and be the first to know about special information.</div>
+										<div class="form-group">
+											<div class="input-group"> 
+												<input type="text" class="input_home" placeholder="Your Email Address"/>
+												<div class="input-group-addon btn-home">Subscribe</div>
+											</div>
+										</div>
+									</div>
+								</div>	
+							</div>
+						</div>
+					</div>
+					
+					
 				</div>
 			</div>
 
+			
+			
+			
 			
 		</div>
 	</div>
@@ -243,7 +588,7 @@
 
 
 
-<!--------------------------------- START FOOTER ------------------------------------>
+<!-- START FOOTER -->
 <footer class="container padding_0">
 	<div id="footer_div">
 		<div id="footer" class="container">
@@ -251,60 +596,65 @@
 				<div class="col-sm-2">
 					<ul class="text_formats_blue">
 						<li><a href="#"><span>About Us</span></a></li>
-						<li><a href="#">Mission Statement & objectives</a></li>
-						<li><a href="#">Team</a></li>
-						<li><a href="#">Structure</a></li>
-						<li><a href="#">Strategy</a></li>
-						<li><a href="#">Statute</a></li>
-						<li><a href="#">Annual Report</a></li>
+						<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Mission Statement & objectives</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/team_01.html">Team</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Structure</a></li> 
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Strategy</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Statute</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Annual Report</a></li>
 					</ul>
 				</div>
 				<div class="col-sm-2">
 					<ul class="text_formats_blue">
 						<li><span>About Georgia</span></li>	
-						<li><a href="#">Country Profile</a></li>
-						<li><a href="#">Doing Bussiness In Georgia</a></li>
-						<li><a href="#">Facts and figures</a></li>
-						<li><a href="#">usefull information</a></li> 
-						<li><a href="#">Usefull links</a></li>
+						<li><a href="http://developer.404.ge/markup/Enterprise_html/about_georgia.html">Country Profile</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Doing Bussiness in georgia</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Facts and figures</a></li> 
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">usefull information</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">usefull links</a></li>
 					</ul>
 				</div>
 				<div class="col-sm-2">
 					<ul class="text_formats_blue">
 						<li><a href="#"><span>What We DO</span></a></li>
-						<li><a href="#">Access To finance</a></li>
-						<li><a href="#">Trainigs & consulting</a></li>
-						<li><a href="#">Export Promotion</a></li>
+						<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Access To finance</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Trainigs & consulting</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Export Promotion</a></li>  
 					</ul>
 				</div>
-				<div class="col-sm-2">
-					<ul class="text_formats_blue">
-						<li><a href="#"><span>Downloads & Presentation</span></a>
-						<li><a href="#">Sector Studies</a></li>
-						<li><a href="#">Program presentations</a></li>
-						<li><a href="#">Trade statistic</a></li>
-						<li><a href="#">Enterpreneurship Statistics</a></li>
-						<li><a href="#">Legal Framework</a></li>
-					</ul>
-				</div>
+
 				<div class="col-sm-2">
 					<ul class="text_formats_blue">
 						<li><a href="#"><span>Portfolio</span></a></li>
-						<li><a href="#">Ongoing Project</a></li>
-						<li><a href="#">Upcoming Projects</a></li>
+						<li><a href="http://developer.404.ge/markup/Enterprise_html/Portoflio.html">Ongoing Project</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Portoflio.html">Upcoming Projects</a></li> 
 					</ul>
 				</div>
+
+				<div class="col-sm-2">
+					<ul class="text_formats_blue">
+						<li><a href="#"><span>Downloads & Presentation</span></a>
+						<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Sector Studies</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Program presentations</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Trade statistic</a></li>  
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Enterpreneurship Statistics</a></li>  
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Mission.html">Legal Framework</a></li>
+					</ul>
+				</div>
+				
 				<div class="col-sm-2">
 					<ul class="text_formats_blue">
 						<li><a href="#"><span>Media Center</span></a></li>
-						<li><a href="#">News</a></li>
-						<li><a href="#">Events</a></li>
-						<li><a href="#">Photo Gallery</a></li>
-						<li><a href="#">Video Gallery</a></li>
-						<li><a href="#">Publications</a></li>
+						<li><a href="http://developer.404.ge/markup/Enterprise_html/news.html">News</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/events.html">Events</a></li>
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Photo_Gallery.html">Photo Gallery</a></li>  
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Gallery.html">Video Gallery</a></li>  
+										<li><a href="http://developer.404.ge/markup/Enterprise_html/Publications.html">Publications</a></li>
 						<br/>
-						<li><a href="#"><span>Our Partners</span></a></li>
-						<li><a href="#"><span>Contact Us</span></a></li>
+						<!-- <li><a href="#"><span>Our Partners</span></a></li>
+						<li><a href="#"><span>Contact Us</span></a></li> -->
+						<li><a href="http://developer.404.ge/markup/Enterprise_html/Partners.html">Partners</a></li>
+								<li><a href="http://developer.404.ge/markup/Enterprise_html/contact_us.html">Contact Us</a></li>
 					</ul>
 				</div>
 			</div>	
@@ -333,14 +683,56 @@
 		</div>
 	</div>
 </footer>
-<!------------------------------- END FOOTER ------------------------------------>
- 
+<!-- END FOOTER -->
  
  
 
+<div class="left_social_div">
+	<ul>
+		<li><a href="#"><img src="img/linkedin.png"/></a></li>
+		<li><a href="#"><img src="img/twitter.png"/></a></li>
+		<li><a href="#"><img src="img/facebook.png"/></a></li>
+		<li><a href="#"><img src="img/youtube.png"/></a></li>
+		<li><a href="#"><img src="img/instagram.png"/></a></li>
+	</ul>
+</div> 
+ 
  
 
+ <script type="text/javascript">
+	var xx = 1;
+	$('.hone_news_slide').bxSlider({
+			nextSelector: '#slider-next',
+			prevSelector: '#slider-prev', 
+			autoControls: true
+		});
+	$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+		if(xx==1){
+			$('.hone_news_slide2').bxSlider({
+				nextSelector: '#slider-next',
+				prevSelector: '#slider-prev', 
+				autoControls: true
+			});
+			xx++;
+		}
+	})
 
+	
+	$(function () {
+		$(".youtube").YouTubeModal({autoplay:0, width:640, height:480});
+	});
+	
+	function nextImage(){
+		$("#featured").tabs("rotate", 1000, true);
+	}
+ 
+	$(document).ready(function(){
+		$("#featured").tabs({
+			fx:{opacity: "toggle"}
+		});
+		setInterval("nextImage()",3000); 
+	});
+</script>
 
 
 

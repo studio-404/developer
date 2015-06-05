@@ -64,7 +64,7 @@ class model_admin_newsmodule extends connection{
 				$out .= '<div class="row">';
 
 				$visibilityx = ($rows['smi_visibility']==1) ? "red" : "green";
-				$link_visibility = "?action=newsModule&type=newspage&id=".$_GET['id']."&newsidx=".$rows['smi_idx']."&super=".$_GET['super']."&visibilitychnage=true&token=".$_SESSION['token'];
+				$link_visibility = "?action=newsModule&type=".$_GET['type']."&id=".$_GET['id']."&newsidx=".$rows['smi_idx']."&super=".$_GET['super']."&visibilitychnage=true&token=".$_SESSION['token'];
 				$out .= '<span class="cell primary"><a href="'.htmlentities($link_visibility).'" style="color:'.$visibilityx.'" title="Change visibility"><i class="fa fa-dot-circle-o"></i></a></span>';
 				$out .= '<span class="cell">'.$rows['smi_idx'].'</span>';
 				$out .= '<span class="cell" style="width:100px">'.date("d-m-Y",$rows['smi_date']).'</span>';
@@ -78,7 +78,7 @@ class model_admin_newsmodule extends connection{
 						<a href="'.WEBSITE.LANG."/".htmlentities($rows['smi_slug']).'" target="_blank" title="Check news"><i class="fa fa-eye"></i></a>
 						<a href="?action=editNewsItem&id='.$_GET['id'].'&newsidx='.$rows['smi_idx'].'&super='.$_GET['super'].'&token='.$_SESSION['token'].'" title="Edit news"><i class="fa fa-pencil-square-o"></i></a>
 						'.$insert_image_link.'
-						<a href="javascript:;" onclick="deleteComfirm(\'?action=newsModule&type=newspage&id='.$_GET['id'].'&nidx='.$rows['smi_idx'].'&super='.$_GET['super'].'&remove=true&token='.$_SESSION['token'].'\')" title="Remove news"><i class="fa fa-times"></i></a>
+						<a href="javascript:;" onclick="deleteComfirm(\'?action=newsModule&type='.$_GET['type'].'&id='.$_GET['id'].'&nidx='.$rows['smi_idx'].'&super='.$_GET['super'].'&remove=true&token='.$_SESSION['token'].'\')" title="Remove news"><i class="fa fa-times"></i></a>
 				</span>';
 				$out .= '</div>';
 			}
