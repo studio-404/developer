@@ -7,8 +7,16 @@ class homepage extends connection{
 	public function template($c){
 		$conn = $this->conn($c); // connection
 
-		$data["website_title"] = "Home page title"; 
-		$data["website_text"] = "Home page text";
+		$cache = new cache();
+		$data["pagegeneralinfo"] = $cache->index($c,"pagegeneralinfo");
+		$data["components"] = $cache->index($c,"components");
+		$data["languages"] = $cache->index($c,"languages");
+		$data["language_data"] = $cache->index($c,"language_data");
+		$data["main_menu"] = $cache->index($c,"main_menu");
+		$data["multimedia"] = $cache->index($c,"multimedia");
+		$data["news"] = $cache->index($c,"news");
+		$data["events"] = $cache->index($c,"events");
+		
 
 		@include($c["website.directory"]."/homepage.php"); 
 	}
