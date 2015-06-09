@@ -14,9 +14,9 @@ html,body {
 	background: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%,rgba(255,255,255,0.8) 100%), url(../img/bg_1.jpg);	
 	background-size:100%; 
 	background-attachment:fixed;
-	height: 100%;
+	height: 100%; overflow-x:hidden;
     
-}
+} 
 hr {border-bottom:solid #0278c1 1px; margin:0; margin:10px 0;}
 ul {margin:0; padding:0;}
 
@@ -42,12 +42,12 @@ ul {margin:0; padding:0;}
 
 #welcome_border {background:url('../img/welcome_head_border.jpg'); height:5px; width:100%; position:absolute; left:0; bottom:-4px;}
 
-#welcome_logo {height:100%; display:inline-block} 
-#welcome_logo img{max-height:100%;}
+#welcome_logo {height:100%; width:50%; display:inline-block} 
+#welcome_logo img{max-height:100%; max-width:50%;}
 
-#welcome_logo_2 {float:right; height:60%; display:block; width:auto; text-align:right; margin-top:10px;}
+#welcome_logo_2 {float:right; height:60%; display:block; width:50%; text-align:right; margin-top:10px;}
 
-#welcome_logo_2 img{max-height:100%;}
+#welcome_logo_2 img{max-height:100%; max-width:50%;}
 .enter_the_website {margin-top:20px;}
 .enter_the_website a{
 	font-weight:bold;
@@ -305,24 +305,7 @@ header{
 }
 
 
-.dropdown-menu-2 {position:absolute; top:17px; background:#fff; padding:5px; width:auto; 
--moz-box-shadow: 0 2px 3px 0px rgba(0, 0, 0, 0.16);
--webkit-box-shadow: 0 2px 3px 0px rgba(0, 0, 0, 0.16);
-box-shadow: 0 2px 3px 0px rgba(0, 0, 0, 0.16);
-border-bottom-left-radius:5px;
-border-bottom-right-radius:5px;
-min-width:180px;
-}
-.dropdown-menu-2 li{display:block !important; text-align:left !important; margin-top:2px;}
-.dropdown-menu-2 li a {color:#244396; font-size:13px; padding-left:9px;}
-/*gio start*/
-.dropdown-menu-2 a{ border-bottom: none !important; }
-.dropdown-menu-2 .active{ border-bottom: solid #ff7b02 3px; }
-/*gio end*/
-.navbar-enterprise  .dropdown-menu-2 {display:none;}
-.navbar-enterprise  .dropdown:hover .dropdown-menu-2 {
-    display: block !important;
- }
+
 
 /* END TOP MENU */
 
@@ -344,7 +327,17 @@ min-width:180px;
 .home_slider {margin-bottom:10px;}
 
 
-#container{ padding-top:17px; padding-bottom:20px; background:#fff;}
+#container{ padding-top:17px; padding-bottom:20px; background:#fff; position:relative;}
+/*
+#container:before {
+	content:" ";
+	background: url('../img/content_shadow_left.png');
+	width:2px;
+	height:100%;
+	position:absolute;
+	top:0;
+	left:-2px;
+}*/
 
 #sidebar {
 	padding:0;
@@ -569,21 +562,30 @@ min-width:180px;
 }
 
 .sme_service {
-	background:url('../img/sme_service_bg.jpg');
+	background:rgba(18,121,187,1);
 	background-size:100% 100%;
 	width:100%;
 	height:370px;
-	padding:5px 10px;
 	position:relative;
+	overflow:hidden;
 }
-
+.sme_service .image {position:absolute; opacity:0.2}
+.sme_service .image img{height:100%;}
 .sme_service .title {
 	font-size:29px;
-	color:#fff
+	color:#fff;		
+	padding:5px 10px;
+	position:relative;
+	z-index:9;
+	
 }
 .sme_service .text {
 	font-size:18px;
 	color:#fff;
+	padding:5px 10px;
+	z-index:1;
+	position:relative;
+	z-index:9;
 }
 .sme_service .find_out_more a{
 	background:url('../img/sme_arrow.png') no-repeat left;
@@ -591,7 +593,9 @@ min-width:180px;
 	color:#fff;
 	position:absolute;
 	bottom:10px;
-	padding-left:40px;
+	padding-left:40px; 
+	margin-left:10px;
+	z-index:1;
 	
 	
 }
@@ -676,11 +680,12 @@ min-width:180px;
 
 .bussiness_ing_georgia {width:100%; height:218px;}
 
-.partner_top {margin-top:10px; padding-bottom:40px; display:inline-block}
+.partner_top {margin-top:10px; padding-bottom:15px; display:inline-block; margin-left:-9px;}
 .partner_top .image {text-align:center; height:160px; vertical-align:middle; line-height:100px; width:100%; border:solid #f5f5f5 8px; padding:10px; box-shadow:0 0 10px #ccc;}
 .partner_top .image img {}
 .partner_top .image .img-responsive{display:inline-block}
 
+.partners_div {margin-left:-10px; margin-right:-10px;}
 .partners_div .image {text-align:center;  border: solid #f5f5f5 8px; padding:10px; box-shadow:0 0 10px #ccc;}
 .partners_div .col-sm-4 { margin-bottom:8px; margin-top:10px;}
 .partners_div .img-responsive{display:inline-block; height:120px;}
@@ -708,9 +713,10 @@ min-width:180px;
 .gallery_big {position:relative;}
 .gallery_big .image {position:relative;}
 .gallery_big  img{width:100% !important; height:433px; margin-bottom:5px;}
-.gallery_big .play_icon {width:76px; height:76px; background:url('../img/play_icon.png'); position:absolute; top:50%; left:50%; margin-left:-38px; margin-top:-38px; z-index:9}
-.gallery_big:hover .image img{opacity:0.7;}
-.gallery_big .play_icon:hover  img{opacity:0.6;}
+.gallery_big .play_icon {width:76px; height:76px; background:url('../img/play_icon.png'); position:absolute; top:50%; left:50%; margin-left:-38px; margin-top:-38px;}
+
+.gallery_big .image:hover {opacity:0.7;}
+
 
 .gg-video-image {
     margin: 0;
@@ -814,28 +820,7 @@ a.video_overlay{
 
 .padding_0 {padding:0;}
 
-.events_cal_slide .col-sm-1{width:14.28571428571429%; height:100px; padding:15px; float:left !important;}
-.events_cal_slide .event_deys {position:relative; background:#d9d9d9; width:100%; height:100%; line-height:70px; color:#fff; font-weight:bold; font-size:39px; text-align:center;}
-.events_cal_slide .event_deys.active {
-	background: #ffffff; 
-	background: -moz-linear-gradient(top, #1783c6 0%, #40b5fe 100%);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1783c6), color-stop(100%,#40b5fe));
-	background: -webkit-linear-gradient(top, #1783c6 0%,#40b5fe 100%);
-	background: -o-linear-gradient(top, #1783c6 0%,#40b5fe 100%);
-	background: -ms-linear-gradient(top, #1783c6 0%,#40b5fe 100%);
-	background: linear-gradient(to bottom, #1783c6 0%,#40b5fe 100%); 
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1783c6', endColorstr='#40b5fe',GradientType=0 );
-	cursor:pointer;
-}
-.events_cal_slide .event_deys.not_active {background:none;}
-.events_cal_slide .title {
-	background:#1783c6;
-	color:#fff;
-	text-align:center;
-	font-weight:bold;
-	font-size:18px;
-	padding:2px;	
-}
+ 
 
 .portfolio_image img{width:100%; margin-bottom:10px;}
 
@@ -1003,21 +988,244 @@ textarea.form-control {height:210px; margin-top:15px;}
 .contact_us_vakansy .panel {border:none !important; box-shadow:none}
 .contact_us_vakansy .panel-body {padding:0}
 
-.left_social_div {
-	background:#244396;
-	position:fixed;
-	left:0;
-	top:270px;  
-	width:46px;
-	border-top-right-radius:10px;
-	border-bottom-right-radius:10px;
-	z-index:9;
-	text-align:center;
-	padding-bottom:12px;
+
+
+.events_cal_slide {overflow:hidden; border:solid #1783c6 1px;}
+
+#calendar td{border:solid #fff 30px;}
+
+
+
+/* CSS used here will be applied after bootstrap.css */
+.tab-content .tab-pane {    
+	position: relative;
 }
 
-.left_social_div li {list-style:none; margin-top:12px;}
-.left_social_div li:hover {opacity:0.7;}
 
-.events_calendar {}
-#calendar td{border:solid #fff 30px;}
+
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {border-bottom:solid #ff7b02 3px;}
+
+
+
+/* START EVENT CALENDAR */
+
+#calendar2 {}
+#calendar2 .first_tr_bg{
+	background: #1783c6;
+	color: #fff;
+	text-align: center;
+	font-weight: bold;
+	font-size: 18px; 
+	line-height:21px; 
+}
+#calendar2 .first_tr_bg td {padding:3px;}
+#calendar2 {
+  width: 100.1%; 
+  line-height: 1.2em; 
+  text-align: center;
+}
+#calendar2 thead tr:last-child {
+  font-size: small;
+  color: rgb(85, 85, 85);
+}
+#calendar2 thead tr:nth-child(1) td:nth-child(2) {
+  color:#fff;
+}
+#calendar2 thead tr:nth-child(1) td:nth-child(1):hover, #calendar2 thead tr:nth-child(1) td:nth-child(3):hover {
+  cursor: pointer;
+}
+#calendar2 tbody td {
+	position: relative;	  
+	height: 100%;
+	line-height: 75px;
+	color: #fff;
+	font-weight: bold;
+	font-size: 39px;
+	text-align: center;
+	border:solid #fff 30px;
+}
+#calendar2 tbody td.no_event { background: #fff;  color: #fff;}
+#calendar2 tbody td.no_event div {background:#d9d9d9}
+
+#calendar2 tbody td.not_date {background:none; padding:0 !important; border:0 !important}
+
+#calendar2 .left_arrow {text-align:left;} 
+#calendar2 .left_arrow img {margin-left:10px; margin-top:-3px;}
+#calendar2 .right_arrow {text-align:right;} 
+#calendar2 .right_arrow img {margin-right:10px; margin-top:-3px;}
+
+/*
+#calendar2 tbody td:nth-child(n+6), #calendar2 .holiday {
+  color: rgb(231, 140, 92);
+}*/
+#calendar2 tbody td.today {
+  background:#fff; 
+}
+#calendar2 tbody td.today div {background:#d9d9d9; color: #fff;}
+.events_true{ color:white !important; }
+.events_true a{ color:white !important; text-decoration: none; display:block;
+	background: #ffffff; 
+	background: -moz-linear-gradient(top, #1783c6 0%, #40b5fe 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1783c6), color-stop(100%,#40b5fe));
+	background: -webkit-linear-gradient(top, #1783c6 0%,#40b5fe 100%);
+	background: -o-linear-gradient(top, #1783c6 0%,#40b5fe 100%);
+	background: -ms-linear-gradient(top, #1783c6 0%,#40b5fe 100%);
+	background: linear-gradient(to bottom, #1783c6 0%,#40b5fe 100%); 
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1783c6', endColorstr='#40b5fe',GradientType=0 );
+	cursor:pointer;
+}
+
+.popover {position:absolute;}
+
+/* END EVENT CALENDAR */
+
+#YouTubeModalBody {padding-right:8px !important;}
+
+
+
+/************************************************************* FOR RESPONSIVE MENU *****************************************************/
+
+
+/* adjust body when menu is open */
+body.slide-active {
+    overflow-x: hidden
+}
+/*first child of #page-content so it doesn't shift around*/
+.no-margin-top {
+    margin-top: 0px!important
+}
+/*wrap the entire page content but not nav inside this div if not a fixed top, don't add any top padding */
+#page-content {
+    position: relative;
+    padding-top: 70px;
+    right: 0;
+}
+#page-content.slide-active {
+    padding-top: 0
+}
+/* put toggle bars on the left :: not using button */
+#slide-nav .navbar-toggle {
+    cursor: pointer;
+    position: absolute;
+    line-height: 0;
+    float: left;
+	top:60px;
+    margin: 0;
+    width: 30px;
+    height: 40px;
+    padding: 10px 0 0 0;
+    border: 0;
+    background: transparent;
+	right:3px;
+}
+/* icon bar prettyup - optional */
+#slide-nav .navbar-toggle > .icon-bar {
+    width: 100%;
+    display: block;
+    height: 3px;
+    margin: 5px 0 0 0;
+}
+#slide-nav .navbar-toggle.slide-active  {position:absolute; right:10px; top:60px}
+#slide-nav .navbar-toggle.slide-active .icon-bar {
+    background: orange;
+	
+}
+.navbar-header {
+    position: relative
+}
+/* un fix the navbar when active so that all the menu items are accessible */
+.navbar.navbar-fixed-top.slide-active {
+    position: relative
+}
+/* screw writing importants and shit, just stick it in max width since these classes are not shared between sizes */
+@media (max-width:767px) { 
+#slide-nav #slidemenu  {padding-left:15px;}
+	#slide-nav .container {
+	    margin: 0;
+	    padding: 0!important;
+	}
+	#slide-nav .navbar-header {
+	    margin: 0 auto;
+	    padding: 0 15px;
+	}
+	#slide-nav .navbar.slide-active {
+	    position: absolute;
+	    width: 50%;
+	    top: -1px;
+	    z-index: 1000;
+	}
+	
+	#slide-nav #slidemenu {	     
+	    right: -100%;
+	    width: 50%;
+	    min-width: 0;
+	    position: absolute;
+	    padding-right: 0;
+	    z-index: 2;
+	    top: 0;
+	    margin: 0;
+		text-align:left;
+	}
+	#slide-nav #slidemenu .navbar-nav {
+	    min-width: 0;
+	    width: 100%;
+	    margin: 0;
+	}
+	#slide-nav #slidemenu .navbar-nav .dropdown-menu li a {
+	    min-width: 0;
+	    width: 100%;
+	    white-space: normal;
+		background:none;
+		
+	}
+	.navbar-nav .open .dropdown-menu > li > a {line-height:8px;}
+	
+	#slide-nav #slidemenu .navbar-nav .dropdown-menu li {list-style:none;}
+	
+	#slide-nav {
+	    border-top: 0
+	}
+	#slide-nav.navbar-inverse #slidemenu {
+	    background: #333
+	}
+	/* this is behind the navigation but the navigation is not inside it so that the navigation is accessible and scrolls*/
+	#slide-nav #navbar-height-col {
+	    position: fixed;
+	    top: 0;
+	    height: 100%;
+	    width: 50%;
+	    right: -50%;
+	    background: #fff;
+	}
+	#slide-nav.navbar-inverse #navbar-height-col {
+	    background: #333;
+	    z-index: 1;
+	    border: 0;
+	}
+	#slide-nav .navbar-form {
+	    width: 100%;
+	    margin: 8px 0;
+	    text-align: center;
+	    overflow: hidden;
+	    /*fast clearfixer*/
+	}
+	#slide-nav .navbar-form .form-control {
+	    text-align: center
+	}
+	#slide-nav .navbar-form .btn {
+	    width: 100%
+	}
+}
+@media (min-width:768px) { 
+	#page-content {
+	    right: 0!important
+	}
+	.navbar.navbar-fixed-top.slide-active {
+	    position: fixed
+	}
+	.navbar-header {
+	    right: 0!important
+	}
+	
+}
+
