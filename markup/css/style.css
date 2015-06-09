@@ -4,6 +4,7 @@ html,body {
 	font-family: 'Roboto', sans-serif;
 	font-size:13px;
 	padding:0 !important;
+	overflow-x:hidden;
 }
 hr {border-bottom:solid #0278c1 1px; margin:0; margin:50px 0;}
 ul {margin:0; padding:0;}
@@ -23,9 +24,16 @@ ul {margin:0; padding:0;}
 #members_area a {
 	color:#fff;
 }
+
 #header_2 {
 	
 }
+
+#members_area .dropdown-menu a{color:#000;}
+
+#members_area .btn-group a:focus{background:none; box-shadow:none}
+
+
 #header_2 .logo_text{
 	  font-size: 50px;
 	  color: #fff;
@@ -64,7 +72,7 @@ ul {margin:0; padding:0;}
 
 /* START TOP MENU */
 .navbar-trade{
-	background:#fea100;
+	
 	border-radius:0;
 	min-height:48px;
 	border:none;
@@ -91,6 +99,8 @@ ul {margin:0; padding:0;}
 	font-family: 'Roboto', sans-serif;
 	font-size:20px; 
 	font-weight:bold;
+	background:#fea100;
+
 }
 
 .navbar-trade .nav > li:last-child a {
@@ -99,9 +109,9 @@ ul {margin:0; padding:0;}
 
 .navbar-trade .nav > li > a:focus {
   outline: 0;
-  background:none;
+  background:#fea000;
 }
-.navbar-nav {max-height:30px; float:none;}
+.navbar-nav { float:none;}
 /* END TOP MENU */
 
 /* START EXPORT MENU */
@@ -151,8 +161,11 @@ ul {margin:0; padding:0;}
 	border:solid #fea100 1px;font-weight:bold;
 	margin-bottom:6px;
 }
+.export_companies a {color:#000; text-decoration:none;}
 .export_companies .filters_div div{border-right:solid #fea100 1px;}
 .export_companies .filters_div .active {background:#ffcf7c !important;}
+.export_companies .filters_div .selected a{color:#f97900; text-decoration:underline;}
+.export_companies .filters_div .selected a .caret {color:#000}
 .export_companies .filters_div div:last-child {border:none;}
 .export_companies .filters_div div  a {color:#000; text-decoration:none; display:block;  padding:3px 6px;}
 .export_companies .filter_content  .itemssss:first-child {text-align:center;}
@@ -217,8 +230,8 @@ ul {margin:0; padding:0;}
 
 
 
-#home_slider {min-height:300px}
-#home_slider img {min-height:300px;}
+#home_slider {height:432px; width:100%;}
+#home_slider img {min-height:100%; min-width:100%;}
 #home_slider .carousel-inner { margin-top:-45px !important;}
 #home_slider .carousel-control.left{background:none !important;}
 #home_slider .carousel-control.right{background:none !important;}
@@ -233,10 +246,10 @@ ul {margin:0; padding:0;}
 	z-index:9;
 
 }
-#home_slider .carousel-inner .item {}
-#home_slider .carousel-inner .item .image {}
-#home_slider .carousel-inner .item  img{width:100%; height:100%;}
-.carousel-caption {padding-bottom:0; bottom:50px;}
+
+#home_slider .carousel-inner .item {overflow:hidden; height:432px; width:100%;}
+#home_slider .carousel-inner .item .image {overflow:hidden; text-align:center;} 
+.carousel-caption {padding-bottom:0; bottom:50px; position:absolute; left:50%; margin-left:-160px}
 
 
 
@@ -252,13 +265,14 @@ ul {margin:0; padding:0;}
 .home_search .text {color:#fff; font-size:13px;}
 .home_search .home_search_input  {margin-top:4px;}
 .home_search .col-sm-2 {margin-top:4px;}
+.home_search  li {list-style:none; display:inline-block; margin-right:17px}
 
-
+#home_slider .carousel-caption .col-sm-4 {width:330px !important;}
 .slider_info {
 	background-color: rgba(2, 120, 193, 0.6);
 	font-size:18px;
 	color:#fff;
-	bottom:0;  
+	bottom:35px;  
 	padding:10px;
 	text-align:left;
 }
@@ -281,7 +295,7 @@ ul {margin:0; padding:0;}
 
 
 /* START CONTAINER */
-#container{margin-top:10px; position:relative;}
+#container{margin-top:7px; position:relative;}
 .page_title_1 {
 	border-bottom:solid #0278c1 1px;
 	font-weight:bold;
@@ -607,6 +621,7 @@ table.blue_table td:last-child {background:#67aeda; border:solid #c5e1f0 1px; mi
 	width:100%;
 }
 #events_items > .event_item .image img {width:100%; height:100%;}
+#events_items > .event_item .image img:hover {opacity:0.6}
 #events_items > .event_item .text {
 	border-bottom:solid #cdcdcd 1px;
 	padding-bottom:9px; 
@@ -616,9 +631,9 @@ table.blue_table td:last-child {background:#67aeda; border:solid #c5e1f0 1px; mi
 
 .useful_div {}
 .useful_div .useful_item {margin-bottom:20px;}
-.useful_div .useful_item .image{padding:23px 0; text-align:center;}
-.useful_div .useful_item .image img {height:76px;}
-.useful_div .useful_item .title{color:#fea100; text-decoration:underline;}
+.useful_div .useful_item .image{padding:12px 0; text-align:center; border:solid #f5f5f5 8px;}
+.useful_div .useful_item .image img {height:80px;}
+.useful_div .useful_item .title{color:#fea100; text-decoration:underline; padding-top:6px;}
 
 
 .news_div {margin-top:18px;}
@@ -667,14 +682,18 @@ table.blue_table td:last-child {background:#67aeda; border:solid #c5e1f0 1px; mi
 .home_div_3 .produced_in_georgia {background:#1279bb url('../img/enteprise_georgia_bg.png') no-repeat left; background-size:100% 100%;}
 
 
+#trade_map_iframe {position:relative;}
+#map_fullscreen {position:absolute; top:10px; right:10px; width:16px; height:16px; background:url('../img/full_screen.png'); cursor:pointer;}
+
 
 #home_products {margin-top:10px;}
 #home_products .product_item {
 	position:relative;
 	margin-bottom:20px;
+	
 }
-#home_products .product_item .image{}
-#home_products .product_item .image img{width:100%;}
+#home_products .product_item .image{overflow:hidden;}
+#home_products .product_item .image img{width:100%; transition: all .2s ease-in-out; }
 #home_products .product_item .text{ 
 	background-color: rgba(2, 120, 193, 0.6);
 	font-size:18px;
@@ -693,6 +712,16 @@ table.blue_table td:last-child {background:#67aeda; border:solid #c5e1f0 1px; mi
 	position:absolute;
 	left:0;
 	top:-5px;
+}
+#home_products .product_item:hover .image img{ 
+	transform: scale(1.1); 
+	-o-transform: scale(1.1); 
+	-moz-transform: scale(1.1); 
+	-webkit-transform: scale(1.1); 
+	transition: all .2s ease-in-out; 
+	-o-transition: all .2s ease-in-out; 
+	-moz-transition: all .2s ease-in-out; 
+	-webkit-transition: all .2s ease-in-out; 
 }
 
 .carousel-indicators {bottom:-20px;}
@@ -811,7 +840,7 @@ textarea.form-control {height:140px;}
 .btn-aproved.btn-sm {font-size:13px; padding:7px 12px;}
 .btn-yellow {
 	background:#fea100;
-	padding:11px 15px;
+	padding:6px 15px;
 	font-weight:bold;
 	color:#fff;
 	font-size:15px;
@@ -916,7 +945,7 @@ hr.line_effect {
 }
 .hr_margin {margin:30px;}
 .modal-title {margin-bottom:15px;}
-.modal-title small {float:right; margin-top:10px; color:#fea100;}
+.modal-title small {float:right; margin-top:10px; color:#fea100; cursor:pointer}
 .modal-body {padding-bottom:20px;}
 
 
@@ -986,5 +1015,163 @@ hr.line_effect {
 	filter: alpha(opacity=100);
 	opacity: 1;
 }
+
+
+.admin_inputs .col-sm-9 {width:100%;}
+
+.modal-body {display:inline-block; width:100%;}
+
+
+
+
+
+/************************************************************* FOR RESPONSIVE MENU *****************************************************/
+
+
+/* adjust body when menu is open */
+body.slide-active {
+    overflow-x: hidden
+}
+/*first child of #page-content so it doesn't shift around*/
+.no-margin-top {
+    margin-top: 0px!important
+}
+/*wrap the entire page content but not nav inside this div if not a fixed top, don't add any top padding */
+#page-content {
+    position: relative;
+    padding-top: 70px;
+    right: 0;
+}
+#page-content.slide-active {
+    padding-top: 0
+}
+/* put toggle bars on the left :: not using button */
+#slide-nav .navbar-toggle {
+    cursor: pointer;
+    position: absolute;
+    line-height: 0;
+    float: left;
+	top:-43px;
+    margin: 0;
+    width: 30px;
+    height: 40px;
+    padding: 10px 0 0 0;
+    border: 0;
+    background: transparent;
+	right:15px;
+	z-index:9999999999999999;
+}
+/* icon bar prettyup - optional */
+#slide-nav .navbar-toggle > .icon-bar {
+    width: 100%;
+    display: block;
+    height: 3px;
+    margin: 5px 0 0 0;
+}
+#slide-nav .navbar-toggle.slide-active  {position:absolute; right:10px; top:-43px}
+#slide-nav .navbar-toggle.slide-active .icon-bar {
+    background: orange;
+	
+}
+.navbar-header {
+    position: relative
+}
+/* un fix the navbar when active so that all the menu items are accessible */
+.navbar.navbar-fixed-top.slide-active {
+    position: relative
+}
+/* screw writing importants and shit, just stick it in max width since these classes are not shared between sizes */
+@media (max-width:767px) { 
+#slide-nav #slidemenu  {padding-left:15px;}
+	#slide-nav .container {
+	    margin: 0;
+	    padding: 0!important;
+	}
+	#slide-nav .navbar-header {
+	    margin: 0 auto;
+	    padding: 0 15px;
+	}
+	#slide-nav .navbar.slide-active {
+	    position: absolute;
+	    width: 50%;
+	    top: -1px;
+	    z-index: 1000;
+	}
+	
+	#slide-nav #slidemenu {	     
+	    right: -100%;
+	    width: 50%;
+	    min-width: 0;
+	    position: absolute;
+	    padding-right: 0;
+	    z-index: 1;
+	    top: 0;
+	    margin: 0;
+		text-align:left;
+	}
+	#slide-nav #slidemenu .navbar-nav {
+	    min-width: 0;
+	    width: 100%;
+	    margin: 0;
+	}
+	#slide-nav #slidemenu .navbar-nav .dropdown-menu li a {
+	    min-width: 0;
+	    width: 100%;
+	    white-space: normal;
+		background:none;
+		
+	}
+	.navbar-nav .open .dropdown-menu > li > a {line-height:8px;}
+	
+	#slide-nav #slidemenu .navbar-nav .dropdown-menu li {list-style:none;}
+	
+	#slide-nav {
+	    border-top: 0
+	}
+	#slide-nav.navbar-inverse #slidemenu {
+	    background: #333
+	}
+	/* this is behind the navigation but the navigation is not inside it so that the navigation is accessible and scrolls*/
+	#slide-nav #navbar-height-col {
+	    position: fixed;
+	    top: 0;
+	    height: 100%;
+	    width: 50%;
+	    right: -50%;
+	    background: #fea100;
+	}
+	#slide-nav.navbar-inverse #navbar-height-col {
+	    background: #333;
+	    z-index: 1;
+	    border: 0;
+	}
+	#slide-nav .navbar-form {
+	    width: 100%;
+	    margin: 8px 0;
+	    text-align: center;
+	    overflow: hidden;
+	    /*fast clearfixer*/
+	}
+	#slide-nav .navbar-form .form-control {
+	    text-align: center
+	}
+	#slide-nav .navbar-form .btn {
+	    width: 100%
+	}
+}
+@media (min-width:768px) { 
+	#page-content {
+	    right: 0!important
+	}
+	.navbar.navbar-fixed-top.slide-active {
+	    position: fixed
+	}
+	.navbar-header {
+	    right: 0!important
+	}
+	#slide-nav #slidemenu  {right:0 !important}
+	
+}
+
 
 
