@@ -30,12 +30,8 @@ class model_admin_changeVisibility extends connection{
 	public function change_news($c){
 		$conn = $this->conn($c);
 		if(isset($_GET['visibilitychnage']) && $_GET['visibilitychnage']=="true" && isset($_GET['id'])){
-			if(isset($_GET['newsidx'])){ 
-				$pagetype = $_GET['type'];
-			}else{
-				$pagetype = "catalogpage";
-			}
-
+			$pagetype = $_GET['type'];
+			
 			$idx = (isset($_GET['newsidx'])) ? $_GET['newsidx'] : $_GET['catalogidx'];
 
 			$select_sql = 'SELECT 

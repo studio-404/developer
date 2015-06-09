@@ -89,15 +89,15 @@ class model_admin_catalogmodule extends connection{
 
 				$visibilityx = ($rows['smi_visibility']==1) ? "red" : "green";
 				$_SESSION['token'] = md5(sha1(time()));
-				$link_visibility = "?action=catalogModule&type=catalogpage&id=".$_GET['id']."&catalogidx=".$rows['smi_idx']."&super=".$_GET['super']."&visibilitychnage=true&token=".$_SESSION['token'];
+				$link_visibility = "?action=catalogModule&type=".$_GET['type']."&id=".$_GET['id']."&catalogidx=".$rows['smi_idx']."&super=".$_GET['super']."&visibilitychnage=true&token=".$_SESSION['token'];
 				$out .= '<span class="cell primary"><a href="'.htmlentities($link_visibility).'" style="color:'.$visibilityx.'" title="Change visibility"><i class="fa fa-dot-circle-o"></i></a></span>';
 				
 				$out .= '<span class="cell">';
 				if($rows['smi_position']!=1){
-					$out .= '<a href="?action=catalogModule&type=catalogpage&id='.$_GET['id'].'&cidx='.$rows['smi_idx'].'&super='.$_GET['super'].'&up=true&token='.$_SESSION['token'].'" class="changeposition" title="Move up"><i class="fa fa-arrow-circle-up"></i></a>';
+					$out .= '<a href="?action=catalogModule&type='.$_GET['type'].'&id='.$_GET['id'].'&cidx='.$rows['smi_idx'].'&super='.$_GET['super'].'&up=true&token='.$_SESSION['token'].'" class="changeposition" title="Move up"><i class="fa fa-arrow-circle-up"></i></a>';
 				}
 				if($rows['smi_position']!=$maxpos){
-					$out .= '<a href="?action=catalogModule&type=catalogpage&id='.$_GET['id'].'&cidx='.$rows['smi_idx'].'&super='.$_GET['super'].'&down=true&token='.$_SESSION['token'].'" class="changeposition" title="Move down"><i class="fa fa-arrow-circle-down"></i></a>';
+					$out .= '<a href="?action=catalogModule&type='.$_GET['type'].'&id='.$_GET['id'].'&cidx='.$rows['smi_idx'].'&super='.$_GET['super'].'&down=true&token='.$_SESSION['token'].'" class="changeposition" title="Move down"><i class="fa fa-arrow-circle-down"></i></a>';
 				}
 				$out .= '</span>';
 

@@ -7,7 +7,11 @@ class invoices extends connection{
 
 	public function view($obj,$c,$lang){		
 		$lg = $obj->url("segment",1);
-		$file = INVOICE.strtolower($lg).$_GET["uid"].".pdf";
+		if(isset($_GET['original'])){
+			$file = INVOICE.strtolower($lg).$_GET["uid"]."_original.pdf";
+		}else{
+			$file = INVOICE.strtolower($lg).$_GET["uid"].".pdf";
+		}
 		// echo $file;
 		if(!file_exists($file))
 		{
@@ -105,8 +109,10 @@ class invoices extends connection{
 			$paystatus = ($fetch['si_paystatus']==1) ? $gadaxdilia : $gadasaxdeli;
 
 			$html .= '<p>'.$lang->l("statusi").': '.$paystatus.'</p>';
-			$html .= '<p>'.$lang->l("xelmowera").', '.$lang->l("bechedi").':</p> <img src="/images/beWedi.png" width="100" height="104" />'; 
-
+			$html .= '<p>'.$lang->l("xelmowera").', '.$lang->l("bechedi").':</p>'; 
+			if(!isset($_GET['original'])):
+			$html .= '<img src="/images/beWedi.png" width="100" height="104" />'; 
+			endif;
 
 			$pdf->writeHTMLCell(0, 0, '', '', $html, 0, 0, 0, true, '', true);
 			ob_start();

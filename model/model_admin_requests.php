@@ -216,11 +216,8 @@ class model_admin_requests extends connection{
 		if(isset($_GET['visibilitychnage'],$_GET['action'],$_GET['type'],$_GET['id'],$_GET['token']) && $_GET['visibilitychnage']=="true" && is_numeric($_GET['id']) && $_GET['token']===$_SESSION['token']){
 			if(isset($_GET['newsidx']) || isset($_GET['catalogidx'])){
 				$action = (isset($_GET['newsidx'])) ? "newsModule" : "catalogModule";
-				if(isset($_GET['newsidx'])){ 
-					$pagetype = $_GET['type'];
-				}else{
-					$pagetype = "catalogpage";
-				}
+				$pagetype = $_GET['type'];
+				
 				$_SESSION['token'] = md5(sha1(time()));
 				$model_admin_changeVisibility = new model_admin_changeVisibility();
 				$model_admin_changeVisibility->change_news($c);
